@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GrandAscend · Creative Marketing Agency, Montreal</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -27,7 +32,8 @@ body { background: var(--cream); color: var(--charcoal); font-family: var(--sans
 /* NAV */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60px; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s ease, padding 0.4s ease; }
 nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); padding: 16px 60px; border-bottom: 1px solid var(--beige); }
-.nav-logo { font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; }
+.nav-logo-mark { height: 20px; width: auto; display: block; }
 .nav-logo span { font-style: italic; font-weight: 700; letter-spacing: 0.05em; text-transform: none; }
 .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
 .nav-links a { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; position: relative; transition: color 0.3s; }
@@ -421,7 +427,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 <div class="cursor-follower" id="cursorFollower"></div>
 
 <nav id="nav">
-  <a href="#" class="nav-logo"><span>Grand</span>Ascend</a>
+  <a href="#" class="nav-logo"><img src="images/logo-mark-ga.png" alt="" class="nav-logo-mark"><span>Grand</span>Ascend</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about" onclick="closeMenu()">About</a></li>
     <li><a href="#services" onclick="closeMenu()">Services</a></li>
