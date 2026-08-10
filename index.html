@@ -32,7 +32,8 @@ body { background: var(--cream); color: var(--charcoal); font-family: var(--sans
 /* NAV */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60px; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s ease, padding 0.4s ease; }
 nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); padding: 16px 60px; border-bottom: 1px solid var(--beige); }
-.nav-logo { font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; }
+.nav-logo-mark { height: 20px; width: auto; display: block; }
 .nav-logo span { font-style: italic; font-weight: 700; letter-spacing: 0.05em; text-transform: none; }
 .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
 .nav-links a { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; position: relative; transition: color 0.3s; }
@@ -426,7 +427,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 <div class="cursor-follower" id="cursorFollower"></div>
 
 <nav id="nav">
-  <a href="#" class="nav-logo"><span>Grand</span>Ascend</a>
+  <a href="#" class="nav-logo"><img src="images/logo-mark-ga.png" alt="" class="nav-logo-mark"><span>Grand</span>Ascend</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about" onclick="closeMenu()">About</a></li>
     <li><a href="#services" onclick="closeMenu()">Services</a></li>
