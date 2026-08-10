@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Team — GrandAscend</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --charcoal: #2A2A2A;
+    --cream: #F5F0E8;
+    --gold: #B5A898;
+    --taupe: #8C7E72;
+    --light: #FAF7F2;
+    --border: #E5DED4;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--light);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--charcoal);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--charcoal);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(181,168,152,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(181,168,152,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 8vw, 88px);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: #9A9189;
+    max-width: 420px;
+    margin: 0 auto 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 14px 40px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+    cursor: pointer;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold);
+    color: var(--charcoal);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.2s forwards;
+  }
+
+  .scroll-hint span {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollLine 2s 1.5s infinite;
+  }
+
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Form section */
+  .form-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    line-height: 1.2;
+  }
+
+  /* Rating legend */
+  .legend {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--taupe);
+    white-space: nowrap;
+  }
+
+  .legend-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--charcoal);
+    color: var(--cream);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  /* Your info */
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .info-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 8px;
+  }
+
+  .field input, .field textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: var(--charcoal);
+    background: var(--light);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    resize: none;
+  }
+
+  .field input:focus, .field textarea:focus {
+    border-color: var(--gold);
+    background: var(--white);
+  }
+
+  /* Category cards */
+  .cat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+
+  .cat-card:hover {
+    border-color: var(--gold);
+  }
+
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cat-icon {
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    background: var(--light);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .skill-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+  }
+
+  .skill-row:last-child { border-bottom: none; }
+
+  .skill-name {
+    font-size: 13px;
+    color: var(--charcoal);
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .rating-btns {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .rbtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--light);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--taupe);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .rbtn:hover {
+    border-color: var(--gold);
+    color: var(--charcoal);
+  }
+
+  .rbtn.active {
+    background: var(--charcoal);
+    border-color: var(--charcoal);
+    color: var(--cream);
+  }
+
+  /* Hours */
+  .hours-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .hour-btn {
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--taupe);
+    background: var(--white);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .hour-btn:hover { border-color: var(--gold); color: var(--charcoal); }
+
+  .hour-btn.active {
+    background: var(--charcoal);
+    border-color: var(--charcoal);
+    color: var(--cream);
+  }
+
+  /* Submit */
+  .submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--charcoal);
+    color: var(--cream);
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 32px;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .submit-btn:hover { background: var(--taupe); }
+  .submit-btn:active { transform: scale(0.99); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  /* Thank you */
+  .thankyou {
+    display: none;
+    text-align: center;
+    padding: 80px 24px;
+    min-height: 60vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .thankyou.show { display: flex; }
+
+  .thankyou-inner {
+    max-width: 440px;
+  }
+
+  .thankyou h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .thankyou p {
+    font-size: 14px;
+    color: var(--taupe);
+    line-height: 1.9;
+    margin-bottom: 8px;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 32px;
+    font-size: 11px;
+    color: var(--taupe);
+    border-top: 1px solid var(--border);
+    letter-spacing: 1px;
+  }
+
+  .upload-box {
+    border: 1.5px dashed var(--border);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: var(--light);
+  }
+
+  .upload-box:hover {
+    border-color: var(--gold);
+    background: var(--white);
+  }
+
+  .upload-icon { font-size: 28px; margin-bottom: 8px; }
+
+  .upload-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+
+  .upload-sub {
+    font-size: 11px;
+    color: var(--taupe);
+  }
+
+  .upload-chosen {
+    font-size: 12px;
+    color: var(--gold);
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  /* ── Luxury Thank-You Popup ── */
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .popup-overlay.visible {
+    display: flex;
+  }
+
+  .popup-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(42, 42, 42, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: backdropIn 0.5s ease forwards;
+  }
+
+  @keyframes backdropIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .popup-card {
+    position: relative;
+    z-index: 1;
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    max-width: 480px;
+    width: 100%;
+    padding: 52px 44px 44px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    animation: popupIn 0.55s 0.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    overflow: hidden;
+  }
+
+  .popup-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  @keyframes popupIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .popup-ornament {
+    font-size: 22px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: block;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.45s forwards;
+  }
+
+  .popup-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 8vw, 52px);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.55s forwards;
+  }
+
+  .popup-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .popup-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.65s forwards;
+  }
+
+  .popup-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--taupe);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.72s forwards;
+  }
+
+  .popup-sig {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.8s forwards;
+  }
+
+  .popup-close {
+    display: inline-block;
+    padding: 13px 36px;
+    border: 1px solid var(--charcoal);
+    color: var(--charcoal);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.88s forwards;
+  }
+
+  .popup-close:hover {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+
+  @media (max-width: 560px) {
+    .skill-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .legend { gap: 6px; }
+    .rbtn { width: 28px; height: 28px; font-size: 11px; }
+    .popup-card { padding: 40px 28px 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NETLIFY STATIC FORM (hidden — required for
+     Netlify's build-time form detection)
+     ═══════════════════════════════════════════════ -->
+<form name="grandascend-application" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text"   name="full-name">
+  <input type="text"   name="instagram">
+  <input type="email"  name="email">
+  <textarea            name="bio"></textarea>
+  <textarea            name="skills-summary"></textarea>
+  <textarea            name="extra-skills"></textarea>
+  <textarea            name="learn"></textarea>
+  <input type="text"   name="hours-per-week">
+  <textarea            name="not-preferred"></textarea>
+  <input type="file"   name="cv">
+  <input type="file"   name="portfolio">
+  <input type="url"    name="portfolio-link">
+  <textarea            name="cover-letter"></textarea>
+</form>
+
+<section class="hero">
+  <p class="hero-tag">GrandAscend ✦ Montreal</p>
+  <h1>Join the<br><em>team.</em></h1>
+  <p>We are a creative agency for luxury and beauty brands. Tell us what you are great at and let's find where you fit.</p>
+  <button class="hero-cta" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">Start the assessment</button>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section style="background: var(--charcoal); padding: 80px 32px; text-align: center;">
+  <div style="max-width: 600px; margin: 0 auto;">
+    <p style="font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;">Always open</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 24px;">We may not always have a role open. We always have room for the right person.</h2>
+    <p style="font-size: 13px; font-weight: 300; line-height: 1.9; color: #9A9189; margin-bottom: 16px;">GrandAscend is a small, intentional team and we are always growing. Whether we are actively hiring or not, we love meeting people who bring something special. If you feel like you belong in our world, tell us about yourself. We will reach out when the moment is right.</p>
+    <p style="font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--gold);">You are not applying for a job. You are joining a family.</p>
+  </div>
+</section>
+
+<section class="form-section" id="form">
+  <p class="section-label">Skills Assessment</p>
+  <h2 class="section-title">Tell us about yourself</h2>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot">1</div> Not really</div>
+    <div class="legend-item"><div class="legend-dot">2</div> A little</div>
+    <div class="legend-item"><div class="legend-dot">3</div> Good</div>
+    <div class="legend-item"><div class="legend-dot">4</div> Strong</div>
+    <div class="legend-item"><div class="legend-dot">5</div> This is me</div>
+  </div>
+
+  <!-- ── Form — submissions handled by Netlify Forms ── -->
+  <form
+    name="grandascend-application"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    enctype="multipart/form-data"
+    id="application-form"
+    onsubmit="handleSubmit(event)"
+  >
+  <input type="hidden" name="form-name" value="grandascend-application">
+  <input type="hidden" name="bot-field" style="display:none">
+
+    <div class="info-card">
+      <h3>Your info</h3>
+      <div class="field">
+        <label for="uname">Full name</label>
+        <input type="text" id="uname" name="full-name" placeholder="Your name" required>
+      </div>
+      <div class="field">
+        <label for="uig">Instagram handle</label>
+        <input type="text" id="uig" name="instagram" placeholder="@yourhandle">
+      </div>
+      <div class="field">
+        <label for="uemail">Email address</label>
+        <input type="email" id="uemail" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="field">
+        <label for="ubio">In a few words, what are you naturally good at?</label>
+        <textarea id="ubio" name="bio" rows="2" placeholder="Write freely..."></textarea>
+      </div>
+    </div>
+
+    <!-- Skills rating cards — injected by JS -->
+    <div id="cats"></div>
+
+    <!-- Hidden textarea that carries the compiled ratings summary -->
+    <textarea name="skills-summary" id="skills-summary-field" style="display:none"></textarea>
+
+    <!-- Hidden input that carries the selected hours -->
+    <input type="hidden" name="hours-per-week" id="hours-hidden-field" value="">
+
+    <div class="info-card" style="margin-top: 16px;">
+      <h3>A few more things</h3>
+      <div class="field">
+        <label for="uextra">Anything you are great at that is not listed above?</label>
+        <textarea id="uextra" name="extra-skills" rows="2" placeholder="Write here..."></textarea>
+      </div>
+      <div class="field">
+        <label for="ulearn">Something you would love to learn through GrandAscend?</label>
+        <textarea id="ulearn" name="learn" rows="2" placeholder="Write here..."></textarea>
+      </div>
+      <div class="field">
+        <label>Hours available per week</label>
+        <div class="hours-row" id="hours"></div>
+      </div>
+      <div class="field" style="margin-top: 16px;">
+        <label for="unope">Any type of work you would prefer not to do?</label>
+        <textarea id="unope" name="not-preferred" rows="2" placeholder="Totally okay to say so..."></textarea>
+      </div>
+    </div>
+
+    <div class="info-card" style="margin-top: 16px;">
+      <h3>Your documents</h3>
+      <p style="font-size: 12px; color: var(--taupe); margin-bottom: 20px; line-height: 1.7;">Attach whatever feels relevant. None of these are required but they help us get to know your work better.</p>
+
+      <div class="field">
+        <label>CV or Resume</label>
+        <div class="upload-box" onclick="document.getElementById('cv-file').click()">
+          <input type="file" id="cv-file" name="cv" accept=".pdf,.doc,.docx" style="display:none" onchange="showFile(this,'cv-name')">
+          <div class="upload-icon">📄</div>
+          <p class="upload-text">Click to upload your CV</p>
+          <p class="upload-sub">PDF or Word, up to 10MB</p>
+          <p class="upload-chosen" id="cv-name"></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Portfolio or Work Samples</label>
+        <div class="upload-box" onclick="document.getElementById('port-file').click()">
+          <input type="file" id="port-file" name="portfolio" accept=".pdf,.jpg,.jpeg,.png,.zip" style="display:none" onchange="showFile(this,'port-name')">
+          <div class="upload-icon">🎨</div>
+          <p class="upload-text">Click to upload your portfolio</p>
+          <p class="upload-sub">PDF, images or ZIP, up to 20MB</p>
+          <p class="upload-chosen" id="port-name"></p>
+        </div>
+      </div>
+
+      <div class="field" style="margin-bottom: 0;">
+        <label for="portlink">Portfolio link (if you have one)</label>
+        <input type="url" id="portlink" name="portfolio-link" placeholder="https://yourwebsite.com or Instagram link">
+      </div>
+
+      <div class="field" style="margin-top: 16px; margin-bottom: 0;">
+        <label for="coverletter">Cover Letter (optional)</label>
+        <textarea id="coverletter" name="cover-letter" rows="5" placeholder="Tell us why you would love to be part of GrandAscend. Write it like you would talk to a friend, no need to be too formal."></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submit-btn">Submit my assessment</button>
+  </form>
+</section>
+
+<div class="thankyou" id="ty">
+  <div class="thankyou-inner">
+    <h2>Thank you ✦</h2>
+    <p>Your assessment has been received. I will go through your answers and follow up with you personally.</p>
+    <p style="margin-top: 16px; font-size: 12px;">With love, Helia · GrandAscend</p>
+  </div>
+</div>
+
+<!-- ── Luxury Thank-You Popup ── -->
+<div class="popup-overlay" id="ty-popup" role="dialog" aria-modal="true" aria-label="Application received">
+  <div class="popup-backdrop" onclick="closePopup()"></div>
+  <div class="popup-card">
+    <span class="popup-ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
+    <h2 class="popup-title">Thank<br><em>you.</em></h2>
+    <div class="popup-divider"></div>
+    <p class="popup-body">
+      Thank you for applying to GrandAscend.<br>
+      We will review your application carefully<br>and reach out if we feel aligned.
+    </p>
+    <p class="popup-sig">With love, Helia · GrandAscend</p>
+    <button class="popup-close" onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<footer>© 2026 GrandAscend. All Rights Reserved. &nbsp;·&nbsp; grandascend.co</footer>
+
+<script>
+const sections = [
+  { icon: "📱", title: "Social Media",
+    skills: ["Instagram management and posting", "Content planning and strategy", "Caption writing and copywriting", "Hashtag research and growth", "Reels creation and editing", "TikTok content creation", "Scheduling and community management"] },
+  { icon: "🎨", title: "Design and Creative",
+    skills: ["Canva", "Adobe Photoshop", "Adobe Illustrator", "Graphic design (general)", "Presentation design (slides, decks)", "Moodboarding and aesthetic direction", "Brand identity and visual consistency", "Logo design"] },
+  { icon: "🎬", title: "Video and Photo",
+    skills: ["Photography", "Video editing", "CapCut", "Adobe Premiere Pro", "Final Cut Pro", "Reels and short-form video editing", "Product photography", "Content shooting and directing"] },
+  { icon: "💬", title: "Communication and Client Relations",
+    skills: ["Talking to clients and building rapport", "Negotiation", "Writing professional emails and messages", "Following up and managing conversations", "Presenting ideas and pitching"] },
+  { icon: "📋", title: "Operations and Organization",
+    skills: ["Project management and coordination", "Managing timelines and deadlines", "Notion", "Google Drive and file organization", "Excel or Google Sheets", "Scheduling and calendar management", "Writing SOPs and documentation"] },
+  { icon: "🌐", title: "Web and Tech",
+    skills: ["Shopify website design or management", "Basic website editing (any platform)", "Email marketing — Klaviyo or Mailchimp", "Analytics and reporting — Instagram, Google", "SEO basics", "Linktree or bio link tools"] },
+  { icon: "📈", title: "Business Development and Networking",
+    skills: ["Finding and approaching potential clients", "Building a professional network", "Partnership and collaboration outreach", "Influencer or brand ambassador experience", "Market research and competitor analysis"] },
+  { icon: "🎪", title: "Events and Production",
+    skills: ["Event planning and coordination", "On-site logistics and management", "Brand activations and pop-ups", "Vendor and supplier coordination"] },
+  { icon: "✍️", title: "Writing and Strategy",
+    skills: ["Copywriting for social media or marketing", "Blog or long-form writing", "Brand strategy and positioning", "Creating content calendars", "Market research"] }
+];
+
+const hoursOptions = ["1 to 5 hrs", "5 to 10 hrs", "10 to 20 hrs", "20+ hrs"];
+const ratings = {};
+let selectedHours = "";
+
+/* ── Show chosen file name ── */
+function showFile(input, labelId) {
+  const label = document.getElementById(labelId);
+  if (input.files && input.files[0]) {
+    label.textContent = "✓ " + input.files[0].name;
+  }
+}
+
+/* ── Build skill rating cards ── */
+function buildForm() {
+  const container = document.getElementById("cats");
+  sections.forEach((sec, si) => {
+    const card = document.createElement("div");
+    card.className = "cat-card";
+    let html = `<div class="cat-header"><div class="cat-icon">${sec.icon}</div><h3 class="cat-title">${sec.title}</h3></div>`;
+    sec.skills.forEach((skill, ki) => {
+      const key = `${si}-${ki}`;
+      ratings[key] = 0;
+      html += `<div class="skill-row">
+        <span class="skill-name">${skill}</span>
+        <div class="rating-btns">
+          ${[1,2,3,4,5].map(n => `<button type="button" class="rbtn" id="b-${key}-${n}" onclick="rate('${key}',${n})">${n}</button>`).join("")}
+        </div>
+      </div>`;
+    });
+    card.innerHTML = html;
+    container.appendChild(card);
+  });
+
+  /* Hours buttons */
+  const hrow = document.getElementById("hours");
+  hoursOptions.forEach(h => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "hour-btn";
+    btn.textContent = h;
+    btn.onclick = () => {
+      document.querySelectorAll(".hour-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedHours = h;
+      document.getElementById("hours-hidden-field").value = h;
+    };
+    hrow.appendChild(btn);
+  });
+}
+
+/* ── Handle rating button clicks ── */
+function rate(key, val) {
+  ratings[key] = val;
+  for (let n = 1; n <= 5; n++) {
+    const b = document.getElementById(`b-${key}-${n}`);
+    if (n <= val) b.classList.add("active");
+    else b.classList.remove("active");
+  }
+}
+
+/* ── Compile ratings into a readable summary ── */
+function compileRatings() {
+  let lines = [];
+  sections.forEach((sec, si) => {
+    let sectionLines = [];
+    sec.skills.forEach((skill, ki) => {
+      const key = `${si}-${ki}`;
+      const r = ratings[key];
+      if (r > 0) {
+        sectionLines.push(`  ${skill}: ${r}/5`);
+      }
+    });
+    if (sectionLines.length) {
+      lines.push(`${sec.title}:`);
+      lines = lines.concat(sectionLines);
+    }
+  });
+  return lines.length ? lines.join("\n") : "No skills rated.";
+}
+
+/* ── Popup helpers ── */
+function showPopup() {
+  const overlay = document.getElementById("ty-popup");
+  overlay.classList.add("visible");
+  document.body.style.overflow = "hidden";
+}
+
+function closePopup() {
+  const overlay = document.getElementById("ty-popup");
+  overlay.classList.remove("visible");
+  document.body.style.overflow = "";
+}
+
+/* Close popup with Escape key */
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closePopup();
+});
+
+/* ── Form submission via Netlify Forms ── */
+async function handleSubmit(e) {
+  e.preventDefault();
+
+  const btn = document.getElementById("submit-btn");
+  btn.disabled = true;
+  btn.textContent = "Sending…";
+
+  /* Populate hidden fields with compiled data */
+  document.getElementById("skills-summary-field").value = compileRatings();
+  document.getElementById("hours-hidden-field").value = selectedHours || "Not specified";
+
+  const form = document.getElementById("application-form");
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch("/careers", {
+      method: "POST",
+      body: formData
+    });
+
+    if (response.ok) {
+      showPopup();
+      form.reset();
+      Object.keys(ratings).forEach(k => { ratings[k] = 0; });
+      document.querySelectorAll(".rbtn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".hour-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById("cv-name").textContent = "";
+      document.getElementById("port-name").textContent = "";
+      selectedHours = "";
+    } else {
+      throw new Error("Submission error.");
+    }
+  } catch (err) {
+    console.error("Submission error:", err);
+    showPopup();
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Submit my assessment";
+  }
+}
+
+buildForm();
+</script>
+</body>
+</html>
