@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GrandAscend — Creative Marketing Agency, Montreal</title>
+<title>GrandAscend · Creative Marketing Agency, Montreal</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -52,7 +52,7 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 .proof-item { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; color: var(--charcoal); opacity: 0.65; }
 .proof-sep { color: var(--taupe); font-size: 10px; }
 .hero-title em { font-style: italic; color: var(--taupe); display: block; }
-.hero-bottom { display: flex; gap: 80px; align-items: flex-end; opacity: 0; animation: fadeUp 1s ease 0.7s forwards; }
+.hero-bottom { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; opacity: 0; animation: fadeUp 1s ease 0.7s forwards; }
 .hero-desc { font-family: var(--sans); font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--charcoal); max-width: 340px; letter-spacing: 0.03em; opacity: 0.8; }
 .hero-actions { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
 .btn-primary { display: inline-block; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white); background: var(--charcoal); padding: 16px 36px; text-decoration: none; transition: all 0.3s ease; }
@@ -290,7 +290,13 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   .hero { padding: 100px 24px 60px; }
   .hero-bg-text { display: none; }
   .hero-title { font-size: clamp(38px, 8vw, 64px); }
-  .hero-bottom { flex-direction: column; gap: 40px; }
+  /* The description and buttons already stack full-width at every
+     size; just let the description use the full width instead of its
+     desktop reading-width cap. The eyebrow's leading divider line is
+     dropped too, so its text starts at the same edge as everything
+     else. */
+  .hero-desc { max-width: 100%; }
+  .hero-tag::before { display: none; }
   .hero-scroll { display: none; }
 
   /* ABOUT */
@@ -320,7 +326,12 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 
   /* SERVICES */
   #services { padding: 80px 24px; }
-  .services-header { flex-direction: column; gap: 24px; }
+  /* Two-column header collapses to a single column here, but still
+     inherits align-items: flex-end from the row layout, which
+     right-aligns everything. Reset to left-aligned and tighten the
+     gap before the first service card. */
+  .services-header { flex-direction: column; align-items: flex-start; text-align: left; gap: 24px; margin-bottom: 40px; }
+  .services-title, .services-intro, .services-header .section-label { text-align: left; }
   .services-grid { grid-template-columns: 1fr; }
 
   /* PORTFOLIO */
@@ -486,7 +497,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
       <span class="lvmh-dot"></span>
       LVMH Certified Strategist
     </div>
-    <div class="hero-tag">Montreal — Luxury &amp; Beauty Branding</div>
+    <div class="hero-tag">Montreal · Luxury &amp; Beauty Branding</div>
     <h1 class="hero-title">
       Your brand, built for<br>the tier you're
       <em>reaching for.</em>
@@ -919,7 +930,7 @@ function sendContactEmail() {
     return;
   }
 
-  const subject = encodeURIComponent('New Enquiry from ' + name + ' — ' + service);
+  const subject = encodeURIComponent('New Enquiry from ' + name + ': ' + service);
   const body = encodeURIComponent(
     'Name: ' + name + '\n' +
     'Email: ' + email + '\n' +
