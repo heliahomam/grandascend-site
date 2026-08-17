@@ -115,8 +115,8 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 #clients { padding: 80px 0; background: var(--charcoal); overflow: hidden; }
 .clients-label { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.5em; text-transform: uppercase; color: rgba(245,240,232,0.3); text-align: center; margin-bottom: 50px; padding: 0 60px; }
 .logos-row { display: flex; align-items: center; }
-.logos-track { display: flex; align-items: center; gap: 100px; animation: marquee 22s linear infinite; }
-.client-logo { height: 110px; width: auto; flex-shrink: 0; opacity: 0.9; filter: brightness(10); object-fit: contain; transition: opacity 0.3s ease; }
+.logos-track { display: flex; align-items: center; gap: 110px; animation: logosMarquee 26s linear infinite; }
+.client-logo { height: 130px; width: auto; flex-shrink: 0; opacity: 0.9; filter: brightness(10); object-fit: contain; transition: opacity 0.3s ease; }
 .client-logo:hover { opacity: 1; }
 
 /* SERVICES */
@@ -247,6 +247,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes logosMarquee { from { transform: translateX(0); } to { transform: translateX(-25%); } }
 
 
 /* HAMBURGER */
@@ -534,16 +535,26 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   <div class="clients-label anim-fade-up">Brands we have worked with</div>
   <div class="logos-row">
     <div class="logos-track">
-      <img src="images/img-02-eae84c8506.svg" class="client-logo" alt="Client logo 1" loading="lazy" />
-      <img src="images/img-03-2b0c849dcd.svg" class="client-logo" alt="Client logo 2" loading="lazy" />
-      <img src="images/img-04-18632e0b17.svg" class="client-logo" alt="Client logo 3" loading="lazy" />
-      <img src="images/img-05-8f95d91216.svg" class="client-logo" alt="Client logo 4" loading="lazy" />
-      <img src="images/img-06-c6867978b4.svg" class="client-logo" alt="Client logo 5" loading="lazy" />
-      <img src="images/img-02-eae84c8506.svg" class="client-logo" alt="" aria-hidden="true" loading="lazy" />
-      <img src="images/img-03-2b0c849dcd.svg" class="client-logo" alt="" aria-hidden="true" loading="lazy" />
-      <img src="images/img-04-18632e0b17.svg" class="client-logo" alt="" aria-hidden="true" loading="lazy" />
-      <img src="images/img-05-8f95d91216.svg" class="client-logo" alt="" aria-hidden="true" loading="lazy" />
-      <img src="images/img-06-c6867978b4.svg" class="client-logo" alt="" aria-hidden="true" loading="lazy" />
+      <img src="images/img-02-eae84c8506.svg" class="client-logo" alt="Client logo 1" />
+      <img src="images/img-03-2b0c849dcd.svg" class="client-logo" alt="Client logo 2" />
+      <img src="images/img-04-18632e0b17.svg" class="client-logo" alt="Client logo 3" />
+      <img src="images/img-05-8f95d91216.svg" class="client-logo" alt="Client logo 4" />
+      <img src="images/img-06-c6867978b4.svg" class="client-logo" alt="Client logo 5" />
+      <img src="images/img-02-eae84c8506.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-03-2b0c849dcd.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-04-18632e0b17.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-05-8f95d91216.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-06-c6867978b4.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-02-eae84c8506.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-03-2b0c849dcd.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-04-18632e0b17.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-05-8f95d91216.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-06-c6867978b4.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-02-eae84c8506.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-03-2b0c849dcd.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-04-18632e0b17.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-05-8f95d91216.svg" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/img-06-c6867978b4.svg" class="client-logo" alt="" aria-hidden="true" />
     </div>
   </div>
 </div>
