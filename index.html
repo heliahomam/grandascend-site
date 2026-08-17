@@ -112,12 +112,13 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 .about-cert-img { width: 100%; display: block; }
 
 /* CLIENTS */
-#clients { padding: 80px 60px; background: var(--charcoal); }
-.clients-label { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.5em; text-transform: uppercase; color: rgba(245,240,232,0.3); text-align: center; margin-bottom: 50px; }
-.logos-row { display: flex; align-items: center; justify-content: center; gap: 70px; flex-wrap: wrap; }
-.client-logo { height: 80px; width: auto; opacity: 0; filter: brightness(10); object-fit: contain; transition: opacity 0.6s ease; }
-.client-logo.visible { opacity: 0.45; }
-.client-logo:hover { opacity: 0.85 !important; }
+#clients { padding: 80px 0; background: var(--charcoal); overflow: hidden; }
+.clients-label { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.5em; text-transform: uppercase; color: rgba(245,240,232,0.3); text-align: center; margin-bottom: 50px; padding: 0 60px; }
+.logos-row { display: flex; align-items: center; }
+.logos-track { display: flex; align-items: center; gap: 80px; animation: logosMarquee 26s linear infinite; }
+.client-logo { height: 56px; width: auto; flex-shrink: 0; opacity: 0.9; filter: brightness(10); object-fit: contain; transition: opacity 0.3s ease; }
+.client-logo[src*="logo-roza"] { height: 40px; }
+.client-logo:hover { opacity: 1; }
 
 /* SERVICES */
 #services { padding: 140px 60px; background: var(--charcoal); }
@@ -247,6 +248,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes logosMarquee { from { transform: translateX(0); } to { transform: translateX(-14.2857143%); } }
 
 
 /* HAMBURGER */
@@ -326,9 +328,11 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   .about-stats { grid-template-columns: 1fr 1fr; }
 
   /* CLIENTS */
-  #clients { padding: 60px 24px; }
-  .logos-row { gap: 20px; flex-wrap: wrap; justify-content: center; }
-  .client-logo { height: 45px !important; }
+  #clients { padding: 60px 0; }
+  .clients-label { padding: 0 24px; }
+  .logos-track { gap: 36px; }
+  .client-logo { height: 34px !important; }
+  .client-logo[src*="logo-roza"] { height: 24px !important; }
 
   /* SERVICES */
   #services { padding: 80px 24px; }
@@ -405,8 +409,9 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   .services-grid { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: 1fr 1fr; }
   .footer-top { grid-template-columns: 1fr; gap: 30px; }
-  .logos-row { gap: 16px; }
-  .client-logo { height: 36px !important; }
+  .logos-track { gap: 24px; }
+  .client-logo { height: 26px !important; }
+  .client-logo[src*="logo-roza"] { height: 19px !important; }
   .process-steps { grid-template-columns: 1fr; }
   #blog [style*="grid-template-columns:repeat(4,1fr)"] { 
     grid-template-columns: repeat(2, 1fr) !important; 
@@ -429,7 +434,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 <nav id="nav">
   <a href="#" class="nav-logo"><img src="images/logo-mark-ga.png" alt="" class="nav-logo-mark"><span>Grand</span>Ascend</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="about.html" onclick="closeMenu()">About</a></li>
     <li><a href="#services" onclick="closeMenu()">Services</a></li>
     <li><a href="#portfolio" onclick="closeMenu()">Work</a></li>
     <li><a href="#about" onclick="closeMenu()">Credentials</a></li>
@@ -451,7 +456,8 @@ footer { background: var(--black); padding: 80px 60px 40px; }
       <h2 class="about-headline">A creative house for <em>visionary</em> brands.</h2>
       <p class="about-body">GrandAscend is a Montreal-based creative marketing agency specializing in luxury and beauty branding. Founded by LVMH-certified strategist Helia Homam, the agency brings together brand strategy, content creation, and Shopify design to help ambitious businesses rise above the noise.</p>
       <p class="about-body">Every brand has a story worth telling. We help you find it, shape it, and share it with the world through strategy, design, and content that actually connects.</p>
-      <div class="about-stats">
+      <div class="result-label" style="margin-top:40px;">Helia Homam's Track Record</div>
+      <div class="about-stats" style="margin-top:14px;">
         <div class="stat-box">
           <div class="stat-num" data-count="54">0</div>
           <div class="stat-label">Followers Reached</div>
@@ -532,11 +538,36 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 <div id="clients">
   <div class="clients-label anim-fade-up">Brands we have worked with</div>
   <div class="logos-row">
-    <img src="images/img-02-eae84c8506.svg" class="client-logo anim-fade-up" alt="Client logo 1" style="height:80px;" loading="lazy" />
-    <img src="images/img-03-2b0c849dcd.svg" class="client-logo anim-fade-up" alt="Client logo 2" style="height:80px;" loading="lazy" />
-    <img src="images/img-04-18632e0b17.svg" class="client-logo anim-fade-up" alt="Client logo 3" style="height:80px;" loading="lazy" />
-    <img src="images/img-05-8f95d91216.svg" class="client-logo anim-fade-up" alt="Client logo 4" style="height:80px;" loading="lazy" />
-    <img src="images/img-06-c6867978b4.svg" class="client-logo anim-fade-up" alt="Client logo 5" style="height:80px;" loading="lazy" />
+    <div class="logos-track">
+      <img src="images/logo-herheart.png" class="client-logo" alt="HerHeart" />
+      <img src="images/logo-roza.png" class="client-logo" alt="Roza Grip Socks" />
+      <img src="images/logo-honeeynail.png" class="client-logo" alt="Honeeynail" />
+      <img src="images/logo-spaperlla.png" class="client-logo" alt="Spa Perlla" />
+      <img src="images/logo-herheart.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-roza.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-honeeynail.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-spaperlla.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-herheart.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-roza.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-honeeynail.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-spaperlla.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-herheart.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-roza.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-honeeynail.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-spaperlla.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-herheart.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-roza.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-honeeynail.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-spaperlla.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-herheart.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-roza.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-honeeynail.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-spaperlla.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-herheart.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-roza.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-honeeynail.png" class="client-logo" alt="" aria-hidden="true" />
+      <img src="images/logo-spaperlla.png" class="client-logo" alt="" aria-hidden="true" />
+    </div>
   </div>
 </div>
 
@@ -827,7 +858,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
     <div>
       <div class="footer-col-title">Navigate</div>
       <ul class="footer-links">
-        <li><a href="#about">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Work</a></li>
         <li><a href="#about">Credentials</a></li>
@@ -900,7 +931,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.anim-fade-up, .anim-clip, .anim-scale, .anim-left, .anim-right, .client-logo').forEach(el => observer.observe(el));
+document.querySelectorAll('.anim-fade-up, .anim-clip, .anim-scale, .anim-left, .anim-right').forEach(el => observer.observe(el));
 
 // Counter animation
 const counters = document.querySelectorAll('[data-count]');
