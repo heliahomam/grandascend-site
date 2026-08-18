@@ -90,6 +90,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60
 .svc-row-tag { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--taupe); margin-bottom: 20px; }
 .svc-row-title { font-family: var(--serif); font-style: italic; font-size: clamp(28px, 2.6vw, 40px); color: var(--charcoal); margin-bottom: 20px; line-height: 1.2; }
 .svc-row-text-body { font-family: var(--sans); font-size: 14px; font-weight: 300; line-height: 1.95; color: var(--charcoal); opacity: 0.8; letter-spacing: 0.02em; max-width: 460px; margin-bottom: 28px; }
+.svc-row-included { list-style: none; margin: 0 0 32px; padding: 0; max-width: 460px; }
+.svc-row-included li { font-family: var(--sans); font-size: 12px; font-weight: 300; line-height: 1.7; color: var(--charcoal); opacity: 0.75; letter-spacing: 0.02em; padding-left: 20px; position: relative; }
+.svc-row-included li::before { content: ''; position: absolute; left: 0; top: 9px; width: 10px; height: 1px; background: var(--taupe); }
 .svc-row-link { display: inline-flex; align-items: center; gap: 12px; font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; padding-bottom: 6px; border-bottom: 1px solid var(--charcoal); transition: color 0.3s, border-color 0.3s; }
 .svc-row-link:hover { color: var(--taupe); border-color: var(--taupe); }
 .svc-row-arrow { width: 20px; height: 1px; background: currentColor; display: inline-block; transition: width 0.3s ease; }
@@ -110,6 +113,15 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60
 .svc-explore-item img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.6s ease; }
 .svc-explore-item:hover img { transform: scale(1.06); }
 .svc-explore-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 24px; background: linear-gradient(0deg, rgba(26,26,26,0.65), rgba(26,26,26,0)); text-align: left; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white); }
+
+/* CAROUSEL */
+.svc-carousel { padding: 100px 0 150px; text-align: center; overflow: hidden; }
+.carousel-viewport { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; perspective: 1600px; scrollbar-width: none; cursor: grab; margin-top: 60px; }
+.carousel-viewport::-webkit-scrollbar { display: none; }
+.carousel-viewport.dragging { cursor: grabbing; scroll-snap-type: none; }
+.carousel-slide { flex: 0 0 300px; margin: 0 16px; scroll-snap-align: center; border-radius: 6px; overflow: hidden; box-shadow: 0 40px 80px rgba(26,26,26,0.28); will-change: transform, opacity; transition: transform 0.15s ease-out, opacity 0.15s ease-out; }
+.carousel-slide img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; }
+.carousel-hint { margin-top: 36px; font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--taupe); }
 
 /* CLOSING CTA */
 .story-cta { padding: 140px 60px; text-align: center; }
@@ -183,6 +195,8 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   .svc-row-ghost { display: none; }
   .svc-explore { padding: 70px 24px 90px; }
   .svc-explore-grid { grid-template-columns: repeat(2, 1fr); }
+  .svc-carousel { padding: 70px 0 100px; }
+  .carousel-slide { flex-basis: 210px; margin: 0 10px; }
   .story-cta { padding: 90px 24px; }
 
   footer { padding: 60px 24px 30px; }
@@ -239,26 +253,39 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 
   <div class="svc-row" id="branding">
     <div class="svc-row-ghost">01</div>
-    <div class="svc-row-img anim-left">
-      <img src="images/img-13-80a12bfb54.jpg" alt="GrandAscend branding and identity mockups" loading="lazy" />
+    <div class="svc-row-img anim-left" style="aspect-ratio:4/5;">
+      <img src="images/service-branding-identity.jpg" alt="GrandAscend Brand Identity service, Golden Club brand mockups" loading="lazy" />
     </div>
     <div class="svc-row-text anim-right">
       <div class="svc-row-tag">01 · Branding &amp; Identity</div>
       <h2 class="svc-row-title">Logos and identities built to hold up as you grow.</h2>
       <p class="svc-row-text-body">Logo design, visual identity systems, and full rebrands for founders and product businesses ready to look as considered as they are. Every mark, palette, and guideline is developed with the LVMH Inside Certificate approach to creation and branding.</p>
+      <ul class="svc-row-included">
+        <li>Logo suite (primary, secondary, submark)</li>
+        <li>Typography system</li>
+        <li>Colour palette</li>
+        <li>Brand guidelines</li>
+        <li>Social media template set</li>
+      </ul>
       <a href="index.html#contact" class="svc-row-link">Enquire <span class="svc-row-arrow"></span></a>
     </div>
   </div>
 
   <div class="svc-row reverse" id="content-creation">
     <div class="svc-row-ghost">02</div>
-    <div class="svc-row-img anim-right">
-      <img src="images/img-17-c992e7c1fb.jpg" alt="Example of GrandAscend content creation, an editorial carousel post" loading="lazy" />
+    <div class="svc-row-img anim-right" style="aspect-ratio:4/5;">
+      <img src="images/service-content-creation.jpg" alt="GrandAscend Content Creation service, studio photoshoot" loading="lazy" />
     </div>
     <div class="svc-row-text anim-left">
       <div class="svc-row-tag">02 · Content Creation</div>
       <h2 class="svc-row-title">Photography and video that's ready to post.</h2>
       <p class="svc-row-text-body">Photography, Reels, and TikTok content shot in our Montreal studio. Editorial quality, delivered monthly, built around a content strategy rather than a shot list.</p>
+      <ul class="svc-row-included">
+        <li>Brand and product photography</li>
+        <li>Reels and short form video</li>
+        <li>Captions and copywriting</li>
+        <li>Post, story, and highlight templates</li>
+      </ul>
       <a href="index.html#contact" class="svc-row-link">Enquire <span class="svc-row-arrow"></span></a>
     </div>
   </div>
@@ -276,14 +303,20 @@ footer { background: var(--black); padding: 80px 60px 40px; }
       <div class="svc-row-tag">03 · Web Design</div>
       <h2 class="svc-row-title">Websites built to convert, not just to look good.</h2>
       <p class="svc-row-text-body">Beautiful, conversion-focused websites on Shopify and Wix. Designed to reflect your brand and built to turn visitors into customers.</p>
+      <ul class="svc-row-included">
+        <li>Shopify store design and setup</li>
+        <li>Landing pages</li>
+        <li>Website copy and structure</li>
+        <li>Product photography, quoted separately</li>
+      </ul>
       <a href="index.html#contact" class="svc-row-link">Enquire <span class="svc-row-arrow"></span></a>
     </div>
   </div>
 
   <div class="svc-row reverse" id="brand-strategy">
     <div class="svc-row-ghost">04</div>
-    <div class="svc-row-img anim-right">
-      <img src="images/img-12-08a9f85813.jpg" alt="GrandAscend brand strategy session" loading="lazy" />
+    <div class="svc-row-img anim-right" style="aspect-ratio:4/5;">
+      <img src="images/service-brand-strategy.jpg" alt="Helia Homam, LVMH-certified creative marketing strategy" loading="lazy" />
     </div>
     <div class="svc-row-text anim-left">
       <div class="svc-row-tag">04 · Brand Strategy</div>
@@ -295,13 +328,19 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 
   <div class="svc-row" id="social-media">
     <div class="svc-row-ghost">05</div>
-    <div class="svc-row-img anim-left">
-      <img src="images/img-18-6ec0cf444d.jpg" alt="Example of GrandAscend social media content" loading="lazy" />
+    <div class="svc-row-img anim-left" style="aspect-ratio:4/5;">
+      <img src="images/service-social-media.jpg" alt="GrandAscend Social Media Management service" loading="lazy" />
     </div>
     <div class="svc-row-text anim-right">
       <div class="svc-row-tag">05 · Social Media Management</div>
       <h2 class="svc-row-title">Consistently present, without you having to run it.</h2>
       <p class="svc-row-text-body">Strategic planning, content creation, scheduling, and community management. Your brand, growing steadily in the feed, while you run the business.</p>
+      <ul class="svc-row-included">
+        <li>Monthly content calendar</li>
+        <li>Content production and scheduling</li>
+        <li>Trend analysis</li>
+        <li>Monthly performance reporting</li>
+      </ul>
       <a href="index.html#contact" class="svc-row-link">Enquire <span class="svc-row-arrow"></span></a>
     </div>
   </div>
@@ -362,6 +401,20 @@ footer { background: var(--black); padding: 80px 60px 40px; }
       See More on Instagram
     </a>
   </div>
+</section>
+
+<!-- CAROUSEL -->
+<section class="svc-carousel">
+  <div class="section-label anim-fade-up" style="justify-content:center;">Straight From The Feed</div>
+  <h2 class="story-cta-title anim-fade-up" style="margin-bottom:0;">How we <em>tell it.</em></h2>
+  <div class="carousel-viewport" id="carouselViewport">
+    <div class="carousel-slide"><img src="images/service-brand-strategy.jpg" alt="What we actually do, LVMH certified creative marketing agency" loading="lazy" /></div>
+    <div class="carousel-slide"><img src="images/service-branding-identity.jpg" alt="Brand Identity service slide" loading="lazy" /></div>
+    <div class="carousel-slide"><img src="images/service-content-creation.jpg" alt="Content Creation service slide" loading="lazy" /></div>
+    <div class="carousel-slide"><img src="images/service-social-media.jpg" alt="Social Media Management service slide" loading="lazy" /></div>
+    <div class="carousel-slide"><img src="images/service-web-shopify.jpg" alt="Web and Shopify service slide" loading="lazy" /></div>
+  </div>
+  <p class="carousel-hint anim-fade-up">Swipe to explore</p>
 </section>
 
 <!-- CLOSING CTA -->
@@ -448,6 +501,75 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.anim-fade-up, .anim-left, .anim-right, .anim-scale').forEach(el => observer.observe(el));
+
+// Coverflow carousel
+(function() {
+  const viewport = document.getElementById('carouselViewport');
+  if (!viewport) return;
+  const slides = Array.from(viewport.querySelectorAll('.carousel-slide'));
+
+  function setPadding() {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const pad = Math.max(0, (viewport.clientWidth - slideWidth) / 2);
+    viewport.style.paddingLeft = pad + 'px';
+    viewport.style.paddingRight = pad + 'px';
+  }
+
+  function updateCarousel() {
+    const vpRect = viewport.getBoundingClientRect();
+    const center = vpRect.left + vpRect.width / 2;
+    slides.forEach(slide => {
+      const r = slide.getBoundingClientRect();
+      const slideCenter = r.left + r.width / 2;
+      const delta = (slideCenter - center) / vpRect.width;
+      const clamped = Math.max(-1.4, Math.min(1.4, delta));
+      const rotate = clamped * -40;
+      const scale = 1 - Math.min(Math.abs(clamped), 1) * 0.28;
+      const translateY = Math.min(Math.abs(clamped), 1) * 24;
+      const opacity = 1 - Math.min(Math.abs(clamped), 1) * 0.55;
+      slide.style.transform = `translateY(${translateY}px) rotateY(${rotate}deg) scale(${scale})`;
+      slide.style.opacity = opacity;
+      slide.style.zIndex = Math.round((1 - Math.min(Math.abs(clamped), 1)) * 100);
+    });
+  }
+
+  let ticking = false;
+  viewport.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => { updateCarousel(); ticking = false; });
+      ticking = true;
+    }
+  });
+
+  window.addEventListener('resize', () => { setPadding(); updateCarousel(); });
+
+  // Convert vertical wheel input to horizontal scroll
+  viewport.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      viewport.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  // Drag to scroll with mouse
+  let isDown = false, startX = 0, scrollStart = 0;
+  viewport.addEventListener('mousedown', e => {
+    isDown = true;
+    viewport.classList.add('dragging');
+    startX = e.pageX;
+    scrollStart = viewport.scrollLeft;
+  });
+  window.addEventListener('mouseup', () => { isDown = false; viewport.classList.remove('dragging'); });
+  window.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    viewport.scrollLeft = scrollStart - (e.pageX - startX);
+  });
+
+  setPadding();
+  updateCarousel();
+  window.addEventListener('load', () => { setPadding(); updateCarousel(); });
+})();
 
 // Mobile menu
 function toggleMenu() {
