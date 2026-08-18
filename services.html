@@ -116,10 +116,10 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60
 
 /* CAROUSEL */
 .svc-carousel { padding: 100px 0 150px; text-align: center; overflow: hidden; }
-.carousel-viewport { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; perspective: 1600px; scrollbar-width: none; cursor: grab; margin-top: 60px; }
+.carousel-viewport { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: auto; -webkit-overflow-scrolling: touch; perspective: 1600px; scrollbar-width: none; cursor: grab; margin-top: 60px; }
 .carousel-viewport::-webkit-scrollbar { display: none; }
 .carousel-viewport.dragging { cursor: grabbing; scroll-snap-type: none; }
-.carousel-slide { flex: 0 0 300px; margin: 0 16px; scroll-snap-align: center; border-radius: 6px; overflow: hidden; box-shadow: 0 40px 80px rgba(26,26,26,0.28); will-change: transform, opacity; transition: transform 0.15s ease-out, opacity 0.15s ease-out; }
+.carousel-slide { flex: 0 0 300px; margin: 0 16px; scroll-snap-align: center; border-radius: 6px; overflow: hidden; box-shadow: 0 40px 80px rgba(26,26,26,0.28); will-change: transform, opacity; transition: transform 0.08s linear, opacity 0.08s linear; }
 .carousel-slide img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; }
 .carousel-hint { margin-top: 36px; font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--taupe); }
 
@@ -546,7 +546,7 @@ document.querySelectorAll('.anim-fade-up, .anim-left, .anim-right, .anim-scale')
   // Convert vertical wheel input to horizontal scroll
   viewport.addEventListener('wheel', e => {
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      viewport.scrollLeft += e.deltaY;
+      viewport.scrollLeft += e.deltaY * 2.2;
       e.preventDefault();
     }
   }, { passive: false });
@@ -563,7 +563,7 @@ document.querySelectorAll('.anim-fade-up, .anim-left, .anim-right, .anim-scale')
   window.addEventListener('mousemove', e => {
     if (!isDown) return;
     e.preventDefault();
-    viewport.scrollLeft = scrollStart - (e.pageX - startX);
+    viewport.scrollLeft = scrollStart - (e.pageX - startX) * 1.6;
   });
 
   setPadding();
