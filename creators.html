@@ -11,8 +11,11 @@
 <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
+/* Script accent, used only at display size on the italic accent words */
+.script { font-family: 'Pinyon Script', 'Playfair Display', cursive; font-style: normal; font-size: 1.34em; line-height: 0.9; }
+
 :root {
   --cream: #F5F0E8;
   --beige: #E8E0D0;
@@ -23,7 +26,9 @@
   --white: #FDFAF5;
   --muted: #9A9189;
   --error: #C97B6A;
-  --error-light: #9B4A3A;
+  --error-light: #7A2E1E;
+  --ink-soft: #4A4038;
+  --rule: rgba(42,42,42,0.22);
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Montserrat', sans-serif;
 }
@@ -113,7 +118,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   margin-bottom: 40px;
   animation: clipUp 1.15s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
 }
-.hero h1 em { font-style: italic; color: var(--blush); }
+.hero h1 em { font-family: 'Pinyon Script', cursive; font-style: normal; font-size: 1.32em; line-height: 0.92; color: var(--blush); }
 
 .hero-intro {
   font-size: 14px; font-weight: 300; line-height: 2;
@@ -130,6 +135,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .scroll-cue i { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--blush), transparent); animation: scrollLine 2.4s 2s infinite; }
 
 /* ── BODY: editorial two-column ── */
+.body-wrap { background: var(--blush); }
 .body-grid {
   max-width: 1180px; margin: 0 auto;
   padding: 96px 24px 120px;
@@ -138,29 +144,29 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .rail-label {
   font-size: 9px; font-weight: 600; letter-spacing: 0.34em;
-  text-transform: uppercase; color: var(--taupe); margin-bottom: 28px;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 28px;
 }
 .rail h2 {
   font-family: var(--serif); font-weight: 400;
   font-size: clamp(28px, 3.4vw, 40px); line-height: 1.22;
   letter-spacing: -0.01em; margin-bottom: 44px; text-wrap: balance;
 }
-.rail h2 em { font-style: italic; color: var(--taupe); }
+.rail h2 em { font-family: 'Pinyon Script', cursive; font-style: normal; font-size: 1.3em; line-height: 0.95; color: #8C7E72; }
 
-.joining-list { list-style: none; border-top: 1px solid var(--beige); }
+.joining-list { list-style: none; border-top: 1px solid var(--rule); }
 .joining-list li {
   font-size: 14px; font-weight: 300; line-height: 1.65; letter-spacing: 0.03em;
-  padding: 20px 0; border-bottom: 1px solid var(--beige);
+  padding: 20px 0; border-bottom: 1px solid var(--rule);
   transition: border-color 0.4s ease, padding-left 0.45s cubic-bezier(0.16,1,0.3,1);
 }
-.joining-list li:hover { border-bottom-color: var(--blush); padding-left: 10px; }
+.joining-list li:hover { border-bottom-color: var(--charcoal); padding-left: 10px; }
 
 /* ── FORM ── */
 .form-panel { position: relative; }
 .form-head {
   font-size: 9px; font-weight: 600; letter-spacing: 0.34em;
-  text-transform: uppercase; color: var(--taupe);
-  padding-bottom: 22px; margin-bottom: 40px; border-bottom: 1px solid var(--beige);
+  text-transform: uppercase; color: var(--ink-soft);
+  padding-bottom: 22px; margin-bottom: 40px; border-bottom: 1px solid var(--rule);
   display: flex; justify-content: space-between; align-items: baseline;
 }
 .form-head b { font-weight: 600; color: var(--charcoal); font-variant-numeric: tabular-nums; }
@@ -169,17 +175,17 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .form-group { display: flex; flex-direction: column; gap: 9px; }
 .form-label {
   font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--taupe); transition: color 0.3s ease;
+  text-transform: uppercase; color: var(--ink-soft); transition: color 0.3s ease;
 }
 .form-optional { font-weight: 400; letter-spacing: 0.14em; text-transform: none; opacity: 0.65; }
 .form-group:focus-within .form-label { color: var(--charcoal); }
 
 .form-input {
   font-family: var(--sans); font-size: 15px; font-weight: 300; color: var(--charcoal);
-  background: transparent; border: none; border-bottom: 1px solid var(--beige);
+  background: transparent; border: none; border-bottom: 1px solid var(--rule);
   padding: 13px 0; outline: none; letter-spacing: 0.02em; width: 100%; border-radius: 0;
 }
-.form-input::placeholder { color: var(--taupe); opacity: 0.5; }
+.form-input::placeholder { color: var(--ink-soft); opacity: 0.75; }
 .form-input:focus { border-bottom-color: transparent; }
 .form-input[aria-invalid="true"] { border-bottom-color: var(--error-light); }
 
@@ -191,10 +197,10 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 .field-line:focus-within::after { width: 100%; }
 
-.input-prefix { display: flex; align-items: baseline; border-bottom: 1px solid var(--beige); }
+.input-prefix { display: flex; align-items: baseline; border-bottom: 1px solid var(--rule); }
 .input-prefix:focus-within { border-bottom-color: transparent; }
 .input-prefix.invalid { border-bottom-color: var(--error-light); }
-.input-prefix > span { font-size: 15px; font-weight: 300; color: var(--taupe); }
+.input-prefix > span { font-size: 15px; font-weight: 300; color: var(--ink-soft); }
 .input-prefix .form-input { border-bottom: none; }
 
 .field-error { font-size: 11px; font-weight: 400; letter-spacing: 0.03em; color: var(--error-light); line-height: 1.5; }
@@ -239,12 +245,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 .popup-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--taupe), transparent); }
 @keyframes popupIn { to { opacity: 1; transform: translateY(0) scale(1); } }
-.popup-ornament { font-size: 15px; letter-spacing: 0.7em; color: var(--taupe); margin-bottom: 26px; display: block; opacity: 0; animation: revealUp 0.6s 0.4s forwards; }
+.popup-ornament { font-size: 15px; letter-spacing: 0.7em; color: #8C7E72; margin-bottom: 26px; display: block; opacity: 0; animation: revealUp 0.6s 0.4s forwards; }
 .popup-title { font-family: var(--serif); font-size: clamp(32px, 7vw, 46px); font-weight: 400; line-height: 1.12; margin-bottom: 22px; opacity: 0; animation: revealUp 0.6s 0.5s forwards; }
 .popup-title em { font-style: italic; color: var(--taupe); }
 .popup-divider { width: 40px; height: 1px; background: var(--taupe); margin: 0 auto 22px; opacity: 0; animation: revealUp 0.6s 0.6s forwards; }
 .popup-body { font-size: 13px; font-weight: 300; line-height: 1.95; opacity: 0; animation: revealUp 0.6s 0.68s forwards; }
-.popup-sig { font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--taupe); margin: 30px 0 34px; opacity: 0; animation: revealUp 0.6s 0.76s forwards; }
+.popup-sig { font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; color: #6E6258; margin: 30px 0 34px; opacity: 0; animation: revealUp 0.6s 0.76s forwards; }
 .popup-close {
   display: inline-block; padding: 16px 38px; border: 1px solid var(--charcoal); color: var(--charcoal);
   font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase;
@@ -288,6 +294,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   <div class="scroll-cue"><span>Apply</span><i></i></div>
 </section>
 
+<div class="body-wrap">
 <main class="body-grid">
 
   <div class="rail">
@@ -344,6 +351,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   </div>
 
 </main>
+</div>
 
 <footer class="page-footer">&copy; 2026 GrandAscend &nbsp;&middot;&nbsp; Montreal</footer>
 

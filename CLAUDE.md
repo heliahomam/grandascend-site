@@ -48,6 +48,14 @@ Colours:
 Typography:
 - Cormorant Garamond — headings and display
 - Montserrat — body, labels, buttons (light and regular weights)
+- Pinyon Script — script accent, used only on the italic accent
+  word inside a display heading. Never for body text, labels, or
+  anything under about 28px. It is a hairline face, so on cream it
+  needs the darker taupe `#8C7E72` rather than `#B5A898`.
+
+Blush as a background: charcoal text on `#e6b7bd` is 8.1:1, so blush
+panels work well with charcoal text. Taupe on blush is only 1.3:1,
+so labels inside a blush panel need `#4A4038` or darker.
 
 Aesthetic: editorial, restrained, cinematic. Generous whitespace.
 Confidence comes from restraint, not decoration.
