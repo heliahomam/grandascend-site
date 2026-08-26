@@ -46,6 +46,59 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   outline-offset: 4px;
 }
 
+
+/* NAV: light over the dark hero, cream once scrolled */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60px; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s ease, padding 0.4s ease; }
+nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 16px 60px; border-bottom: 1px solid rgba(42,42,42,0.10); }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.4s ease; }
+.nav-logo-mark { height: 20px; width: auto; display: block; filter: brightness(6); transition: filter 0.4s ease; }
+nav.scrolled .nav-logo { color: var(--charcoal); }
+nav.scrolled .nav-logo-mark { filter: none; }
+.nav-logo span { font-style: italic; font-weight: 700; letter-spacing: 0.05em; text-transform: none; }
+.nav-links { display: flex; gap: 40px; list-style: none; align-items: center; margin: 0; padding: 0; }
+.nav-links a { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; position: relative; transition: color 0.4s ease; }
+nav.scrolled .nav-links a { color: var(--charcoal); }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active::after { width: 100%; }
+.nav-cta { color: var(--charcoal) !important; background: var(--cream); padding: 12px 24px !important; transition: background 0.3s ease, color 0.3s ease !important; }
+nav.scrolled .nav-cta { color: var(--cream) !important; background: var(--charcoal); }
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--blush) !important; color: var(--charcoal) !important; }
+
+.hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 200; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); transition: all 0.3s ease; transform-origin: center; }
+nav.scrolled .hamburger span { background: var(--charcoal); }
+.hamburger.open span { background: var(--charcoal); }
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(42,42,42,0.4); z-index: 98; backdrop-filter: blur(2px); }
+.mobile-overlay.visible { display: block; }
+
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .hamburger { display: flex; }
+  .nav-links {
+    display: flex !important; flex-direction: column;
+    position: fixed; top: 0; right: -100%;
+    width: min(300px, 80vw); height: 100vh;
+    background: var(--cream); padding: 90px 40px 40px; gap: 0; z-index: 199;
+    transition: right 0.35s cubic-bezier(0.16,1,0.3,1);
+    box-shadow: -8px 0 40px rgba(0,0,0,0.08);
+    border-left: 1px solid rgba(42,42,42,0.10); list-style: none;
+  }
+  .nav-links.open { right: 0; }
+  .nav-links li { border-bottom: 1px solid rgba(42,42,42,0.10); width: 100%; }
+  .nav-links a,
+  nav.scrolled .nav-links a { display: block; padding: 18px 0; font-size: 11px; letter-spacing: 0.3em; color: var(--charcoal); }
+  .nav-links a::after { display: none; }
+  .nav-links .nav-cta,
+  nav.scrolled .nav-links .nav-cta { margin-top: 24px; text-align: center; display: block; padding: 14px 24px !important; background: var(--charcoal); color: var(--cream) !important; }
+}
+
 /* MOTION: same easing and timing as the rest of the site */
 .js .anim-fade-up { opacity: 0; transform: translateY(60px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
 .js .anim-fade-up.visible, .js .anim-fade-up:focus-within { opacity: 1; transform: translateY(0); }
@@ -258,7 +311,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .popup-close:hover { background: var(--charcoal); color: var(--cream); }
 
 @media (min-width: 900px) {
-  .hero { padding: 80px 60px 140px; }
+  .hero { padding: 150px 60px 140px; }
   .body-grid {
     grid-template-columns: 1fr 1fr;
     gap: 110px;
@@ -291,9 +344,24 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   <input type="text"  name="contact_type">
 </form>
 
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo-mark-ga.png" alt="" class="nav-logo-mark"><span>Grand</span>Ascend</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="about.html" onclick="closeMenu()">About</a></li>
+    <li><a href="services.html" onclick="closeMenu()">Services</a></li>
+    <li><a href="index.html#portfolio" onclick="closeMenu()">Work</a></li>
+    <li><a href="careers.html" onclick="closeMenu()">Careers</a></li>
+    <li><a href="creators.html" class="active" onclick="closeMenu()">Creators</a></li>
+    <li><a href="index.html#contact" class="nav-cta" onclick="closeMenu()">Let's Talk</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
+
 <section class="hero">
   <div class="hero-inner">
-    <a href="index.html" class="hero-mark load-in"><img src="images/logo-mark-ga.png" alt=""><span>Grand</span>Ascend</a>
     <p class="eyebrow load-in" style="animation-delay:0.15s">Creator Community</p>
     <h1>We're looking for content creators across <em>Montreal.</em></h1>
     <p class="hero-intro load-in" style="animation-delay:0.85s">Apply to join our creator community. We share brand opportunities with our creators as they come up.</p>
@@ -375,6 +443,33 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 </div>
 
 <script>
+/* ── Nav: scroll state and mobile drawer ── */
+var navEl = document.getElementById('nav');
+window.addEventListener('scroll', function () {
+  navEl.classList.toggle('scrolled', window.scrollY > 60);
+});
+function toggleMenu() {
+  var h = document.getElementById('hamburger');
+  var l = document.getElementById('navLinks');
+  var o = document.getElementById('mobileOverlay');
+  var open = !l.classList.contains('open');
+  h.classList.toggle('open', open);
+  l.classList.toggle('open', open);
+  o.classList.toggle('visible', open);
+  h.setAttribute('aria-expanded', open ? 'true' : 'false');
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('mobileOverlay').classList.remove('visible');
+  document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeMenu();
+});
+
 /* ─────────────────────────────────────────────
    HubSpot form ID. Paste yours between the
    quotes. Everything else is already wired up.
