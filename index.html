@@ -9,10 +9,8 @@
 <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Script accent, used only at display size on the italic accent words */
-.script { font-family: 'Pinyon Script', 'Playfair Display', cursive; font-style: normal; font-size: 1.34em; line-height: 0.9; }
 
 :root {
   --cream: #F5F0E8;
@@ -61,7 +59,7 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 .proof-label { font-family: var(--sans); font-size: 8px; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase; color: var(--taupe); }
 .proof-item { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; color: var(--charcoal); opacity: 0.65; }
 .proof-sep { color: var(--taupe); font-size: 10px; }
-.hero-title em { font-family: 'Pinyon Script', cursive; font-style: normal; font-size: 1.3em; line-height: 0.95; color: #8C7E72; display: block; }
+.hero-title em { font-style: italic; color: var(--taupe); display: block; }
 .hero-bottom { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; opacity: 0; animation: fadeUp 1s ease 0.7s forwards; }
 .hero-desc { font-family: var(--sans); font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--charcoal); max-width: 340px; letter-spacing: 0.03em; opacity: 0.8; }
 .hero-actions { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
@@ -106,7 +104,7 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 #about { padding: 60px 40px 60px 60px; background: var(--cream); overflow: visible; }
 .about-grid { display: grid; grid-template-columns: 1fr 2.5fr; gap: 0; align-items: center; }
 .about-headline { font-family: var(--serif); font-size: clamp(36px, 4vw, 64px); font-weight: 400; line-height: 1.1; color: var(--charcoal); margin-bottom: 32px; }
-.about-headline em { font-family: 'Pinyon Script', cursive; font-style: normal; font-size: 1.3em; line-height: 0.95; color: #8C7E72; }
+.about-headline em { font-style: italic; color: var(--taupe); }
 .about-body { font-family: var(--sans); font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--charcoal); letter-spacing: 0.03em; margin-bottom: 20px; opacity: 0.82; }
 .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--beige); margin-top: 50px; }
 .stat-box { background: var(--cream); padding: 28px; }
@@ -128,7 +126,7 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 #services { padding: 140px 60px; background: var(--charcoal); }
 .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 80px; }
 .services-title { font-family: var(--serif); font-size: clamp(36px, 4vw, 72px); font-weight: 400; color: var(--white); line-height: 1.05; }
-.services-title em { font-family: 'Pinyon Script', cursive; font-style: normal; font-size: 1.3em; line-height: 0.95; color: #8C7E72; }
+.services-title em { font-style: italic; color: var(--taupe); }
 .services-intro { font-family: var(--sans); font-size: 12px; font-weight: 300; line-height: 1.9; color: rgba(245,240,232,0.5); max-width: 260px; letter-spacing: 0.03em; }
 .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(245,240,232,0.06); }
 .service-card { background: var(--charcoal); padding: 50px 36px; transition: background 0.4s ease; cursor: none; }
@@ -147,7 +145,7 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 #portfolio { padding: 80px 60px; background: var(--cream); }
 .portfolio-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 60px; }
 .portfolio-title { font-family: var(--serif); font-size: clamp(36px, 4vw, 72px); font-weight: 400; line-height: 1.05; color: var(--charcoal); }
-.portfolio-title em { font-family: 'Pinyon Script', cursive; font-style: normal; font-size: 1.3em; line-height: 0.95; color: #8C7E72; }
+.portfolio-title em { font-style: italic; color: var(--taupe); }
 .portfolio-intro { font-family: var(--sans); font-size: 12px; font-weight: 300; line-height: 1.9; color: var(--charcoal); opacity: 0.65; letter-spacing: 0.03em; }
 .portfolio-case { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; margin-bottom: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--beige); }
 .portfolio-case:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
@@ -183,11 +181,11 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 /* PROCESS */
 #process { padding: 140px 60px; background: var(--beige); }
 .process-title { font-family: var(--serif); font-size: clamp(36px, 4vw, 72px); font-weight: 400; color: var(--charcoal); line-height: 1.05; text-align: center; margin-bottom: 80px; }
-.process-title em { font-family: 'Pinyon Script', cursive; font-style: normal; font-size: 1.3em; line-height: 0.95; color: #8C7E72; }
+.process-title em { font-style: italic; color: var(--taupe); }
 .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--taupe); }
-.process-step { background: var(--blush); padding: 50px 36px; transition: background 0.3s ease; }
-.process-step:hover { background: #dda9b0; }
-.step-num { font-family: var(--serif); font-size: 64px; color: rgba(42,42,42,0.20); line-height: 1; margin-bottom: 24px; }
+.process-step { background: var(--beige); padding: 50px 36px; transition: background 0.3s ease; }
+.process-step:hover { background: #ddd5c4; }
+.step-num { font-family: var(--serif); font-size: 64px; color: rgba(181,168,152,0.25); line-height: 1; margin-bottom: 24px; }
 .step-name { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--charcoal); margin-bottom: 16px; }
 .step-desc { font-family: var(--sans); font-size: 11px; font-weight: 300; line-height: 1.8; color: var(--charcoal); opacity: 0.65; letter-spacing: 0.03em; }
 
@@ -216,7 +214,7 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 /* CONTACT */
 #contact { padding: 140px 60px; background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
 .contact-title { font-family: var(--serif); font-size: clamp(36px, 4vw, 64px); font-weight: 400; line-height: 1.1; color: var(--charcoal); margin-bottom: 32px; }
-.contact-title em { font-family: 'Pinyon Script', cursive; font-style: normal; font-size: 1.3em; line-height: 0.95; color: #8C7E72; }
+.contact-title em { font-style: italic; color: var(--taupe); }
 .contact-body { font-family: var(--sans); font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--charcoal); opacity: 0.75; letter-spacing: 0.03em; margin-bottom: 40px; }
 .contact-info { display: flex; flex-direction: column; gap: 20px; }
 .contact-item { display: flex; gap: 20px; align-items: flex-start; }
@@ -442,6 +440,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
     <li><a href="services.html" onclick="closeMenu()">Services</a></li>
     <li><a href="#portfolio" onclick="closeMenu()">Work</a></li>
     <li><a href="careers.html" onclick="closeMenu()">Careers</a></li>
+    <li><a href="creators.html" onclick="closeMenu()">Creators</a></li>
     <li><a href="#contact" class="nav-cta" onclick="closeMenu()">Let's Talk</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
