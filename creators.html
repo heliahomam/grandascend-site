@@ -282,6 +282,15 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 <body>
 <script>document.documentElement.className += " js";</script>
 
+<!-- Netlify Forms build-time detection. Not rendered to visitors. -->
+<form name="grandascend-creator" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text"  name="fullName">
+  <input type="email" name="email">
+  <input type="text"  name="instagram">
+  <input type="text"  name="niche">
+  <input type="text"  name="contact_type">
+</form>
+
 <section class="hero">
   <div class="hero-inner">
     <a href="index.html" class="hero-mark load-in"><img src="images/logo-mark-ga.png" alt=""><span>Grand</span>Ascend</a>
@@ -554,26 +563,47 @@ form.addEventListener("submit", function (e) {
   var endpoint = "https://api.hsforms.com/submissions/v3/integration/submit/" +
                  HUBSPOT_PORTAL_ID + "/" + HUBSPOT_FORM_ID;
 
-  fetch(endpoint, {
+  var toHubspot = fetch(endpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
-  })
-    .then(function (response) {
-      if (!response.ok) throw new Error("HubSpot returned " + response.status);
-      return response.json();
-    })
-    .then(function () {
+  }).then(function (response) {
+    if (!response.ok) throw new Error("HubSpot returned " + response.status);
+    return "hubspot";
+  });
+
+  /* Second copy into Netlify Forms, so submissions are exportable as CSV
+     and survive a HubSpot outage or a form misconfiguration. */
+  var netlifyBody = new URLSearchParams({
+    "form-name":    "grandascend-creator",
+    "fullName":     data.fullName,
+    "email":        data.email,
+    "instagram":    data.instagram,
+    "niche":        data.niche,
+    "contact_type": "creator"
+  }).toString();
+
+  var toNetlify = fetch(window.location.pathname, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: netlifyBody
+  }).then(function (response) {
+    if (!response.ok) throw new Error("Netlify returned " + response.status);
+    return "netlify";
+  });
+
+  /* Treat it as received if either destination accepted it. */
+  Promise.allSettled([toHubspot, toNetlify]).then(function (results) {
+    var saved = results.some(function (r) { return r.status === "fulfilled"; });
+    if (saved) {
       form.reset();
       clearErrors();
       openPopup();
-    })
-    .catch(function () {
+    } else {
       statusEl.textContent = "Something went wrong on our end and your submission did not go through. Please try again, or email contact@grandascend.co.";
-    })
-    .finally(function () {
-      setLoading(false);
-    });
+    }
+    setLoading(false);
+  });
 });
 </script>
 
