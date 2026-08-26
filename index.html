@@ -11,10 +11,12 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+
 :root {
   --cream: #F5F0E8;
   --beige: #E8E0D0;
   --taupe: #B5A898;
+  --blush: #e6b7bd;
   --charcoal: #2A2A2A;
   --black: #1A1A1A;
   --white: #FDFAF5;
@@ -129,12 +131,12 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(245,240,232,0.06); }
 .service-card { background: var(--charcoal); padding: 50px 36px; transition: background 0.4s ease; cursor: none; }
 .service-card:hover { background: #323232; }
-.service-num { font-family: var(--serif); font-size: 11px; color: var(--taupe); margin-bottom: 40px; letter-spacing: 0.1em; }
-.service-line { width: 40px; height: 1px; background: var(--taupe); margin-bottom: 30px; transition: width 0.4s ease; }
+.service-num { font-family: var(--serif); font-size: 11px; color: var(--blush); margin-bottom: 40px; letter-spacing: 0.1em; }
+.service-line { width: 40px; height: 1px; background: var(--blush); margin-bottom: 30px; transition: width 0.4s ease; }
 .service-card:hover .service-line { width: 60px; }
 .service-name { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--white); line-height: 1.2; margin-bottom: 20px; }
 .service-desc { font-family: var(--sans); font-size: 11px; font-weight: 300; line-height: 1.8; color: rgba(245,240,232,0.45); letter-spacing: 0.03em; margin-bottom: 40px; }
-.service-link { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--taupe); text-decoration: none; display: flex; align-items: center; gap: 12px; transition: color 0.3s; }
+.service-link { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blush); text-decoration: none; display: flex; align-items: center; gap: 12px; transition: color 0.3s; }
 .service-link:hover { color: var(--white); }
 .service-arrow { width: 24px; height: 1px; background: currentColor; transition: width 0.3s ease; display: inline-block; }
 .service-link:hover .service-arrow { width: 40px; }
@@ -234,7 +236,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(245,240,232,0.06); }
 .footer-brand { font-family: var(--serif); font-style: italic; font-size: 28px; color: var(--white); margin-bottom: 20px; }
 .footer-tagline { font-family: var(--sans); font-size: 11px; font-weight: 300; line-height: 1.8; color: rgba(245,240,232,0.35); letter-spacing: 0.03em; max-width: 240px; }
-.footer-col-title { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--taupe); margin-bottom: 24px; }
+.footer-col-title { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--blush); margin-bottom: 24px; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .footer-links a { font-family: var(--sans); font-size: 12px; font-weight: 300; color: rgba(245,240,232,0.4); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s; }
 .footer-links a:hover { color: var(--white); }
@@ -436,8 +438,8 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   <ul class="nav-links" id="navLinks">
     <li><a href="about.html" onclick="closeMenu()">About</a></li>
     <li><a href="services.html" onclick="closeMenu()">Services</a></li>
-    <li><a href="#portfolio" onclick="closeMenu()">Work</a></li>
     <li><a href="careers.html" onclick="closeMenu()">Careers</a></li>
+    <li><a href="creators.html" onclick="closeMenu()">Creators</a></li>
     <li><a href="#contact" class="nav-cta" onclick="closeMenu()">Let's Talk</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -861,7 +863,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
       <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="#portfolio">Work</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>

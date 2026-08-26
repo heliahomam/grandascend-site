@@ -41,10 +41,17 @@ Colours:
 - Cream `#F5F0E8` — page background
 - Gold `#B5A898` — accents
 - Taupe `#8C7E72` — secondary text
+- Blush `#e6b7bd` — accent. Only on charcoal or black, where it
+  reaches 8.1:1 contrast. On cream it is 1.56:1, so on light
+  grounds use it for rules and decoration, never for text.
 
 Typography:
 - Cormorant Garamond — headings and display
 - Montserrat — body, labels, buttons (light and regular weights)
+
+Blush as a background: charcoal text on `#e6b7bd` is 8.1:1, so blush
+panels work well with charcoal text. Taupe on blush is only 1.3:1,
+so labels inside a blush panel need `#4A4038` or darker.
 
 Aesthetic: editorial, restrained, cinematic. Generous whitespace.
 Confidence comes from restraint, not decoration.

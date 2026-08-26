@@ -11,12 +11,14 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --charcoal: #2A2A2A;
     --cream: #F5F0E8;
     --gold: #B5A898;
+    --blush: #e6b7bd;
     --taupe: #8C7E72;
     --light: #FAF7F2;
     --border: #E5DED4;
@@ -34,6 +36,59 @@
   }
 
   /* Hero */
+
+/* NAV: light over the dark hero, cream once scrolled */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60px; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s ease, padding 0.4s ease; }
+nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 16px 60px; border-bottom: 1px solid rgba(42,42,42,0.10); }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.4s ease; }
+.nav-logo-mark { height: 20px; width: auto; display: block; filter: brightness(6); transition: filter 0.4s ease; }
+nav.scrolled .nav-logo { color: var(--charcoal); }
+nav.scrolled .nav-logo-mark { filter: none; }
+.nav-logo span { font-style: italic; font-weight: 700; letter-spacing: 0.05em; text-transform: none; }
+.nav-links { display: flex; gap: 40px; list-style: none; align-items: center; margin: 0; padding: 0; }
+.nav-links a { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; position: relative; transition: color 0.4s ease; }
+nav.scrolled .nav-links a { color: var(--charcoal); }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active::after { width: 100%; }
+.nav-cta { color: var(--charcoal) !important; background: var(--cream); padding: 12px 24px !important; transition: background 0.3s ease, color 0.3s ease !important; }
+nav.scrolled .nav-cta { color: var(--cream) !important; background: var(--charcoal); }
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--blush) !important; color: var(--charcoal) !important; }
+
+.hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 200; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); transition: all 0.3s ease; transform-origin: center; }
+nav.scrolled .hamburger span { background: var(--charcoal); }
+.hamburger.open span { background: var(--charcoal); }
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(42,42,42,0.4); z-index: 98; backdrop-filter: blur(2px); }
+.mobile-overlay.visible { display: block; }
+
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .hamburger { display: flex; }
+  .nav-links {
+    display: flex !important; flex-direction: column;
+    position: fixed; top: 0; right: -100%;
+    width: min(300px, 80vw); height: 100vh;
+    background: var(--cream); padding: 90px 40px 40px; gap: 0; z-index: 199;
+    transition: right 0.35s cubic-bezier(0.16,1,0.3,1);
+    box-shadow: -8px 0 40px rgba(0,0,0,0.08);
+    border-left: 1px solid rgba(42,42,42,0.10); list-style: none;
+  }
+  .nav-links.open { right: 0; }
+  .nav-links li { border-bottom: 1px solid rgba(42,42,42,0.10); width: 100%; }
+  .nav-links a,
+  nav.scrolled .nav-links a { display: block; padding: 18px 0; font-size: 11px; letter-spacing: 0.3em; color: var(--charcoal); }
+  .nav-links a::after { display: none; }
+  .nav-links .nav-cta,
+  nav.scrolled .nav-links .nav-cta { margin-top: 24px; text-align: center; display: block; padding: 14px 24px !important; background: var(--charcoal); color: var(--cream) !important; }
+}
+
   .hero {
     background: var(--charcoal);
     min-height: 100vh;
@@ -42,7 +97,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 60px 32px;
+    padding: 140px 32px 60px;
     position: relative;
     overflow: hidden;
   }
@@ -60,7 +115,7 @@
     font-size: 10px;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--blush);
     margin-bottom: 28px;
     opacity: 0;
     animation: fadeUp 0.8s 0.2s forwards;
@@ -80,7 +135,7 @@
 
   .hero h1 em {
     font-style: italic;
-    color: var(--gold);
+    color: var(--blush);
   }
 
   .hero p {
@@ -97,8 +152,8 @@
   .hero-cta {
     display: inline-block;
     padding: 14px 40px;
-    border: 1px solid var(--gold);
-    color: var(--gold);
+    border: 1px solid var(--blush);
+    color: var(--blush);
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -112,7 +167,7 @@
   }
 
   .hero-cta:hover {
-    background: var(--gold);
+    background: var(--blush);
     color: var(--charcoal);
   }
 
@@ -139,7 +194,7 @@
   .scroll-line {
     width: 1px;
     height: 40px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
+    background: linear-gradient(to bottom, var(--blush), transparent);
     animation: scrollLine 2s 1.5s infinite;
   }
 
@@ -631,6 +686,22 @@
 </head>
 <body>
 
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo-mark-ga.png" alt="" class="nav-logo-mark"><span>Grand</span>Ascend</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="about.html" onclick="closeMenu()">About</a></li>
+    <li><a href="services.html" onclick="closeMenu()">Services</a></li>
+    <li><a href="careers.html" class="active" onclick="closeMenu()">Careers</a></li>
+    <li><a href="creators.html" onclick="closeMenu()">Creators</a></li>
+    <li><a href="index.html#contact" class="nav-cta" onclick="closeMenu()">Let's Talk</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
+
+
 <!-- ═══════════════════════════════════════════════
      NETLIFY STATIC FORM (hidden — required for
      Netlify's build-time form detection)
@@ -664,10 +735,10 @@
 
 <section style="background: var(--charcoal); padding: 80px 32px; text-align: center;">
   <div style="max-width: 600px; margin: 0 auto;">
-    <p style="font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;">Always open</p>
+    <p style="font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--blush); margin-bottom: 20px;">Always open</p>
     <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 24px;">We may not always have a role open. We always have room for the right person.</h2>
     <p style="font-size: 13px; font-weight: 300; line-height: 1.9; color: #9A9189; margin-bottom: 16px;">GrandAscend is a small, intentional team and we are always growing. Whether we are actively hiring or not, we love meeting people who bring something special. If you feel like you belong in our world, tell us about yourself. We will reach out when the moment is right.</p>
-    <p style="font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--gold);">You are not applying for a job. You are joining a family.</p>
+    <p style="font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--blush);">You are not applying for a job. You are joining a family.</p>
   </div>
 </section>
 
@@ -813,6 +884,33 @@
 <footer>© 2026 GrandAscend. All Rights Reserved. &nbsp;·&nbsp; grandascend.co</footer>
 
 <script>
+/* ── Nav: scroll state and mobile drawer ── */
+var navEl = document.getElementById('nav');
+window.addEventListener('scroll', function () {
+  navEl.classList.toggle('scrolled', window.scrollY > 60);
+});
+function toggleMenu() {
+  var h = document.getElementById('hamburger');
+  var l = document.getElementById('navLinks');
+  var o = document.getElementById('mobileOverlay');
+  var open = !l.classList.contains('open');
+  h.classList.toggle('open', open);
+  l.classList.toggle('open', open);
+  o.classList.toggle('visible', open);
+  h.setAttribute('aria-expanded', open ? 'true' : 'false');
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('mobileOverlay').classList.remove('visible');
+  document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeMenu();
+});
+
 const sections = [
   { icon: "📱", title: "Social Media",
     skills: ["Instagram management and posting", "Content planning and strategy", "Caption writing and copywriting", "Hashtag research and growth", "Reels creation and editing", "TikTok content creation", "Scheduling and community management"] },
