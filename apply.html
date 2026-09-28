@@ -11,7 +11,7 @@
 <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" as="image" href="images/img-12-08a9f85813.jpg">
+<link rel="preload" as="image" href="images/shoot-helia-portrait.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 
@@ -71,7 +71,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 /* ── HERO ── */
 .hero { position: relative; background: var(--charcoal); color: var(--cream); overflow: hidden; }
 .hero-media { position: relative; height: 64vh; min-height: 420px; }
-.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; filter: saturate(0.82) contrast(1.02); }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 22%; }
 .hero-media::after {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(to bottom, rgba(42,42,42,0.55) 0%, rgba(42,42,42,0) 30%, rgba(42,42,42,0) 55%, rgba(42,42,42,1) 100%);
@@ -184,8 +184,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 /* Service cards: image, name and one line */
 .choice.card > span { flex-direction: column; align-items: stretch; gap: 0; padding: 0; border-radius: 22px; overflow: hidden; }
 .choice.card > span::before { position: absolute; top: 16px; right: 16px; z-index: 1; background: var(--cream); border-color: var(--cream); }
-.choice.card img { width: 100%; height: 118px; object-fit: cover; object-position: center 30%; filter: saturate(0.8); transition: transform 0.8s var(--ease); }
-.choice.card img.top { object-position: center 8%; }
+.choice.card img { width: 100%; height: 118px; object-fit: cover; object-position: center 30%; transition: transform 0.8s var(--ease); }
 .choice.card:hover img { transform: scale(1.04); }
 @media (max-width: 599px) {
   .choice.card > span { flex-direction: row; align-items: center; border-radius: 20px; padding: 10px; }
@@ -231,7 +230,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .collage figure { position: absolute; overflow: hidden; }
 .collage img { width: 100%; height: 100%; object-fit: cover; }
 .collage .c1 { top: 0; right: 0; width: 64%; height: 70%; }
-.collage .c1 img { filter: grayscale(1) contrast(1.05); }
 .collage .c2 { left: 0; bottom: 0; width: 56%; height: 58%; box-shadow: 0 30px 60px -30px rgba(26,26,26,0.45); }
 .collage figcaption {
   position: absolute; right: 0; bottom: 6%; writing-mode: vertical-rl;
@@ -242,7 +240,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 /* ── SOCIAL ── */
 .social { position: relative; display: grid; background: var(--beige); }
 .social-photo { height: 70vh; min-height: 420px; overflow: hidden; }
-.social-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 70% center; filter: grayscale(1) contrast(1.08); }
+.social-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
 .social-copy { padding: 72px 24px 150px; align-self: center; }
 .social-copy h2 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(34px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 20px; }
 .social-copy p { font-size: 13px; line-height: 1.95; letter-spacing: 0.03em; color: var(--ink-soft); max-width: 42ch; margin-bottom: 30px; }
@@ -255,7 +253,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .social-links a:hover { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
 .social-links svg { width: 17px; height: 17px; }
 .social-float { position: absolute; right: 24px; bottom: -60px; width: 42%; max-width: 230px; aspect-ratio: 4 / 5; overflow: hidden; z-index: 2; box-shadow: 0 30px 60px -30px rgba(26,26,26,0.5); }
-.social-float img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
+.social-float img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ── FOOTER ── */
 .site-footer { padding: 120px 24px 40px; display: grid; gap: 48px; max-width: 1280px; margin: 0 auto; }
@@ -274,8 +272,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .copyright { grid-column: 1 / -1; font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink-soft); padding-top: 26px; border-top: 1px solid var(--rule); }
 
 .filmstrip { display: grid; grid-template-columns: repeat(4, 1fr); }
-.filmstrip img { width: 100%; height: 96px; object-fit: cover; filter: saturate(0.7); transition: filter 0.5s ease; }
-.filmstrip img:hover { filter: none; }
+.filmstrip img { width: 100%; height: 96px; object-fit: cover; object-position: center 35%; }
 
 /* Scroll reveals */
 .js .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
@@ -295,8 +292,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
     font-size: 11px; line-height: 1.8; letter-spacing: 0.03em; color: var(--cream);
   }
   .hero-side { margin-top: 0; padding: 200px 64px 72px 56px; display: flex; flex-direction: column; justify-content: center; }
-  .hero-title { margin-left: -16vw; margin-bottom: 56px; }
-  .t-serif { padding-left: 1.4em; }
+  .hero-title { margin-left: -7vw; margin-bottom: 56px; }
+  .t-sans { font-size: clamp(120px, 15vw, 230px); }
+  .t-serif { padding-left: 1.4em; font-size: clamp(76px, 9.5vw, 150px); white-space: nowrap; }
   .hero-details { margin-left: 0; }
 
   .apply-section { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 90px; padding: 150px 48px 170px; }
@@ -357,7 +355,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 
 <header class="hero">
   <div class="hero-media">
-    <img src="images/img-12-08a9f85813.jpg" alt="Helia Homam reviewing a brand strategy with a client" fetchpriority="high">
+    <img src="images/shoot-helia-portrait.jpg" alt="Helia Homam, founder of GrandAscend, in front of a campaign moodboard" fetchpriority="high">
     <p class="hero-caption">Strategy, content and identity for luxury and beauty brands, led by an LVMH certified strategist.</p>
   </div>
   <div class="hero-side">
@@ -440,10 +438,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
         <fieldset class="step" data-step="service">
           <legend class="question" tabindex="-1">Which service are you <em>interested in?</em></legend>
           <div class="choices grid">
-            <label class="choice card"><input type="radio" name="service" value="strategy"><span><img src="images/service-brand-strategy.jpg" alt="" loading="lazy" class="top"><span class="card-text"><b>Brand Strategy</b><small>Market research, competitive analysis and positioning</small></span></span></label>
-            <label class="choice card"><input type="radio" name="service" value="social"><span><img src="images/img-08-45f84fc342.jpg" alt="" loading="lazy"><span class="card-text"><b>Social Media and Content</b><small>Monthly content, captions and Instagram management</small></span></span></label>
-            <label class="choice card"><input type="radio" name="service" value="website"><span><img src="images/img-11-f224f55804.jpg" alt="" loading="lazy"><span class="card-text"><b>Website Design</b><small>A premium website that turns visitors into clients</small></span></span></label>
-            <label class="choice card"><input type="radio" name="service" value="branding"><span><img src="images/img-13-80a12bfb54.jpg" alt="" loading="lazy"><span class="card-text"><b>Brand Identity</b><small>Logo, visual identity, brand book and brand kit</small></span></span></label>
+            <label class="choice card"><input type="radio" name="service" value="strategy"><span><img src="images/shoot-helia-moodboard-sm.jpg" alt="" loading="lazy" style="object-position:center 42%"><span class="card-text"><b>Brand Strategy</b><small>Market research, competitive analysis and positioning</small></span></span></label>
+            <label class="choice card"><input type="radio" name="service" value="social"><span><img src="images/shoot-heels-laptop-sm.jpg" alt="" loading="lazy" style="object-position:center 28%"><span class="card-text"><b>Social Media and Content</b><small>Monthly content, captions and Instagram management</small></span></span></label>
+            <label class="choice card"><input type="radio" name="service" value="website"><span><img src="images/shoot-studio-desk-sm.jpg" alt="" loading="lazy" style="object-position:center 68%"><span class="card-text"><b>Website Design</b><small>A premium website that turns visitors into clients</small></span></span></label>
+            <label class="choice card"><input type="radio" name="service" value="branding"><span><img src="images/shoot-moodboard-sofa-sm.jpg" alt="" loading="lazy" style="object-position:center 45%"><span class="card-text"><b>Brand Identity</b><small>Logo, visual identity, brand book and brand kit</small></span></span></label>
           </div>
           <p class="field-error" role="alert"></p>
         </fieldset>
@@ -489,14 +487,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
     </div>
 
     <div class="collage reveal" aria-hidden="true">
-      <figure class="c1"><img src="images/img-13-80a12bfb54.jpg" alt="" loading="lazy"></figure>
-      <figure class="c2"><img src="images/img-11-f224f55804.jpg" alt="" loading="lazy"></figure>
+      <figure class="c1"><img src="images/shoot-moodboard.jpg" alt="" loading="lazy"></figure>
+      <figure class="c2"><img src="images/shoot-helia-laptop.jpg" alt="" loading="lazy"></figure>
       <figcaption>GrandAscend &middot; Montreal</figcaption>
     </div>
   </section>
 
   <section class="social" aria-labelledby="social-title">
-    <div class="social-photo"><img src="images/img-14-175ac669bc.jpg" alt="The GrandAscend team at work" loading="lazy"></div>
+    <div class="social-photo"><img src="images/shoot-helia-camera.jpg" alt="Helia Homam holding a camera on set" loading="lazy"></div>
     <div class="social-copy reveal">
       <h2 id="social-title">Follow the work <br>as it happens.</h2>
       <p>Launches, behind the scenes and the details that make a brand feel expensive. Come and see what we are building.</p>
@@ -509,7 +507,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
         </a>
       </div>
     </div>
-    <div class="social-float" aria-hidden="true"><img src="images/img-15-f6260011dc.jpg" alt="" loading="lazy"></div>
+    <div class="social-float" aria-hidden="true"><img src="images/shoot-studio-chair-sm.jpg" alt="" loading="lazy"></div>
   </section>
 </main>
 
@@ -543,14 +541,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
     <p class="copyright">&copy; 2026 GrandAscend</p>
   </div>
   <div class="filmstrip" aria-hidden="true">
-    <img src="images/helia-story-photo.jpg" alt="" loading="lazy">
-    <img src="images/img-08-45f84fc342.jpg" alt="" loading="lazy">
-    <img src="images/img-13-80a12bfb54.jpg" alt="" loading="lazy">
-    <img src="images/img-14-175ac669bc.jpg" alt="" loading="lazy">
-    <img src="images/img-10-64547a0fb2.jpg" alt="" loading="lazy">
-    <img src="images/img-12-08a9f85813.jpg" alt="" loading="lazy">
-    <img src="images/img-11-f224f55804.jpg" alt="" loading="lazy">
-    <img src="images/img-15-f6260011dc.jpg" alt="" loading="lazy">
+    <img src="images/shoot-helia-portrait-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-moodboard-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-heels-laptop-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-studio-desk-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-helia-moodboard-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-studio-chair-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-helia-laptop-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-moodboard-sofa-sm.jpg" alt="" loading="lazy">
   </div>
 </footer>
 
