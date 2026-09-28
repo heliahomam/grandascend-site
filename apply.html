@@ -124,21 +124,21 @@ a:focus-visible, button:focus-visible {
 .choices { display: flex; flex-direction: column; gap: 12px; }
 .choice { position: relative; display: block; cursor: pointer; }
 .choice input { position: absolute; opacity: 0; pointer-events: none; }
-.choice span {
+.choice > span {
   display: flex; align-items: center; gap: 18px;
   padding: 19px 22px; border: 1px solid var(--rule);
   font-size: 14px; font-weight: 400; letter-spacing: 0.03em; line-height: 1.5;
   transition: border-color 0.3s ease, background 0.3s ease, padding-left 0.45s var(--ease);
 }
-.choice span::before {
+.choice > span::before {
   content: ''; flex-shrink: 0; width: 9px; height: 9px; border-radius: 50%;
   border: 1px solid var(--ink-soft); transition: background 0.3s ease, border-color 0.3s ease;
 }
-.choice:hover span { border-color: var(--charcoal); padding-left: 28px; }
+.choice:hover > span { border-color: var(--charcoal); padding-left: 28px; }
 .choice input:checked + span { background: var(--charcoal); border-color: var(--charcoal); color: var(--cream); }
 .choice input:checked + span::before { background: var(--blush); border-color: var(--blush); }
 .choice input:focus-visible + span { outline: 2px solid var(--charcoal); outline-offset: 4px; }
-.choices.invalid .choice span { border-color: rgba(122,46,30,0.45); }
+.choices.invalid .choice > span { border-color: rgba(122,46,30,0.45); }
 
 /* Investment panel: blush ground, charcoal text (8.1:1) */
 .investment {
@@ -180,6 +180,19 @@ a:focus-visible, button:focus-visible {
 .form-status { font-size: 12px; line-height: 1.75; color: var(--error-light); margin-top: 20px; }
 .form-status:empty { display: none; }
 
+/* First and last name side by side on wider screens */
+.name-fields { display: grid; gap: 22px; }
+@media (min-width: 600px) { .name-fields { grid-template-columns: 1fr 1fr; gap: 32px; } }
+.mini-label { display: block; font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 2px; }
+
+/* Service choices carry a one-line description */
+.choice span b { display: block; font-weight: 500; }
+.choice span small { display: block; font-size: 12px; font-weight: 300; line-height: 1.6; opacity: 0.8; margin-top: 3px; }
+.choice.rich > span { align-items: flex-start; }
+.choice.rich > span::before { margin-top: 6px; }
+
+.other-wrap { margin-top: 26px; }
+
 /* ── RESULT SCREENS ── */
 .result { display: none; }
 .result.active { display: block; animation: stepIn 0.8s var(--ease) both; }
@@ -206,16 +219,16 @@ a:focus-visible, button:focus-visible {
      everyone else to the other, so notifications can be set on the first only. -->
 <form name="grandascend-qualified-lead" netlify netlify-honeypot="bot-field" hidden>
   <input type="text" name="bot-field">
-  <input type="text" name="name"><input type="text" name="brand"><input type="text" name="instagram">
-  <input type="text" name="category"><input type="text" name="stage"><input type="text" name="goal">
-  <input type="text" name="start"><input type="text" name="investment"><input type="email" name="email">
+  <input type="text" name="firstName"><input type="text" name="lastName"><input type="email" name="email">
+  <input type="text" name="industry"><input type="text" name="businessType"><input type="text" name="business">
+  <input type="text" name="instagram"><input type="text" name="service"><input type="text" name="investment">
   <input type="text" name="source">
 </form>
 <form name="grandascend-other-lead" netlify netlify-honeypot="bot-field" hidden>
   <input type="text" name="bot-field">
-  <input type="text" name="name"><input type="text" name="brand"><input type="text" name="instagram">
-  <input type="text" name="category"><input type="text" name="stage"><input type="text" name="goal">
-  <input type="text" name="start"><input type="text" name="investment"><input type="email" name="email">
+  <input type="text" name="firstName"><input type="text" name="lastName"><input type="email" name="email">
+  <input type="text" name="industry"><input type="text" name="businessType"><input type="text" name="business">
+  <input type="text" name="instagram"><input type="text" name="service"><input type="text" name="investment">
   <input type="text" name="source">
 </form>
 
@@ -234,111 +247,100 @@ a:focus-visible, button:focus-visible {
 
       <!-- 0. Intro -->
       <section class="step intro active" data-step="intro">
-        <p class="eyebrow">Monthly Content Partnership</p>
-        <h1 class="question" tabindex="-1">Content that makes your brand <em>impossible to scroll past.</em></h1>
+        <p class="eyebrow">Work with GrandAscend</p>
+        <h1 class="question" tabindex="-1">Let's build a brand that <em>looks the part.</em></h1>
         <div class="badge"><i></i>LVMH Certified Strategist</div>
-        <p class="intro-body">We partner with a limited number of luxury and beauty brands each month. Tell us about yours, and if it is a fit, we will invite you to a private strategy call.</p>
+        <p class="intro-body">We partner with a limited number of brands each month. Tell us about yours and what you are looking for, and if it is a fit, we will invite you to a private strategy call.</p>
         <div class="controls">
           <button type="button" class="btn" data-next>Begin application<span class="arrow" aria-hidden="true"></span></button>
         </div>
-        <p class="meta">Nine short questions. About two minutes.</p>
+        <p class="meta">Seven short questions. About two minutes.</p>
       </section>
 
       <!-- 1. Name -->
-      <section class="step" data-step="name" data-required>
-        <label class="question" for="f-name" tabindex="-1">First, what is your name?</label>
+      <section class="step" data-step="name">
+        <h2 class="question" tabindex="-1">First, what is your name?</h2>
         <p class="hint">So we know who we are speaking with.</p>
-        <div class="field-line"><input class="text-input" id="f-name" name="name" type="text" autocomplete="name" placeholder="Your full name"></div>
+        <div class="name-fields">
+          <div>
+            <label class="mini-label" for="f-first">First name</label>
+            <div class="field-line"><input class="text-input" id="f-first" name="firstName" type="text" autocomplete="given-name" placeholder="First name"></div>
+          </div>
+          <div>
+            <label class="mini-label" for="f-last">Last name</label>
+            <div class="field-line"><input class="text-input" id="f-last" name="lastName" type="text" autocomplete="family-name" placeholder="Last name"></div>
+          </div>
+        </div>
         <p class="field-error" role="alert"></p>
       </section>
 
-      <!-- 2. Brand -->
-      <section class="step" data-step="brand" data-required>
-        <label class="question" for="f-brand" tabindex="-1">What is the name of <em>your brand?</em></label>
-        <p class="hint">The business you would like us to create content for.</p>
-        <div class="field-line"><input class="text-input" id="f-brand" name="brand" type="text" autocomplete="organization" placeholder="Brand name"></div>
+      <!-- 2. Email -->
+      <section class="step" data-step="email">
+        <label class="question" for="f-email" tabindex="-1">What is the best email <em>to reach you?</em></label>
+        <p class="hint">Every application is reviewed personally. This is where our reply will go.</p>
+        <div class="field-line"><input class="text-input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@yourbrand.com"></div>
         <p class="field-error" role="alert"></p>
       </section>
 
-      <!-- 3. Instagram -->
-      <section class="step" data-step="instagram" data-required>
-        <label class="question" for="f-instagram" tabindex="-1">Where can we find your brand on Instagram?</label>
+      <!-- 3. Industry -->
+      <fieldset class="step" data-step="industry">
+        <legend class="question" tabindex="-1">Which industry is your business in?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="industry" value="Beauty and skincare"><span>Beauty and skincare</span></label>
+          <label class="choice"><input type="radio" name="industry" value="Fashion and accessories"><span>Fashion and accessories</span></label>
+          <label class="choice"><input type="radio" name="industry" value="Hospitality, dining and events"><span>Hospitality, dining and events</span></label>
+          <label class="choice"><input type="radio" name="industry" value="Wellness and lifestyle"><span>Wellness and lifestyle</span></label>
+          <label class="choice"><input type="radio" name="industry" value="Other"><span>Other</span></label>
+        </div>
+        <div class="other-wrap" id="other-wrap" hidden>
+          <label class="mini-label" for="f-business-type">Tell us your type of business</label>
+          <div class="field-line"><input class="text-input" id="f-business-type" name="businessType" type="text" placeholder="e.g. jewellery, interior design, real estate"></div>
+        </div>
+        <p class="field-error" role="alert"></p>
+      </fieldset>
+
+      <!-- 4. Business name -->
+      <section class="step" data-step="business">
+        <label class="question" for="f-business" tabindex="-1">What is the name of <em>your business?</em></label>
+        <div class="field-line"><input class="text-input" id="f-business" name="business" type="text" autocomplete="organization" placeholder="Business name"></div>
+        <p class="field-error" role="alert"></p>
+      </section>
+
+      <!-- 5. Instagram -->
+      <section class="step" data-step="instagram">
+        <label class="question" for="f-instagram" tabindex="-1">What is your business Instagram handle?</label>
         <p class="hint">We look at every account before we reply.</p>
-        <div class="field-line"><span aria-hidden="true">@</span><input class="text-input" id="f-instagram" name="instagram" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="yourbrand"></div>
+        <div class="field-line"><span aria-hidden="true">@</span><input class="text-input" id="f-instagram" name="instagram" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="yourbusiness"></div>
         <p class="field-error" role="alert"></p>
       </section>
 
-      <!-- 4. Category -->
-      <fieldset class="step" data-step="category" data-required>
-        <legend class="question" tabindex="-1">Which best describes your brand?</legend>
+      <!-- 6. Service. Each value matches an entry in SERVICES in the script below. -->
+      <fieldset class="step" data-step="service">
+        <legend class="question" tabindex="-1">Which service are you <em>interested in?</em></legend>
         <div class="choices">
-          <label class="choice"><input type="radio" name="category" value="Beauty and skincare"><span>Beauty and skincare</span></label>
-          <label class="choice"><input type="radio" name="category" value="Fashion and accessories"><span>Fashion and accessories</span></label>
-          <label class="choice"><input type="radio" name="category" value="Hospitality, dining and events"><span>Hospitality, dining and events</span></label>
-          <label class="choice"><input type="radio" name="category" value="Wellness and lifestyle"><span>Wellness and lifestyle</span></label>
-          <label class="choice"><input type="radio" name="category" value="Other"><span>Something else</span></label>
+          <label class="choice rich"><input type="radio" name="service" value="strategy"><span><span><b>Brand Strategy</b><small>Market research, competitive analysis, positioning and a clear plan forward</small></span></span></label>
+          <label class="choice rich"><input type="radio" name="service" value="social"><span><span><b>Social Media and Content Creation</b><small>Monthly content, captions and Instagram management</small></span></span></label>
+          <label class="choice rich"><input type="radio" name="service" value="website"><span><span><b>Website Design</b><small>A premium website that turns visitors into clients</small></span></span></label>
+          <label class="choice rich"><input type="radio" name="service" value="branding"><span><span><b>Brand Identity</b><small>Logo, visual identity, brand book and brand kit</small></span></span></label>
         </div>
         <p class="field-error" role="alert"></p>
       </fieldset>
 
-      <!-- 5. Stage -->
-      <fieldset class="step" data-step="stage" data-required>
-        <legend class="question" tabindex="-1">Where is your brand today?</legend>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="stage" value="Launching or recently launched"><span>Launching, or recently launched</span></label>
-          <label class="choice"><input type="radio" name="stage" value="Growing, content is inconsistent"><span>Growing, but our content is inconsistent</span></label>
-          <label class="choice"><input type="radio" name="stage" value="Established, ready to elevate"><span>Established, and ready to elevate</span></label>
-        </div>
-        <p class="field-error" role="alert"></p>
-      </fieldset>
-
-      <!-- 6. Goal -->
-      <fieldset class="step" data-step="goal" data-required>
-        <legend class="question" tabindex="-1">What would make the biggest difference for you right now?</legend>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="goal" value="Consistent, elevated content"><span>Consistent, elevated content every month</span></label>
-          <label class="choice"><input type="radio" name="goal" value="Growth and reach"><span>Growing our audience and reach</span></label>
-          <label class="choice"><input type="radio" name="goal" value="Turning followers into clients"><span>Turning followers into paying clients</span></label>
-          <label class="choice"><input type="radio" name="goal" value="Repositioning as a luxury brand"><span>Repositioning as a luxury brand</span></label>
-        </div>
-        <p class="field-error" role="alert"></p>
-      </fieldset>
-
-      <!-- 7. Start -->
-      <fieldset class="step" data-step="start" data-required>
-        <legend class="question" tabindex="-1">When would you like to begin?</legend>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="start" value="Right away"><span>Right away</span></label>
-          <label class="choice"><input type="radio" name="start" value="Within a month"><span>Within the next month</span></label>
-          <label class="choice"><input type="radio" name="start" value="In 2 to 3 months"><span>In two to three months</span></label>
-          <label class="choice"><input type="radio" name="start" value="Just exploring"><span>I am just exploring for now</span></label>
-        </div>
-        <p class="field-error" role="alert"></p>
-      </fieldset>
-
-      <!-- 8. Investment: the qualifying question -->
-      <fieldset class="step" data-step="investment" data-required>
+      <!-- 7. Investment: the qualifying question. Filled in from SERVICES. -->
+      <fieldset class="step" data-step="investment">
         <legend class="question" tabindex="-1">If accepted, is this investment <em>within your budget?</em></legend>
         <div class="investment">
-          <small>Monthly Content Partnership</small>
-          <strong><span class="js-price">$1,500</span><em>USD per month</em></strong>
-          <p>Minimum investment, with a three month minimum commitment. Final pricing is tailored to your brand on our strategy call.</p>
+          <small id="inv-name"></small>
+          <strong><span id="inv-price"></span><em id="inv-unit"></em></strong>
+          <p id="inv-note"></p>
         </div>
         <div class="choices">
           <label class="choice"><input type="radio" name="investment" value="Yes"><span>Yes, I am ready to invest at this level</span></label>
           <label class="choice"><input type="radio" name="investment" value="No"><span>Not at this time</span></label>
         </div>
         <p class="field-error" role="alert"></p>
-      </fieldset>
-
-      <!-- 9. Email + submit -->
-      <section class="step" data-step="email" data-required>
-        <label class="question" for="f-email" tabindex="-1">Last one. Where should we send <em>our reply?</em></label>
-        <p class="hint">Every application is reviewed personally. We reply within two business days.</p>
-        <div class="field-line"><input class="text-input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@yourbrand.com"></div>
-        <p class="field-error" role="alert"></p>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-      </section>
+      </fieldset>
 
       <div class="controls" id="controls" hidden>
         <button type="button" class="btn" id="next-btn"><span id="next-label">Continue</span><span class="arrow" aria-hidden="true"></span></button>
@@ -362,7 +364,7 @@ a:focus-visible, button:focus-visible {
       <span class="ornament" aria-hidden="true">&#10022; &#10022; &#10022;</span>
       <p class="eyebrow">Thank you</p>
       <h2 class="question" id="ro-title" tabindex="-1">Thank you for sharing your brand <em>with us.</em></h2>
-      <p class="intro-body">Our Monthly Content Partnership may not be the right fit just yet, and that is completely fine. We have kept your details, and we will reach out if something better suited to where you are becomes available.</p>
+      <p class="intro-body">This may not be the right moment to work together, and that is completely fine. We have kept your details, and we will reach out if something better suited to where you are becomes available.</p>
       <p><a class="btn" href="https://www.instagram.com/grandascend_media/" target="_blank" rel="noopener">Follow us on Instagram<span class="arrow" aria-hidden="true"></span></a></p>
       <p class="sig">GrandAscend &middot; Montreal</p>
     </section>
@@ -375,14 +377,20 @@ a:focus-visible, button:focus-visible {
 <script>
 /* ─────────────────────────────────────────────
    Settings Helia can change.
-   MINIMUM_PRICE: shown on the investment question.
+   SERVICES: the starting price shown for each
+   service on the investment question.
    BOOKING_URL: paste a Calendly or HubSpot Meetings
    link here and qualified applicants get a
    "Book your strategy call" button. Leave it empty
    to review applications first and reply by email.
    ───────────────────────────────────────────── */
-var MINIMUM_PRICE = "$1,500";
-var BOOKING_URL   = "";
+var SERVICES = {
+  strategy: { name: "Brand Strategy",                    price: "$2,000", unit: "USD",           note: "Starting investment. Includes market research, competitive analysis, positioning and a strategic roadmap. Final pricing is tailored on our strategy call." },
+  social:   { name: "Social Media and Content Creation", price: "$1,500", unit: "USD per month", note: "Starting monthly investment, with a three month minimum commitment. Final pricing is tailored on our strategy call." },
+  website:  { name: "Website Design",                    price: "$2,000", unit: "USD",           note: "Starting investment. Final pricing depends on the size of your site and is tailored on our strategy call." },
+  branding: { name: "Brand Identity",                    price: "$3,000", unit: "USD",           note: "Starting investment. Includes logo, visual identity, brand book and brand kit. Final pricing is tailored on our strategy call." }
+};
+var BOOKING_URL = "";
 
 var form      = document.getElementById("apply-form");
 var steps     = Array.prototype.slice.call(form.querySelectorAll(".step"));
@@ -394,12 +402,10 @@ var enterHint = document.getElementById("enter-hint");
 var countEl   = document.getElementById("step-count");
 var barEl     = document.getElementById("progress-bar");
 var statusEl  = document.getElementById("form-status");
+var otherWrap = document.getElementById("other-wrap");
 var current   = 0;
 var questionCount = steps.length - 1;   /* everything after the intro */
 var sending   = false;
-
-var priceEls = document.querySelectorAll(".js-price");
-for (var p = 0; p < priceEls.length; p++) priceEls[p].textContent = MINIMUM_PRICE;
 
 /* Where the visitor came from, e.g. grandascend.co/apply?src=bio or ?src=reel */
 var params = new URLSearchParams(window.location.search);
@@ -407,10 +413,27 @@ var source = params.get("src") || params.get("utm_source") || params.get("utm_ca
 
 function isLast(i) { return i === steps.length - 1; }
 
+function visibleInputs(step) {
+  return Array.prototype.filter.call(step.querySelectorAll(".text-input"), function (el) {
+    return !el.closest("[hidden]");
+  });
+}
+
+/* Show the starting price for whichever service was chosen. */
+function fillInvestment() {
+  var s = SERVICES[val("service")];
+  if (!s) return;
+  document.getElementById("inv-name").textContent  = s.name;
+  document.getElementById("inv-price").textContent = s.price;
+  document.getElementById("inv-unit").textContent  = s.unit;
+  document.getElementById("inv-note").textContent  = s.note;
+}
+
 function show(i, goingBack) {
   steps[current].classList.remove("active", "back");
   current = i;
   var step = steps[current];
+  if (step.dataset.step === "investment") fillInvestment();
   step.classList.toggle("back", !!goingBack);
   step.classList.add("active");
 
@@ -419,14 +442,14 @@ function show(i, goingBack) {
   backBtn.hidden = onIntro;
   countEl.textContent = onIntro ? "" : current + " / " + questionCount;
   barEl.style.width = (current / questionCount * 100) + "%";
-  nextLabel.textContent = isLast(current) ? "Submit application" : "Continue";
-  enterHint.hidden = !step.querySelector(".text-input");
+  nextLabel.textContent = isLast(current) ? "Submit" : "Continue";
+  enterHint.hidden = !visibleInputs(step).length;
   statusEl.textContent = "";
 
   /* Move focus to the new question so screen readers announce it
      and typing starts straight in the text field. */
-  var input = step.querySelector(".text-input");
-  if (input && !goingBack) input.focus({ preventScroll: true });
+  var input = visibleInputs(step)[0];
+  if (input && !goingBack && !step.querySelector("input[type=radio]")) input.focus({ preventScroll: true });
   else step.querySelector(".question").focus({ preventScroll: true });
   window.scrollTo(0, 0);
 }
@@ -435,24 +458,29 @@ function stepError(step, message) {
   var err = step.querySelector(".field-error");
   if (!err) return;
   err.textContent = message;
-  var line = step.querySelector(".field-line");
-  if (line) line.classList.toggle("invalid", !!message);
+  var lines = step.querySelectorAll(".field-line");
+  for (var l = 0; l < lines.length; l++) {
+    var inp = lines[l].querySelector("input");
+    lines[l].classList.toggle("invalid", !!message && !inp.value.trim());
+  }
   var list = step.querySelector(".choices");
-  if (list) list.classList.toggle("invalid", !!message);
+  if (list) list.classList.toggle("invalid", !!message && !step.querySelector("input[type=radio]:checked"));
 }
 
 function validateStep(step) {
-  var input = step.querySelector(".text-input");
-  if (input) {
+  if (step.querySelector("input[type=radio]") && !step.querySelector("input[type=radio]:checked")) {
+    stepError(step, "Please choose one to continue.");
+    return false;
+  }
+  var inputs = visibleInputs(step);
+  for (var i = 0; i < inputs.length; i++) {
+    var input = inputs[i];
     var value = input.value.trim();
     if (input.name === "instagram") { value = value.replace(/^@+/, ""); input.value = value; }
     if (!value) { stepError(step, "Please fill this in to continue."); input.focus(); return false; }
     if (input.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
       stepError(step, "Please enter a valid email address."); input.focus(); return false;
     }
-  } else if (step.querySelector("input[type=radio]") && !step.querySelector("input[type=radio]:checked")) {
-    stepError(step, "Please choose one to continue.");
-    return false;
   }
   stepError(step, "");
   return true;
@@ -482,12 +510,24 @@ form.addEventListener("keydown", function (e) {
 });
 form.addEventListener("submit", function (e) { e.preventDefault(); next(); });
 
-/* Tapping a choice moves on by itself. Keyboard selection only
-   fires a click on the hidden radio itself, so it waits for Continue. */
+/* Choosing "Other" reveals a box to type the type of business. */
+form.addEventListener("change", function (e) {
+  if (e.target.name !== "industry") return;
+  var isOther = e.target.value === "Other";
+  otherWrap.hidden = !isOther;
+  enterHint.hidden = !isOther;
+  if (isOther) document.getElementById("f-business-type").focus();
+});
+
+/* Tapping a choice moves on by itself, except for "Other" (they still need
+   to type) and the final question (they press Submit). Keyboard selection
+   only fires a click on the hidden radio itself, so it waits for Continue. */
 form.addEventListener("click", function (e) {
   var choice = e.target.closest && e.target.closest(".choice");
   if (!choice || e.target.tagName === "INPUT") return;
   stepError(steps[current], "");
+  var radio = choice.querySelector("input");
+  if (radio.value === "Other" || isLast(current)) return;
   var at = current;
   setTimeout(function () { if (current === at) next(); }, 320);
 });
@@ -504,7 +544,7 @@ function setLoading(on) {
   sending = on;
   nextBtn.disabled = on;
   backBtn.disabled = on;
-  nextLabel.textContent = on ? "Sending" : "Submit application";
+  nextLabel.textContent = on ? "Sending" : "Submit";
   var s = document.getElementById("submit-spinner");
   if (on && !s) {
     s = document.createElement("span");
@@ -515,19 +555,20 @@ function setLoading(on) {
 
 function submit() {
   var qualified = val("investment") === "Yes";
+  var service = SERVICES[val("service")];
   var data = {
-    "form-name":  qualified ? "grandascend-qualified-lead" : "grandascend-other-lead",
-    "bot-field":  val("bot-field"),
-    "name":       val("name"),
-    "brand":      val("brand"),
-    "instagram":  val("instagram"),
-    "category":   val("category"),
-    "stage":      val("stage"),
-    "goal":       val("goal"),
-    "start":      val("start"),
-    "investment": qualified ? "Yes, " + MINIMUM_PRICE + " USD per month" : "Not at this time",
-    "email":      val("email"),
-    "source":     source
+    "form-name":    qualified ? "grandascend-qualified-lead" : "grandascend-other-lead",
+    "bot-field":    val("bot-field"),
+    "firstName":    val("firstName"),
+    "lastName":     val("lastName"),
+    "email":        val("email"),
+    "industry":     val("industry"),
+    "businessType": val("industry") === "Other" ? val("businessType") : "",
+    "business":     val("business"),
+    "instagram":    val("instagram"),
+    "service":      service.name,
+    "investment":   (qualified ? "Yes, from " : "Not at this time, from ") + service.price + " " + service.unit,
+    "source":       source
   };
 
   setLoading(true);
@@ -537,18 +578,17 @@ function submit() {
     body: new URLSearchParams(data).toString()
   }).then(function (response) {
     if (!response.ok) throw new Error("Netlify returned " + response.status);
-    finish(qualified, data.name);
+    finish(qualified, data.firstName);
   }).catch(function () {
     setLoading(false);
     statusEl.textContent = "Something went wrong on our end and your application did not go through. Please try again, or email contact@grandascend.co.";
   });
 }
 
-function finish(qualified, name) {
+function finish(qualified, firstName) {
   form.hidden = true;
   countEl.textContent = "";
   barEl.style.width = "100%";
-  var firstName = name.split(/\s+/)[0];
   var nameEls = document.querySelectorAll(".js-first-name");
   for (var n = 0; n < nameEls.length; n++) nameEls[n].textContent = firstName;
 
