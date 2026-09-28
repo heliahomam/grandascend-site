@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apply &middot; Monthly Content Partnership &middot; GrandAscend</title>
-<meta name="description" content="Apply for the GrandAscend Monthly Content Partnership. Strategic, editorial content for luxury and beauty brands, led by an LVMH certified strategist.">
+<title>Work With Us &middot; GrandAscend</title>
+<meta name="description" content="Apply to work with GrandAscend. Brand strategy, content creation, websites and brand identity for luxury and beauty brands, led by an LVMH certified strategist.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" as="image" href="images/img-12-08a9f85813.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 
@@ -25,194 +26,302 @@
   --muted: #9A9189;
   --ink-soft: #6E6258;
   --error-light: #7A2E1E;
-  --rule: rgba(42,42,42,0.18);
+  --rule: rgba(42,42,42,0.22);
+  --rule-light: rgba(245,240,232,0.18);
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Montserrat', sans-serif;
   --ease: cubic-bezier(0.16,1,0.3,1);
 }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 [hidden] { display: none !important; }
-html, body { min-height: 100%; }
+html { scroll-behavior: smooth; }
 body {
   background: var(--cream);
   color: var(--charcoal);
   font-family: var(--sans);
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  min-height: 100dvh;
+  overflow-x: hidden;
 }
+img { display: block; max-width: 100%; }
+a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 
-a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--charcoal);
-  outline-offset: 4px;
+/* ── NAV: links either side of a centred wordmark ── */
+.top-nav {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 20;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  padding: 28px 24px;
 }
-
-/* ── HEADER: logo only, so nothing pulls the visitor away mid-application ── */
-.apply-header {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 26px 24px;
+.top-nav ul { display: none; list-style: none; gap: 34px; }
+.top-nav ul:last-child { justify-content: flex-end; }
+.top-nav ul a {
+  font-size: 9px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--cream); text-decoration: none; position: relative;
 }
-.logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; }
-.logo img { height: 18px; width: auto; display: block; }
-.logo span { font-style: italic; font-weight: 700; letter-spacing: 0.05em; text-transform: none; }
-.step-count { font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.step-count:empty { display: none; }
+.top-nav ul a::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 1px; background: var(--blush); transition: width 0.4s var(--ease); }
+.top-nav ul a:hover::after, .top-nav ul a[aria-current]::after { width: 100%; }
+.wordmark {
+  grid-column: 2; display: flex; align-items: center; gap: 10px;
+  font-family: var(--serif); font-size: 14px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--cream); text-decoration: none;
+}
+.wordmark img { height: 20px; width: auto; filter: brightness(6); }
+.wordmark span { font-style: italic; font-weight: 700; letter-spacing: 0.05em; text-transform: none; }
 
-.progress { height: 1px; background: var(--rule); position: relative; }
+/* ── HERO ── */
+.hero { position: relative; background: var(--charcoal); color: var(--cream); overflow: hidden; }
+.hero-media { position: relative; height: 64vh; min-height: 420px; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; filter: saturate(0.82) contrast(1.02); }
+.hero-media::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(42,42,42,0.55) 0%, rgba(42,42,42,0) 30%, rgba(42,42,42,0) 55%, rgba(42,42,42,1) 100%);
+}
+.hero-caption { display: none; }
+.hero-side { position: relative; z-index: 2; padding: 0 24px 72px; margin-top: -120px; }
+
+.hero-title { font-weight: 400; line-height: 0.86; margin-bottom: 48px; }
+.t-sans {
+  display: block; font-family: var(--sans); font-weight: 200;
+  font-size: clamp(88px, 24vw, 230px); letter-spacing: -0.06em; text-transform: lowercase;
+}
+.t-serif {
+  display: block; font-family: var(--serif); font-style: italic;
+  font-size: clamp(56px, 15vw, 150px); letter-spacing: -0.02em;
+  color: var(--blush); padding-left: 0.9em; margin-top: -0.04em;
+}
+.js .t-sans, .js .t-serif { opacity: 0; transform: translateY(40px); animation: rise 1.2s var(--ease) forwards; }
+.js .t-serif { animation-delay: 0.18s; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+.hero-details { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 32px; max-width: 460px; margin-bottom: 44px; }
+.hero-details dt { font-family: var(--serif); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 8px; }
+.hero-details dd { font-size: 12px; line-height: 1.7; letter-spacing: 0.03em; color: var(--beige); opacity: 0.85; }
+.hero-details a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule-light); }
+.hero-details a:hover { border-bottom-color: var(--blush); }
+
+/* ── PILL BUTTONS ── */
+.pill-btn {
+  display: inline-flex; align-items: center; gap: 16px;
+  font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase;
+  padding: 17px 34px; border-radius: 999px; border: 1px solid currentColor;
+  background: transparent; color: var(--charcoal); cursor: pointer; text-decoration: none;
+  transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, opacity 0.3s ease;
+}
+.pill-btn .arrow { width: 16px; height: 1px; background: currentColor; transition: width 0.4s var(--ease); }
+.pill-btn:hover:not(:disabled) .arrow { width: 30px; }
+.pill-btn:hover:not(:disabled) { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+.pill-btn.solid { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+.pill-btn.solid:hover:not(:disabled) { background: var(--black); }
+.pill-btn.light { color: var(--cream); }
+.pill-btn.light:hover { background: var(--blush); color: var(--charcoal); border-color: var(--blush); }
+.pill-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ── APPLICATION SECTION ── */
+.apply-section { position: relative; padding: 96px 24px 110px; display: grid; gap: 64px; max-width: 1280px; margin: 0 auto; }
+.script-title { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(40px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px; }
+.lede { font-size: 13px; line-height: 1.95; letter-spacing: 0.03em; color: var(--ink-soft); max-width: 50ch; margin-bottom: 48px; }
+
+.progress-row { display: flex; align-items: center; gap: 18px; margin-bottom: 40px; }
+.step-count { font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: var(--ink-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.progress { flex: 1; height: 1px; background: var(--rule); position: relative; }
 .progress span { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--charcoal); transition: width 0.7s var(--ease); }
+.progress span::after { content: ''; position: absolute; right: -3px; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--blush); }
 
-/* ── STAGE ── */
-.stage {
-  flex: 1;
-  display: flex; align-items: center;
-  padding: 56px 24px 72px;
-}
-.stage-inner { width: 100%; max-width: 640px; margin: 0 auto; }
-
-.step { display: none; border: none; }
+.step { display: none; border: none; min-width: 0; }
 .step.active { display: block; animation: stepIn 0.7s var(--ease) both; }
 .step.back { animation-name: stepInBack; }
-@keyframes stepIn { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
-@keyframes stepInBack { from { opacity: 0; transform: translateY(-28px); } to { opacity: 1; transform: none; } }
-
-.eyebrow {
-  font-size: 9px; font-weight: 600; letter-spacing: 0.42em;
-  text-transform: uppercase; color: var(--ink-soft);
-  display: flex; align-items: center; gap: 16px;
-  margin-bottom: 28px;
-}
-.eyebrow::after { content: ''; height: 1px; width: 48px; background: var(--blush); }
+@keyframes stepIn { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+@keyframes stepInBack { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
 
 .question {
-  font-family: var(--serif); font-weight: 400;
-  font-size: clamp(28px, 5.4vw, 46px); line-height: 1.16;
-  letter-spacing: -0.01em; text-wrap: balance;
-  margin-bottom: 18px; outline: none;
+  display: block; font-family: var(--serif); font-weight: 400;
+  font-size: clamp(26px, 3.6vw, 38px); line-height: 1.2; letter-spacing: -0.01em;
+  text-wrap: balance; margin-bottom: 12px; outline: none;
 }
 .question em { font-style: italic; color: var(--ink-soft); }
-.hint { font-size: 13px; line-height: 1.9; letter-spacing: 0.03em; color: var(--ink-soft); max-width: 52ch; margin-bottom: 40px; }
+.hint { font-size: 12px; line-height: 1.85; letter-spacing: 0.03em; color: var(--ink-soft); margin-bottom: 30px; }
+.question + .choices, .question + .fields, .question + .pill-field, .question + .investment { margin-top: 30px; }
 
-/* Intro screen */
-.intro h1 { font-size: clamp(38px, 7.5vw, 72px); line-height: 1.04; margin-bottom: 28px; }
-.intro-body { font-size: 14px; line-height: 2; letter-spacing: 0.03em; color: var(--charcoal); opacity: 0.8; max-width: 48ch; margin-bottom: 18px; }
-.badge {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase;
-  border: 1px solid var(--taupe); background: var(--beige);
-  padding: 9px 16px; margin-bottom: 34px;
+/* Pill-shaped fields, as in the reference */
+.fields { display: grid; gap: 14px; }
+@media (min-width: 600px) { .fields.two { grid-template-columns: 1fr 1fr; } }
+.pill-field {
+  display: flex; align-items: center; gap: 4px;
+  border: 1px solid var(--rule); border-radius: 999px; padding: 0 24px;
+  background: rgba(253,250,245,0.55);
+  transition: border-color 0.35s ease, background 0.35s ease;
 }
-.badge i { width: 6px; height: 6px; border-radius: 50%; background: var(--taupe); }
-.meta { font-size: 11px; letter-spacing: 0.08em; color: var(--ink-soft); margin-top: 22px; }
-
-/* Text inputs */
-.field-line { position: relative; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; }
-.field-line::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 0; height: 1px; background: var(--charcoal); transition: width 0.5s var(--ease); }
-.field-line:focus-within::after { width: 100%; }
-.field-line.invalid { border-bottom-color: var(--error-light); }
-.field-line > span { font-size: clamp(18px, 3.4vw, 24px); color: var(--ink-soft); }
+.pill-field:focus-within { border-color: var(--charcoal); background: var(--white); }
+.pill-field.invalid { border-color: var(--error-light); }
+.pill-field > span { font-size: 15px; color: var(--ink-soft); }
 .text-input {
-  font-family: var(--sans); font-size: clamp(18px, 3.4vw, 24px); font-weight: 300; color: var(--charcoal);
-  background: transparent; border: none; outline: none; width: 100%; padding: 14px 0; border-radius: 0;
+  font-family: var(--sans); font-size: 15px; font-weight: 300; color: var(--charcoal);
+  background: transparent; border: none; outline: none; width: 100%; padding: 17px 0; border-radius: 0;
 }
-.text-input::placeholder { color: var(--muted); }
-.text-input:focus-visible { outline: none; }
+.text-input::placeholder { color: var(--ink-soft); opacity: 0.7; font-size: 12px; letter-spacing: 0.06em; }
 
-/* Choice list */
-.choices { display: flex; flex-direction: column; gap: 12px; }
+.choices { display: grid; gap: 10px; }
+@media (min-width: 600px) { .choices.grid { grid-template-columns: 1fr 1fr; } }
 .choice { position: relative; display: block; cursor: pointer; }
 .choice input { position: absolute; opacity: 0; pointer-events: none; }
 .choice > span {
-  display: flex; align-items: center; gap: 18px;
-  padding: 19px 22px; border: 1px solid var(--rule);
-  font-size: 14px; font-weight: 400; letter-spacing: 0.03em; line-height: 1.5;
-  transition: border-color 0.3s ease, background 0.3s ease, padding-left 0.45s var(--ease);
+  display: flex; align-items: center; gap: 16px; height: 100%;
+  padding: 16px 24px; border: 1px solid var(--rule); border-radius: 999px;
+  background: rgba(253,250,245,0.55);
+  font-size: 13px; font-weight: 400; letter-spacing: 0.03em; line-height: 1.5;
+  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 .choice > span::before {
-  content: ''; flex-shrink: 0; width: 9px; height: 9px; border-radius: 50%;
+  content: ''; flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%;
   border: 1px solid var(--ink-soft); transition: background 0.3s ease, border-color 0.3s ease;
 }
-.choice:hover > span { border-color: var(--charcoal); padding-left: 28px; }
+.choice:hover > span { border-color: var(--charcoal); background: var(--white); }
 .choice input:checked + span { background: var(--charcoal); border-color: var(--charcoal); color: var(--cream); }
 .choice input:checked + span::before { background: var(--blush); border-color: var(--blush); }
-.choice input:focus-visible + span { outline: 2px solid var(--charcoal); outline-offset: 4px; }
-.choices.invalid .choice > span { border-color: rgba(122,46,30,0.45); }
+.choice input:focus-visible + span { outline: 2px solid var(--charcoal); outline-offset: 3px; }
+.choices.invalid .choice > span { border-color: rgba(122,46,30,0.5); }
+
+/* Service cards: image, name and one line */
+.choice.card > span { flex-direction: column; align-items: stretch; gap: 0; padding: 0; border-radius: 22px; overflow: hidden; }
+.choice.card > span::before { position: absolute; top: 16px; right: 16px; z-index: 1; background: var(--cream); border-color: var(--cream); }
+.choice.card img { width: 100%; height: 118px; object-fit: cover; object-position: center 30%; filter: saturate(0.8); transition: transform 0.8s var(--ease); }
+.choice.card img.top { object-position: center 8%; }
+.choice.card:hover img { transform: scale(1.04); }
+@media (max-width: 599px) {
+  .choice.card > span { flex-direction: row; align-items: center; border-radius: 20px; padding: 10px; }
+  .choice.card > span::before { position: static; order: 3; margin: 0 16px 0 auto; background: none; border-color: var(--ink-soft); }
+  .choice.card input:checked + span::before { background: var(--blush); border-color: var(--blush); }
+  .choice.card img { width: 60px; height: 60px; border-radius: 12px; flex-shrink: 0; }
+  .choice.card b { padding: 0 0 2px 16px; font-size: 16px; }
+  .choice.card small { padding: 0 0 0 16px; font-size: 10.5px; }
+}
+.choice.card b { display: block; font-family: var(--serif); font-size: 18px; font-weight: 400; padding: 16px 20px 4px; }
+.choice.card small { display: block; font-size: 11px; line-height: 1.6; opacity: 0.8; padding: 0 20px 18px; }
+
+.other-wrap { margin-top: 14px; }
 
 /* Investment panel: blush ground, charcoal text (8.1:1) */
-.investment {
-  background: var(--blush); padding: 30px 28px; margin-bottom: 34px;
-  display: grid; gap: 6px;
-}
+.investment { background: var(--blush); border-radius: 26px; padding: 30px 30px 28px; margin-bottom: 22px; display: grid; gap: 6px; }
 .investment small { font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: #4A4038; }
-.investment strong { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 6vw, 50px); line-height: 1.1; }
-.investment strong em { font-family: var(--sans); font-style: normal; font-size: 13px; letter-spacing: 0.06em; color: #4A4038; margin-left: 6px; }
-.investment p { font-size: 12px; letter-spacing: 0.04em; line-height: 1.8; color: #4A4038; }
+.investment strong { font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 6vw, 56px); line-height: 1.1; }
+.investment strong em { font-family: var(--sans); font-style: normal; font-size: 12px; letter-spacing: 0.08em; color: #4A4038; margin-left: 8px; }
+.investment p { font-size: 12px; letter-spacing: 0.03em; line-height: 1.8; color: #4A4038; max-width: 52ch; }
 
-.field-error { font-size: 12px; font-weight: 400; color: var(--error-light); margin-top: 14px; min-height: 1em; }
+.field-error { font-size: 12px; font-weight: 400; color: var(--error-light); margin-top: 14px; padding-left: 24px; }
 .field-error:empty { display: none; }
+.form-status { font-size: 12px; line-height: 1.75; color: var(--error-light); margin-top: 18px; }
+.form-status:empty { display: none; }
 
-/* ── CONTROLS ── */
-.controls { display: flex; align-items: center; gap: 28px; margin-top: 44px; }
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 16px;
-  font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--white); background: var(--charcoal);
-  border: none; padding: 21px 40px; cursor: pointer; text-decoration: none;
-  transition: background 0.35s ease, opacity 0.3s ease;
-}
-.btn:hover:not(:disabled) { background: var(--black); }
-.btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.btn .arrow { width: 18px; height: 1px; background: currentColor; display: inline-block; transition: width 0.4s var(--ease); }
-.btn:hover:not(:disabled) .arrow { width: 34px; }
-.btn-back {
-  font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase;
-  background: none; border: none; color: var(--ink-soft); cursor: pointer; padding: 10px 0;
-}
+.controls { display: flex; align-items: center; gap: 26px; margin-top: 36px; flex-wrap: wrap; }
+.btn-back { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; background: none; border: none; color: var(--ink-soft); cursor: pointer; padding: 10px 0; }
 .btn-back:hover { color: var(--charcoal); }
-.enter-hint { font-size: 10px; letter-spacing: 0.1em; color: var(--ink-soft); display: none; }
+.enter-hint { display: none; font-size: 10px; letter-spacing: 0.1em; color: var(--ink-soft); }
 @media (hover: hover) and (min-width: 700px) { .enter-hint { display: inline; } }
 
 .spinner { width: 11px; height: 11px; border: 1px solid rgba(253,250,245,0.3); border-top-color: var(--white); border-radius: 50%; animation: spin 0.7s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-.form-status { font-size: 12px; line-height: 1.75; color: var(--error-light); margin-top: 20px; }
-.form-status:empty { display: none; }
-
-/* First and last name side by side on wider screens */
-.name-fields { display: grid; gap: 22px; }
-@media (min-width: 600px) { .name-fields { grid-template-columns: 1fr 1fr; gap: 32px; } }
-.mini-label { display: block; font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 2px; }
-
-/* Service choices carry a one-line description */
-.choice span b { display: block; font-weight: 500; }
-.choice span small { display: block; font-size: 12px; font-weight: 300; line-height: 1.6; opacity: 0.8; margin-top: 3px; }
-.choice.rich > span { align-items: flex-start; }
-.choice.rich > span::before { margin-top: 6px; }
-
-.other-wrap { margin-top: 26px; }
-
-/* ── RESULT SCREENS ── */
 .result { display: none; }
 .result.active { display: block; animation: stepIn 0.8s var(--ease) both; }
-.ornament { font-size: 14px; letter-spacing: 0.7em; color: var(--ink-soft); display: block; margin-bottom: 26px; }
-.result .intro-body { margin-bottom: 30px; }
-.sig { font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-soft); margin-top: 40px; }
+.ornament { font-size: 13px; letter-spacing: 0.7em; color: var(--ink-soft); display: block; margin-bottom: 22px; }
+.result p.body { font-size: 13px; line-height: 2; letter-spacing: 0.03em; color: var(--ink-soft); max-width: 48ch; margin: 18px 0 34px; }
 
-.apply-footer { text-align: center; padding: 28px 24px 34px; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); }
+/* Overlapping photo collage beside the questions */
+.collage { position: relative; height: 520px; }
+.collage figure { position: absolute; overflow: hidden; }
+.collage img { width: 100%; height: 100%; object-fit: cover; }
+.collage .c1 { top: 0; right: 0; width: 64%; height: 70%; }
+.collage .c1 img { filter: grayscale(1) contrast(1.05); }
+.collage .c2 { left: 0; bottom: 0; width: 56%; height: 58%; box-shadow: 0 30px 60px -30px rgba(26,26,26,0.45); }
+.collage figcaption {
+  position: absolute; right: 0; bottom: 6%; writing-mode: vertical-rl;
+  font-size: 8px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--ink-soft);
+}
+@media (max-width: 959px) { .collage figcaption { display: none; } }
 
-@media (min-width: 900px) {
-  .apply-header { padding: 30px 60px; }
-  .stage { padding: 72px 60px 96px; }
+/* ── SOCIAL ── */
+.social { position: relative; display: grid; background: var(--beige); }
+.social-photo { height: 70vh; min-height: 420px; overflow: hidden; }
+.social-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 70% center; filter: grayscale(1) contrast(1.08); }
+.social-copy { padding: 72px 24px 150px; align-self: center; }
+.social-copy h2 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(34px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 20px; }
+.social-copy p { font-size: 13px; line-height: 1.95; letter-spacing: 0.03em; color: var(--ink-soft); max-width: 42ch; margin-bottom: 30px; }
+.social-links { display: flex; gap: 12px; }
+.social-links a {
+  width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--rule);
+  display: grid; place-items: center; color: var(--charcoal);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.social-links a:hover { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+.social-links svg { width: 17px; height: 17px; }
+.social-float { position: absolute; right: 24px; bottom: -60px; width: 42%; max-width: 230px; aspect-ratio: 4 / 5; overflow: hidden; z-index: 2; box-shadow: 0 30px 60px -30px rgba(26,26,26,0.5); }
+.social-float img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
+
+/* ── FOOTER ── */
+.site-footer { padding: 120px 24px 40px; display: grid; gap: 48px; max-width: 1280px; margin: 0 auto; }
+.seal { position: relative; width: 132px; height: 132px; }
+.seal svg { position: absolute; inset: 0; animation: turn 38s linear infinite; }
+.seal text { font-family: var(--sans); font-size: 7.6px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; fill: var(--charcoal); }
+.seal img { position: absolute; inset: 0; margin: auto; width: 44px; height: auto; }
+@keyframes turn { to { transform: rotate(360deg); } }
+.footer-col h3 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 18px; padding-bottom: 12px; margin-bottom: 14px; border-bottom: 1px solid var(--rule); max-width: 240px; }
+.footer-menu { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px 28px; max-width: 280px; }
+.footer-menu a, .back-top { font-size: 10px; letter-spacing: 0.1em; color: var(--charcoal); text-decoration: none; }
+.footer-menu a:hover, .back-top:hover { color: var(--ink-soft); }
+.footer-about small { display: block; font-size: 9px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; line-height: 1.9; margin-bottom: 10px; }
+.footer-about p { font-size: 11px; line-height: 1.85; color: var(--ink-soft); max-width: 40ch; }
+.back-top { display: inline-block; margin-top: 18px; font-size: 8px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; }
+.copyright { grid-column: 1 / -1; font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink-soft); padding-top: 26px; border-top: 1px solid var(--rule); }
+
+.filmstrip { display: grid; grid-template-columns: repeat(4, 1fr); }
+.filmstrip img { width: 100%; height: 96px; object-fit: cover; filter: saturate(0.7); transition: filter 0.5s ease; }
+.filmstrip img:hover { filter: none; }
+
+/* Scroll reveals */
+.js .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.js .reveal.visible { opacity: 1; transform: none; }
+
+/* ── DESKTOP ── */
+@media (min-width: 960px) {
+  .top-nav { padding: 30px 48px; }
+  .top-nav ul { display: flex; }
+  .top-nav ul:first-child { justify-content: flex-start; }
+
+  .hero { display: grid; grid-template-columns: 42% 58%; min-height: 100vh; }
+  .hero-media { height: auto; min-height: 0; }
+  .hero-media::after { background: linear-gradient(to bottom, rgba(42,42,42,0.6) 0%, rgba(42,42,42,0) 26%, rgba(42,42,42,0) 70%, rgba(42,42,42,0.75) 100%); }
+  .hero-caption {
+    display: block; position: absolute; left: 48px; bottom: 44px; z-index: 2; max-width: 30ch;
+    font-size: 11px; line-height: 1.8; letter-spacing: 0.03em; color: var(--cream);
+  }
+  .hero-side { margin-top: 0; padding: 200px 64px 72px 56px; display: flex; flex-direction: column; justify-content: center; }
+  .hero-title { margin-left: -16vw; margin-bottom: 56px; }
+  .t-serif { padding-left: 1.4em; }
+  .hero-details { margin-left: 0; }
+
+  .apply-section { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 90px; padding: 150px 48px 170px; }
+  .collage { height: auto; min-height: 660px; }
+
+  .social { grid-template-columns: 1fr 1fr; }
+  .social-photo { height: auto; min-height: 720px; }
+  .social-copy { padding: 100px 72px 100px 90px; }
+  .social-float { right: 48px; bottom: -90px; width: 250px; max-width: none; }
+
+  .site-footer { grid-template-columns: auto 1fr 1fr; gap: 0; padding: 160px 48px 44px; }
+  .site-footer > .footer-col { padding: 0 56px; border-left: 1px solid var(--rule); }
+  .site-footer > .footer-col:first-child { padding-left: 0; border-left: none; }
+  .filmstrip { grid-template-columns: repeat(8, 1fr); }
+  .filmstrip img { height: 130px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .js .reveal, .js .t-sans, .js .t-serif { opacity: 1; transform: none; }
 }
 </style>
 </head>
 <body>
+<script>document.documentElement.className += " js";</script>
 
 <!-- Netlify Forms build-time detection. Not rendered to visitors.
      Qualified applicants (said yes to the investment) go to one form,
@@ -232,147 +341,218 @@ a:focus-visible, button:focus-visible {
   <input type="text" name="source">
 </form>
 
-<header class="apply-header">
-  <a href="index.html" class="logo"><img src="images/logo-mark-ga.png" alt=""><span>Grand</span>Ascend</a>
-  <p class="step-count" id="step-count" aria-live="polite"></p>
-</header>
-<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+<nav class="top-nav" aria-label="Main">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+  </ul>
+  <a href="index.html" class="wordmark"><img src="images/logo-mark-ga.png" alt=""><span>Grand</span>Ascend</a>
+  <ul>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="creators.html">Creators</a></li>
+    <li><a href="apply.html" aria-current="page">Work with us</a></li>
+  </ul>
+</nav>
 
-<main class="stage">
-  <div class="stage-inner">
-
-    <form id="apply-form" novalidate>
-      <!-- Honeypot: real visitors never see or fill this. -->
-      <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-
-      <!-- 0. Intro -->
-      <section class="step intro active" data-step="intro">
-        <p class="eyebrow">Work with GrandAscend</p>
-        <h1 class="question" tabindex="-1">Let's build a brand that <em>looks the part.</em></h1>
-        <div class="badge"><i></i>LVMH Certified Strategist</div>
-        <p class="intro-body">We partner with a limited number of brands each month. Tell us about yours and what you are looking for, and if it is a fit, we will invite you to a private strategy call.</p>
-        <div class="controls">
-          <button type="button" class="btn" data-next>Begin application<span class="arrow" aria-hidden="true"></span></button>
-        </div>
-        <p class="meta">Seven short questions. About two minutes.</p>
-      </section>
-
-      <!-- 1. Name -->
-      <section class="step" data-step="name">
-        <h2 class="question" tabindex="-1">First, what is your name?</h2>
-        <p class="hint">So we know who we are speaking with.</p>
-        <div class="name-fields">
-          <div>
-            <label class="mini-label" for="f-first">First name</label>
-            <div class="field-line"><input class="text-input" id="f-first" name="firstName" type="text" autocomplete="given-name" placeholder="First name"></div>
-          </div>
-          <div>
-            <label class="mini-label" for="f-last">Last name</label>
-            <div class="field-line"><input class="text-input" id="f-last" name="lastName" type="text" autocomplete="family-name" placeholder="Last name"></div>
-          </div>
-        </div>
-        <p class="field-error" role="alert"></p>
-      </section>
-
-      <!-- 2. Email -->
-      <section class="step" data-step="email">
-        <label class="question" for="f-email" tabindex="-1">What is the best email <em>to reach you?</em></label>
-        <p class="hint">Every application is reviewed personally. This is where our reply will go.</p>
-        <div class="field-line"><input class="text-input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@yourbrand.com"></div>
-        <p class="field-error" role="alert"></p>
-      </section>
-
-      <!-- 3. Industry -->
-      <fieldset class="step" data-step="industry">
-        <legend class="question" tabindex="-1">Which industry is your business in?</legend>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="industry" value="Beauty and skincare"><span>Beauty and skincare</span></label>
-          <label class="choice"><input type="radio" name="industry" value="Fashion and accessories"><span>Fashion and accessories</span></label>
-          <label class="choice"><input type="radio" name="industry" value="Hospitality, dining and events"><span>Hospitality, dining and events</span></label>
-          <label class="choice"><input type="radio" name="industry" value="Wellness and lifestyle"><span>Wellness and lifestyle</span></label>
-          <label class="choice"><input type="radio" name="industry" value="Other"><span>Other</span></label>
-        </div>
-        <div class="other-wrap" id="other-wrap" hidden>
-          <label class="mini-label" for="f-business-type">Tell us your type of business</label>
-          <div class="field-line"><input class="text-input" id="f-business-type" name="businessType" type="text" placeholder="e.g. jewellery, interior design, real estate"></div>
-        </div>
-        <p class="field-error" role="alert"></p>
-      </fieldset>
-
-      <!-- 4. Business name -->
-      <section class="step" data-step="business">
-        <label class="question" for="f-business" tabindex="-1">What is the name of <em>your business?</em></label>
-        <div class="field-line"><input class="text-input" id="f-business" name="business" type="text" autocomplete="organization" placeholder="Business name"></div>
-        <p class="field-error" role="alert"></p>
-      </section>
-
-      <!-- 5. Instagram -->
-      <section class="step" data-step="instagram">
-        <label class="question" for="f-instagram" tabindex="-1">What is your business Instagram handle?</label>
-        <p class="hint">We look at every account before we reply.</p>
-        <div class="field-line"><span aria-hidden="true">@</span><input class="text-input" id="f-instagram" name="instagram" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="yourbusiness"></div>
-        <p class="field-error" role="alert"></p>
-      </section>
-
-      <!-- 6. Service. Each value matches an entry in SERVICES in the script below. -->
-      <fieldset class="step" data-step="service">
-        <legend class="question" tabindex="-1">Which service are you <em>interested in?</em></legend>
-        <div class="choices">
-          <label class="choice rich"><input type="radio" name="service" value="strategy"><span><span><b>Brand Strategy</b><small>Market research, competitive analysis, positioning and a clear plan forward</small></span></span></label>
-          <label class="choice rich"><input type="radio" name="service" value="social"><span><span><b>Social Media and Content Creation</b><small>Monthly content, captions and Instagram management</small></span></span></label>
-          <label class="choice rich"><input type="radio" name="service" value="website"><span><span><b>Website Design</b><small>A premium website that turns visitors into clients</small></span></span></label>
-          <label class="choice rich"><input type="radio" name="service" value="branding"><span><span><b>Brand Identity</b><small>Logo, visual identity, brand book and brand kit</small></span></span></label>
-        </div>
-        <p class="field-error" role="alert"></p>
-      </fieldset>
-
-      <!-- 7. Investment: the qualifying question. Filled in from SERVICES. -->
-      <fieldset class="step" data-step="investment">
-        <legend class="question" tabindex="-1">If accepted, is this investment <em>within your budget?</em></legend>
-        <div class="investment">
-          <small id="inv-name"></small>
-          <strong><span id="inv-price"></span><em id="inv-unit"></em></strong>
-          <p id="inv-note"></p>
-        </div>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="investment" value="Yes"><span>Yes, I am ready to invest at this level</span></label>
-          <label class="choice"><input type="radio" name="investment" value="No"><span>Not at this time</span></label>
-        </div>
-        <p class="field-error" role="alert"></p>
-        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-      </fieldset>
-
-      <div class="controls" id="controls" hidden>
-        <button type="button" class="btn" id="next-btn"><span id="next-label">Continue</span><span class="arrow" aria-hidden="true"></span></button>
-        <button type="button" class="btn-back" id="back-btn">Back</button>
-        <span class="enter-hint" id="enter-hint">or press Enter</span>
-      </div>
-    </form>
-
-    <!-- Result: said yes to the investment -->
-    <section class="result" id="result-qualified" aria-labelledby="rq-title">
-      <span class="ornament" aria-hidden="true">&#10022; &#10022; &#10022;</span>
-      <p class="eyebrow">Application received</p>
-      <h2 class="question" id="rq-title" tabindex="-1">Thank you, <span class="js-first-name"></span>. <em>We are glad you are here.</em></h2>
-      <p class="intro-body">Your application is with Helia. We review every brand personally, and if we are the right partner for you, we will be in touch within two business days to schedule your strategy call.</p>
-      <p id="booking-wrap" hidden><a class="btn" id="booking-link" href="#" target="_blank" rel="noopener">Book your strategy call<span class="arrow" aria-hidden="true"></span></a></p>
-      <p class="sig">GrandAscend &middot; Montreal</p>
-    </section>
-
-    <!-- Result: not at this time -->
-    <section class="result" id="result-other" aria-labelledby="ro-title">
-      <span class="ornament" aria-hidden="true">&#10022; &#10022; &#10022;</span>
-      <p class="eyebrow">Thank you</p>
-      <h2 class="question" id="ro-title" tabindex="-1">Thank you for sharing your brand <em>with us.</em></h2>
-      <p class="intro-body">This may not be the right moment to work together, and that is completely fine. We have kept your details, and we will reach out if something better suited to where you are becomes available.</p>
-      <p><a class="btn" href="https://www.instagram.com/grandascend_media/" target="_blank" rel="noopener">Follow us on Instagram<span class="arrow" aria-hidden="true"></span></a></p>
-      <p class="sig">GrandAscend &middot; Montreal</p>
-    </section>
-
+<header class="hero">
+  <div class="hero-media">
+    <img src="images/img-12-08a9f85813.jpg" alt="Helia Homam reviewing a brand strategy with a client" fetchpriority="high">
+    <p class="hero-caption">Strategy, content and identity for luxury and beauty brands, led by an LVMH certified strategist.</p>
   </div>
+  <div class="hero-side">
+    <h1 class="hero-title"><span class="t-sans">work</span><span class="t-serif">with us</span></h1>
+    <dl class="hero-details">
+      <div><dt>Studio</dt><dd>Montreal, working worldwide</dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:contact@grandascend.co">contact@grandascend.co</a></dd></div>
+      <div><dt>Credentials</dt><dd>LVMH Inside Certificate, Creation and Branding</dd></div>
+      <div><dt>Reply</dt><dd>Within two business days</dd></div>
+    </dl>
+    <p><a href="#apply" class="pill-btn light">Begin your application<span class="arrow" aria-hidden="true"></span></a></p>
+  </div>
+</header>
+
+<main>
+  <section class="apply-section" id="apply">
+    <div class="apply-main">
+      <h2 class="script-title reveal">Let's begin.</h2>
+      <p class="lede reveal">We partner with a limited number of brands each month. Seven short questions, about two minutes. If it is a fit, we will invite you to a private strategy call.</p>
+
+      <div class="progress-row reveal" aria-hidden="false">
+        <p class="step-count" id="step-count" aria-live="polite">01 / 07</p>
+        <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+      </div>
+
+      <form id="apply-form" class="reveal" novalidate>
+        <!-- Honeypot: real visitors never see or fill this. -->
+        <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <!-- 1. Name -->
+        <fieldset class="step active" data-step="name">
+          <legend class="question" tabindex="-1">First, what is <em>your name?</em></legend>
+          <div class="fields two">
+            <div class="pill-field"><input class="text-input" id="f-first" name="firstName" type="text" autocomplete="given-name" placeholder="First name" aria-label="First name"></div>
+            <div class="pill-field"><input class="text-input" id="f-last" name="lastName" type="text" autocomplete="family-name" placeholder="Last name" aria-label="Last name"></div>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </fieldset>
+
+        <!-- 2. Email -->
+        <section class="step" data-step="email">
+          <label class="question" for="f-email" tabindex="-1">The best email <em>to reach you?</em></label>
+          <p class="hint">Every application is reviewed personally. This is where our reply will go.</p>
+          <div class="pill-field"><input class="text-input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@yourbrand.com"></div>
+          <p class="field-error" role="alert"></p>
+        </section>
+
+        <!-- 3. Industry -->
+        <fieldset class="step" data-step="industry">
+          <legend class="question" tabindex="-1">Which industry is <em>your business in?</em></legend>
+          <div class="choices grid">
+            <label class="choice"><input type="radio" name="industry" value="Beauty and skincare"><span>Beauty and skincare</span></label>
+            <label class="choice"><input type="radio" name="industry" value="Fashion and accessories"><span>Fashion and accessories</span></label>
+            <label class="choice"><input type="radio" name="industry" value="Hospitality, dining and events"><span>Hospitality and dining</span></label>
+            <label class="choice"><input type="radio" name="industry" value="Wellness and lifestyle"><span>Wellness and lifestyle</span></label>
+            <label class="choice"><input type="radio" name="industry" value="Other"><span>Other</span></label>
+          </div>
+          <div class="other-wrap" id="other-wrap" hidden>
+            <div class="pill-field"><input class="text-input" id="f-business-type" name="businessType" type="text" placeholder="Tell us your type of business" aria-label="Your type of business"></div>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </fieldset>
+
+        <!-- 4. Business name -->
+        <section class="step" data-step="business">
+          <label class="question" for="f-business" tabindex="-1">What is the name of <em>your business?</em></label>
+          <div class="pill-field"><input class="text-input" id="f-business" name="business" type="text" autocomplete="organization" placeholder="Business name"></div>
+          <p class="field-error" role="alert"></p>
+        </section>
+
+        <!-- 5. Instagram -->
+        <section class="step" data-step="instagram">
+          <label class="question" for="f-instagram" tabindex="-1">Your business <em>Instagram handle?</em></label>
+          <p class="hint">We look at every account before we reply.</p>
+          <div class="pill-field"><span aria-hidden="true">@</span><input class="text-input" id="f-instagram" name="instagram" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="yourbusiness"></div>
+          <p class="field-error" role="alert"></p>
+        </section>
+
+        <!-- 6. Service. Each value matches an entry in SERVICES in the script below. -->
+        <fieldset class="step" data-step="service">
+          <legend class="question" tabindex="-1">Which service are you <em>interested in?</em></legend>
+          <div class="choices grid">
+            <label class="choice card"><input type="radio" name="service" value="strategy"><span><img src="images/service-brand-strategy.jpg" alt="" loading="lazy" class="top"><span class="card-text"><b>Brand Strategy</b><small>Market research, competitive analysis and positioning</small></span></span></label>
+            <label class="choice card"><input type="radio" name="service" value="social"><span><img src="images/img-08-45f84fc342.jpg" alt="" loading="lazy"><span class="card-text"><b>Social Media and Content</b><small>Monthly content, captions and Instagram management</small></span></span></label>
+            <label class="choice card"><input type="radio" name="service" value="website"><span><img src="images/img-11-f224f55804.jpg" alt="" loading="lazy"><span class="card-text"><b>Website Design</b><small>A premium website that turns visitors into clients</small></span></span></label>
+            <label class="choice card"><input type="radio" name="service" value="branding"><span><img src="images/img-13-80a12bfb54.jpg" alt="" loading="lazy"><span class="card-text"><b>Brand Identity</b><small>Logo, visual identity, brand book and brand kit</small></span></span></label>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </fieldset>
+
+        <!-- 7. Investment: the qualifying question. Filled in from SERVICES. -->
+        <fieldset class="step" data-step="investment">
+          <legend class="question" tabindex="-1">If accepted, is this investment <em>within your budget?</em></legend>
+          <div class="investment">
+            <small id="inv-name"></small>
+            <strong><span id="inv-price"></span><em id="inv-unit"></em></strong>
+            <p id="inv-note"></p>
+          </div>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="investment" value="Yes"><span>Yes, I am ready to invest at this level</span></label>
+            <label class="choice"><input type="radio" name="investment" value="No"><span>Not at this time</span></label>
+          </div>
+          <p class="field-error" role="alert"></p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </fieldset>
+
+        <div class="controls">
+          <button type="button" class="pill-btn solid" id="next-btn"><span id="next-label">Continue</span><span class="arrow" aria-hidden="true"></span></button>
+          <button type="button" class="btn-back" id="back-btn" hidden>Back</button>
+          <span class="enter-hint" id="enter-hint">or press Enter</span>
+        </div>
+      </form>
+
+      <!-- Result: said yes to the investment -->
+      <section class="result" id="result-qualified" aria-labelledby="rq-title">
+        <span class="ornament" aria-hidden="true">&#10022; &#10022; &#10022;</span>
+        <h2 class="question" id="rq-title" tabindex="-1">Thank you, <span class="js-first-name"></span>. <em>We are glad you are here.</em></h2>
+        <p class="body">Your application is with Helia. We review every brand personally, and if we are the right partner for you, we will be in touch within two business days to schedule your strategy call.</p>
+        <p id="booking-wrap" hidden><a class="pill-btn solid" id="booking-link" href="#" target="_blank" rel="noopener">Book your strategy call<span class="arrow" aria-hidden="true"></span></a></p>
+      </section>
+
+      <!-- Result: not at this time -->
+      <section class="result" id="result-other" aria-labelledby="ro-title">
+        <span class="ornament" aria-hidden="true">&#10022; &#10022; &#10022;</span>
+        <h2 class="question" id="ro-title" tabindex="-1">Thank you for sharing your brand <em>with us.</em></h2>
+        <p class="body">This may not be the right moment to work together, and that is completely fine. We have kept your details, and we will reach out if something better suited to where you are becomes available.</p>
+        <p><a class="pill-btn" href="https://www.instagram.com/grandascend_media/" target="_blank" rel="noopener">Follow us on Instagram<span class="arrow" aria-hidden="true"></span></a></p>
+      </section>
+    </div>
+
+    <div class="collage reveal" aria-hidden="true">
+      <figure class="c1"><img src="images/img-13-80a12bfb54.jpg" alt="" loading="lazy"></figure>
+      <figure class="c2"><img src="images/img-11-f224f55804.jpg" alt="" loading="lazy"></figure>
+      <figcaption>GrandAscend &middot; Montreal</figcaption>
+    </div>
+  </section>
+
+  <section class="social" aria-labelledby="social-title">
+    <div class="social-photo"><img src="images/img-14-175ac669bc.jpg" alt="The GrandAscend team at work" loading="lazy"></div>
+    <div class="social-copy reveal">
+      <h2 id="social-title">Follow the work <br>as it happens.</h2>
+      <p>Launches, behind the scenes and the details that make a brand feel expensive. Come and see what we are building.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/grandascend_media/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="mailto:contact@grandascend.co" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="social-float" aria-hidden="true"><img src="images/img-15-f6260011dc.jpg" alt="" loading="lazy"></div>
+  </section>
 </main>
 
-<footer class="apply-footer">&copy; 2026 GrandAscend &nbsp;&middot;&nbsp; Montreal</footer>
+<footer>
+  <div class="site-footer">
+    <div class="footer-col">
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 132 132">
+          <defs><path id="ring" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs>
+          <text><textPath href="#ring" textLength="324" lengthAdjust="spacing">Luxury Branding &middot; Montreal &middot; LVMH Certified &middot;</textPath></text>
+        </svg>
+        <img src="images/logo-mark-ga.png" alt="">
+      </div>
+      <a href="#top" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
+    </div>
+    <div class="footer-col">
+      <h3>menu</h3>
+      <ul class="footer-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="creators.html">Creators</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="#apply">Work with us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-about">
+      <small>GrandAscend | Luxury brand strategy and content | Montreal, working worldwide</small>
+      <p>A creative marketing agency for luxury and beauty brands. Founded by LVMH certified strategist Helia Homam.</p>
+    </div>
+    <p class="copyright">&copy; 2026 GrandAscend</p>
+  </div>
+  <div class="filmstrip" aria-hidden="true">
+    <img src="images/helia-story-photo.jpg" alt="" loading="lazy">
+    <img src="images/img-08-45f84fc342.jpg" alt="" loading="lazy">
+    <img src="images/img-13-80a12bfb54.jpg" alt="" loading="lazy">
+    <img src="images/img-14-175ac669bc.jpg" alt="" loading="lazy">
+    <img src="images/img-10-64547a0fb2.jpg" alt="" loading="lazy">
+    <img src="images/img-12-08a9f85813.jpg" alt="" loading="lazy">
+    <img src="images/img-11-f224f55804.jpg" alt="" loading="lazy">
+    <img src="images/img-15-f6260011dc.jpg" alt="" loading="lazy">
+  </div>
+</footer>
 
 <script>
 /* ─────────────────────────────────────────────
@@ -394,7 +574,6 @@ var BOOKING_URL = "";
 
 var form      = document.getElementById("apply-form");
 var steps     = Array.prototype.slice.call(form.querySelectorAll(".step"));
-var controls  = document.getElementById("controls");
 var nextBtn   = document.getElementById("next-btn");
 var nextLabel = document.getElementById("next-label");
 var backBtn   = document.getElementById("back-btn");
@@ -403,20 +582,29 @@ var countEl   = document.getElementById("step-count");
 var barEl     = document.getElementById("progress-bar");
 var statusEl  = document.getElementById("form-status");
 var otherWrap = document.getElementById("other-wrap");
+var anchorEl  = document.querySelector(".progress-row");
 var current   = 0;
-var questionCount = steps.length - 1;   /* everything after the intro */
 var sending   = false;
 
 /* Where the visitor came from, e.g. grandascend.co/apply?src=bio or ?src=reel */
 var params = new URLSearchParams(window.location.search);
 var source = params.get("src") || params.get("utm_source") || params.get("utm_campaign") || "direct";
 
+function pad(n) { return (n < 10 ? "0" : "") + n; }
 function isLast(i) { return i === steps.length - 1; }
 
 function visibleInputs(step) {
   return Array.prototype.filter.call(step.querySelectorAll(".text-input"), function (el) {
     return !el.closest("[hidden]");
   });
+}
+
+function updateChrome() {
+  countEl.textContent = pad(current + 1) + " / " + pad(steps.length);
+  barEl.style.width = ((current + 1) / steps.length * 100) + "%";
+  backBtn.hidden = current === 0;
+  nextLabel.textContent = isLast(current) ? "Send off" : "Continue";
+  enterHint.hidden = !visibleInputs(steps[current]).length;
 }
 
 /* Show the starting price for whichever service was chosen. */
@@ -429,6 +617,14 @@ function fillInvestment() {
   document.getElementById("inv-note").textContent  = s.note;
 }
 
+/* Keep the question in view when a step changes height. */
+function keepInView() {
+  var top = anchorEl.getBoundingClientRect().top;
+  if (top < 0 || top > window.innerHeight * 0.5) {
+    window.scrollTo({ top: window.scrollY + top - 24, behavior: "smooth" });
+  }
+}
+
 function show(i, goingBack) {
   steps[current].classList.remove("active", "back");
   current = i;
@@ -436,32 +632,24 @@ function show(i, goingBack) {
   if (step.dataset.step === "investment") fillInvestment();
   step.classList.toggle("back", !!goingBack);
   step.classList.add("active");
-
-  var onIntro = current === 0;
-  controls.hidden = onIntro;
-  backBtn.hidden = onIntro;
-  countEl.textContent = onIntro ? "" : current + " / " + questionCount;
-  barEl.style.width = (current / questionCount * 100) + "%";
-  nextLabel.textContent = isLast(current) ? "Submit" : "Continue";
-  enterHint.hidden = !visibleInputs(step).length;
   statusEl.textContent = "";
+  updateChrome();
+  keepInView();
 
   /* Move focus to the new question so screen readers announce it
      and typing starts straight in the text field. */
   var input = visibleInputs(step)[0];
   if (input && !goingBack && !step.querySelector("input[type=radio]")) input.focus({ preventScroll: true });
   else step.querySelector(".question").focus({ preventScroll: true });
-  window.scrollTo(0, 0);
 }
 
 function stepError(step, message) {
   var err = step.querySelector(".field-error");
   if (!err) return;
   err.textContent = message;
-  var lines = step.querySelectorAll(".field-line");
-  for (var l = 0; l < lines.length; l++) {
-    var inp = lines[l].querySelector("input");
-    lines[l].classList.toggle("invalid", !!message && !inp.value.trim());
+  var fields = step.querySelectorAll(".pill-field");
+  for (var l = 0; l < fields.length; l++) {
+    fields[l].classList.toggle("invalid", !!message && !fields[l].querySelector("input").value.trim());
   }
   var list = step.querySelector(".choices");
   if (list) list.classList.toggle("invalid", !!message && !step.querySelector("input[type=radio]:checked"));
@@ -497,7 +685,6 @@ function back() {
   if (current > 0) show(current - 1, true);
 }
 
-form.querySelector("[data-next]").addEventListener("click", next);
 nextBtn.addEventListener("click", next);
 backBtn.addEventListener("click", back);
 
@@ -520,7 +707,7 @@ form.addEventListener("change", function (e) {
 });
 
 /* Tapping a choice moves on by itself, except for "Other" (they still need
-   to type) and the final question (they press Submit). Keyboard selection
+   to type) and the final question (they press Send off). Keyboard selection
    only fires a click on the hidden radio itself, so it waits for Continue. */
 form.addEventListener("click", function (e) {
   var choice = e.target.closest && e.target.closest(".choice");
@@ -544,7 +731,7 @@ function setLoading(on) {
   sending = on;
   nextBtn.disabled = on;
   backBtn.disabled = on;
-  nextLabel.textContent = on ? "Sending" : "Submit";
+  nextLabel.textContent = on ? "Sending" : "Send off";
   var s = document.getElementById("submit-spinner");
   if (on && !s) {
     s = document.createElement("span");
@@ -587,8 +774,7 @@ function submit() {
 
 function finish(qualified, firstName) {
   form.hidden = true;
-  countEl.textContent = "";
-  barEl.style.width = "100%";
+  anchorEl.hidden = true;
   var nameEls = document.querySelectorAll(".js-first-name");
   for (var n = 0; n < nameEls.length; n++) nameEls[n].textContent = firstName;
 
@@ -599,8 +785,21 @@ function finish(qualified, firstName) {
   var result = document.getElementById(qualified ? "result-qualified" : "result-other");
   result.classList.add("active");
   result.querySelector(".question").focus({ preventScroll: true });
-  window.scrollTo(0, 0);
 }
+
+updateChrome();
+
+/* Scroll reveals, same pattern as the rest of the site. */
+var revealObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+var revealTargets = document.querySelectorAll(".reveal");
+for (var r = 0; r < revealTargets.length; r++) revealObserver.observe(revealTargets[r]);
 </script>
 
 </body>
