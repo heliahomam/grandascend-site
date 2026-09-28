@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply &middot; Monthly Content Partnership &middot; GrandAscend</title>
+<meta name="description" content="Apply for the GrandAscend Monthly Content Partnership. Strategic, editorial content for luxury and beauty brands, led by an LVMH certified strategist.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --cream: #F5F0E8;
+  --beige: #E8E0D0;
+  --taupe: #B5A898;
+  --blush: #e6b7bd;
+  --charcoal: #2A2A2A;
+  --black: #1A1A1A;
+  --white: #FDFAF5;
+  --muted: #9A9189;
+  --ink-soft: #6E6258;
+  --error-light: #7A2E1E;
+  --rule: rgba(42,42,42,0.18);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Montserrat', sans-serif;
+  --ease: cubic-bezier(0.16,1,0.3,1);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { min-height: 100%; }
+body {
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: var(--sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--charcoal);
+  outline-offset: 4px;
+}
+
+/* ── HEADER: logo only, so nothing pulls the visitor away mid-application ── */
+.apply-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 26px 24px;
+}
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; }
+.logo img { height: 18px; width: auto; display: block; }
+.logo span { font-style: italic; font-weight: 700; letter-spacing: 0.05em; text-transform: none; }
+.step-count { font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.step-count:empty { display: none; }
+
+.progress { height: 1px; background: var(--rule); position: relative; }
+.progress span { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--charcoal); transition: width 0.7s var(--ease); }
+
+/* ── STAGE ── */
+.stage {
+  flex: 1;
+  display: flex; align-items: center;
+  padding: 56px 24px 72px;
+}
+.stage-inner { width: 100%; max-width: 640px; margin: 0 auto; }
+
+.step { display: none; border: none; }
+.step.active { display: block; animation: stepIn 0.7s var(--ease) both; }
+.step.back { animation-name: stepInBack; }
+@keyframes stepIn { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes stepInBack { from { opacity: 0; transform: translateY(-28px); } to { opacity: 1; transform: none; } }
+
+.eyebrow {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.42em;
+  text-transform: uppercase; color: var(--ink-soft);
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px;
+}
+.eyebrow::after { content: ''; height: 1px; width: 48px; background: var(--blush); }
+
+.question {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(28px, 5.4vw, 46px); line-height: 1.16;
+  letter-spacing: -0.01em; text-wrap: balance;
+  margin-bottom: 18px; outline: none;
+}
+.question em { font-style: italic; color: var(--ink-soft); }
+.hint { font-size: 13px; line-height: 1.9; letter-spacing: 0.03em; color: var(--ink-soft); max-width: 52ch; margin-bottom: 40px; }
+
+/* Intro screen */
+.intro h1 { font-size: clamp(38px, 7.5vw, 72px); line-height: 1.04; margin-bottom: 28px; }
+.intro-body { font-size: 14px; line-height: 2; letter-spacing: 0.03em; color: var(--charcoal); opacity: 0.8; max-width: 48ch; margin-bottom: 18px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase;
+  border: 1px solid var(--taupe); background: var(--beige);
+  padding: 9px 16px; margin-bottom: 34px;
+}
+.badge i { width: 6px; height: 6px; border-radius: 50%; background: var(--taupe); }
+.meta { font-size: 11px; letter-spacing: 0.08em; color: var(--ink-soft); margin-top: 22px; }
+
+/* Text inputs */
+.field-line { position: relative; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; }
+.field-line::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 0; height: 1px; background: var(--charcoal); transition: width 0.5s var(--ease); }
+.field-line:focus-within::after { width: 100%; }
+.field-line.invalid { border-bottom-color: var(--error-light); }
+.field-line > span { font-size: clamp(18px, 3.4vw, 24px); color: var(--ink-soft); }
+.text-input {
+  font-family: var(--sans); font-size: clamp(18px, 3.4vw, 24px); font-weight: 300; color: var(--charcoal);
+  background: transparent; border: none; outline: none; width: 100%; padding: 14px 0; border-radius: 0;
+}
+.text-input::placeholder { color: var(--muted); }
+.text-input:focus-visible { outline: none; }
+
+/* Choice list */
+.choices { display: flex; flex-direction: column; gap: 12px; }
+.choice { position: relative; display: block; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; pointer-events: none; }
+.choice span {
+  display: flex; align-items: center; gap: 18px;
+  padding: 19px 22px; border: 1px solid var(--rule);
+  font-size: 14px; font-weight: 400; letter-spacing: 0.03em; line-height: 1.5;
+  transition: border-color 0.3s ease, background 0.3s ease, padding-left 0.45s var(--ease);
+}
+.choice span::before {
+  content: ''; flex-shrink: 0; width: 9px; height: 9px; border-radius: 50%;
+  border: 1px solid var(--ink-soft); transition: background 0.3s ease, border-color 0.3s ease;
+}
+.choice:hover span { border-color: var(--charcoal); padding-left: 28px; }
+.choice input:checked + span { background: var(--charcoal); border-color: var(--charcoal); color: var(--cream); }
+.choice input:checked + span::before { background: var(--blush); border-color: var(--blush); }
+.choice input:focus-visible + span { outline: 2px solid var(--charcoal); outline-offset: 4px; }
+.choices.invalid .choice span { border-color: rgba(122,46,30,0.45); }
+
+/* Investment panel: blush ground, charcoal text (8.1:1) */
+.investment {
+  background: var(--blush); padding: 30px 28px; margin-bottom: 34px;
+  display: grid; gap: 6px;
+}
+.investment small { font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: #4A4038; }
+.investment strong { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 6vw, 50px); line-height: 1.1; }
+.investment strong em { font-family: var(--sans); font-style: normal; font-size: 13px; letter-spacing: 0.06em; color: #4A4038; margin-left: 6px; }
+.investment p { font-size: 12px; letter-spacing: 0.04em; line-height: 1.8; color: #4A4038; }
+
+.field-error { font-size: 12px; font-weight: 400; color: var(--error-light); margin-top: 14px; min-height: 1em; }
+.field-error:empty { display: none; }
+
+/* ── CONTROLS ── */
+.controls { display: flex; align-items: center; gap: 28px; margin-top: 44px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 16px;
+  font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--white); background: var(--charcoal);
+  border: none; padding: 21px 40px; cursor: pointer; text-decoration: none;
+  transition: background 0.35s ease, opacity 0.3s ease;
+}
+.btn:hover:not(:disabled) { background: var(--black); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn .arrow { width: 18px; height: 1px; background: currentColor; display: inline-block; transition: width 0.4s var(--ease); }
+.btn:hover:not(:disabled) .arrow { width: 34px; }
+.btn-back {
+  font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase;
+  background: none; border: none; color: var(--ink-soft); cursor: pointer; padding: 10px 0;
+}
+.btn-back:hover { color: var(--charcoal); }
+.enter-hint { font-size: 10px; letter-spacing: 0.1em; color: var(--ink-soft); display: none; }
+@media (hover: hover) and (min-width: 700px) { .enter-hint { display: inline; } }
+
+.spinner { width: 11px; height: 11px; border: 1px solid rgba(253,250,245,0.3); border-top-color: var(--white); border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.form-status { font-size: 12px; line-height: 1.75; color: var(--error-light); margin-top: 20px; }
+.form-status:empty { display: none; }
+
+/* ── RESULT SCREENS ── */
+.result { display: none; }
+.result.active { display: block; animation: stepIn 0.8s var(--ease) both; }
+.ornament { font-size: 14px; letter-spacing: 0.7em; color: var(--ink-soft); display: block; margin-bottom: 26px; }
+.result .intro-body { margin-bottom: 30px; }
+.sig { font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-soft); margin-top: 40px; }
+
+.apply-footer { text-align: center; padding: 28px 24px 34px; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); }
+
+@media (min-width: 900px) {
+  .apply-header { padding: 30px 60px; }
+  .stage { padding: 72px 60px 96px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Netlify Forms build-time detection. Not rendered to visitors.
+     Qualified applicants (said yes to the investment) go to one form,
+     everyone else to the other, so notifications can be set on the first only. -->
+<form name="grandascend-qualified-lead" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field">
+  <input type="text" name="name"><input type="text" name="brand"><input type="text" name="instagram">
+  <input type="text" name="category"><input type="text" name="stage"><input type="text" name="goal">
+  <input type="text" name="start"><input type="text" name="investment"><input type="email" name="email">
+  <input type="text" name="source">
+</form>
+<form name="grandascend-other-lead" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field">
+  <input type="text" name="name"><input type="text" name="brand"><input type="text" name="instagram">
+  <input type="text" name="category"><input type="text" name="stage"><input type="text" name="goal">
+  <input type="text" name="start"><input type="text" name="investment"><input type="email" name="email">
+  <input type="text" name="source">
+</form>
+
+<header class="apply-header">
+  <a href="index.html" class="logo"><img src="images/logo-mark-ga.png" alt=""><span>Grand</span>Ascend</a>
+  <p class="step-count" id="step-count" aria-live="polite"></p>
+</header>
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+<main class="stage">
+  <div class="stage-inner">
+
+    <form id="apply-form" novalidate>
+      <!-- Honeypot: real visitors never see or fill this. -->
+      <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- 0. Intro -->
+      <section class="step intro active" data-step="intro">
+        <p class="eyebrow">Monthly Content Partnership</p>
+        <h1 class="question" tabindex="-1">Content that makes your brand <em>impossible to scroll past.</em></h1>
+        <div class="badge"><i></i>LVMH Certified Strategist</div>
+        <p class="intro-body">We partner with a limited number of luxury and beauty brands each month. Tell us about yours, and if it is a fit, we will invite you to a private strategy call.</p>
+        <div class="controls">
+          <button type="button" class="btn" data-next>Begin application<span class="arrow" aria-hidden="true"></span></button>
+        </div>
+        <p class="meta">Nine short questions. About two minutes.</p>
+      </section>
+
+      <!-- 1. Name -->
+      <section class="step" data-step="name" data-required>
+        <label class="question" for="f-name" tabindex="-1">First, what is your name?</label>
+        <p class="hint">So we know who we are speaking with.</p>
+        <div class="field-line"><input class="text-input" id="f-name" name="name" type="text" autocomplete="name" placeholder="Your full name"></div>
+        <p class="field-error" role="alert"></p>
+      </section>
+
+      <!-- 2. Brand -->
+      <section class="step" data-step="brand" data-required>
+        <label class="question" for="f-brand" tabindex="-1">What is the name of <em>your brand?</em></label>
+        <p class="hint">The business you would like us to create content for.</p>
+        <div class="field-line"><input class="text-input" id="f-brand" name="brand" type="text" autocomplete="organization" placeholder="Brand name"></div>
+        <p class="field-error" role="alert"></p>
+      </section>
+
+      <!-- 3. Instagram -->
+      <section class="step" data-step="instagram" data-required>
+        <label class="question" for="f-instagram" tabindex="-1">Where can we find your brand on Instagram?</label>
+        <p class="hint">We look at every account before we reply.</p>
+        <div class="field-line"><span aria-hidden="true">@</span><input class="text-input" id="f-instagram" name="instagram" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="yourbrand"></div>
+        <p class="field-error" role="alert"></p>
+      </section>
+
+      <!-- 4. Category -->
+      <fieldset class="step" data-step="category" data-required>
+        <legend class="question" tabindex="-1">Which best describes your brand?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="category" value="Beauty and skincare"><span>Beauty and skincare</span></label>
+          <label class="choice"><input type="radio" name="category" value="Fashion and accessories"><span>Fashion and accessories</span></label>
+          <label class="choice"><input type="radio" name="category" value="Hospitality, dining and events"><span>Hospitality, dining and events</span></label>
+          <label class="choice"><input type="radio" name="category" value="Wellness and lifestyle"><span>Wellness and lifestyle</span></label>
+          <label class="choice"><input type="radio" name="category" value="Other"><span>Something else</span></label>
+        </div>
+        <p class="field-error" role="alert"></p>
+      </fieldset>
+
+      <!-- 5. Stage -->
+      <fieldset class="step" data-step="stage" data-required>
+        <legend class="question" tabindex="-1">Where is your brand today?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="stage" value="Launching or recently launched"><span>Launching, or recently launched</span></label>
+          <label class="choice"><input type="radio" name="stage" value="Growing, content is inconsistent"><span>Growing, but our content is inconsistent</span></label>
+          <label class="choice"><input type="radio" name="stage" value="Established, ready to elevate"><span>Established, and ready to elevate</span></label>
+        </div>
+        <p class="field-error" role="alert"></p>
+      </fieldset>
+
+      <!-- 6. Goal -->
+      <fieldset class="step" data-step="goal" data-required>
+        <legend class="question" tabindex="-1">What would make the biggest difference for you right now?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="goal" value="Consistent, elevated content"><span>Consistent, elevated content every month</span></label>
+          <label class="choice"><input type="radio" name="goal" value="Growth and reach"><span>Growing our audience and reach</span></label>
+          <label class="choice"><input type="radio" name="goal" value="Turning followers into clients"><span>Turning followers into paying clients</span></label>
+          <label class="choice"><input type="radio" name="goal" value="Repositioning as a luxury brand"><span>Repositioning as a luxury brand</span></label>
+        </div>
+        <p class="field-error" role="alert"></p>
+      </fieldset>
+
+      <!-- 7. Start -->
+      <fieldset class="step" data-step="start" data-required>
+        <legend class="question" tabindex="-1">When would you like to begin?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="start" value="Right away"><span>Right away</span></label>
+          <label class="choice"><input type="radio" name="start" value="Within a month"><span>Within the next month</span></label>
+          <label class="choice"><input type="radio" name="start" value="In 2 to 3 months"><span>In two to three months</span></label>
+          <label class="choice"><input type="radio" name="start" value="Just exploring"><span>I am just exploring for now</span></label>
+        </div>
+        <p class="field-error" role="alert"></p>
+      </fieldset>
+
+      <!-- 8. Investment: the qualifying question -->
+      <fieldset class="step" data-step="investment" data-required>
+        <legend class="question" tabindex="-1">If accepted, is this investment <em>within your budget?</em></legend>
+        <div class="investment">
+          <small>Monthly Content Partnership</small>
+          <strong><span class="js-price">$1,500</span><em>USD per month</em></strong>
+          <p>Minimum investment, with a three month minimum commitment. Final pricing is tailored to your brand on our strategy call.</p>
+        </div>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="investment" value="Yes"><span>Yes, I am ready to invest at this level</span></label>
+          <label class="choice"><input type="radio" name="investment" value="No"><span>Not at this time</span></label>
+        </div>
+        <p class="field-error" role="alert"></p>
+      </fieldset>
+
+      <!-- 9. Email + submit -->
+      <section class="step" data-step="email" data-required>
+        <label class="question" for="f-email" tabindex="-1">Last one. Where should we send <em>our reply?</em></label>
+        <p class="hint">Every application is reviewed personally. We reply within two business days.</p>
+        <div class="field-line"><input class="text-input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@yourbrand.com"></div>
+        <p class="field-error" role="alert"></p>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <div class="controls" id="controls" hidden>
+        <button type="button" class="btn" id="next-btn"><span id="next-label">Continue</span><span class="arrow" aria-hidden="true"></span></button>
+        <button type="button" class="btn-back" id="back-btn">Back</button>
+        <span class="enter-hint" id="enter-hint">or press Enter</span>
+      </div>
+    </form>
+
+    <!-- Result: said yes to the investment -->
+    <section class="result" id="result-qualified" aria-labelledby="rq-title">
+      <span class="ornament" aria-hidden="true">&#10022; &#10022; &#10022;</span>
+      <p class="eyebrow">Application received</p>
+      <h2 class="question" id="rq-title" tabindex="-1">Thank you, <span class="js-first-name"></span>. <em>We are glad you are here.</em></h2>
+      <p class="intro-body">Your application is with Helia. We review every brand personally, and if we are the right partner for you, we will be in touch within two business days to schedule your strategy call.</p>
+      <p id="booking-wrap" hidden><a class="btn" id="booking-link" href="#" target="_blank" rel="noopener">Book your strategy call<span class="arrow" aria-hidden="true"></span></a></p>
+      <p class="sig">GrandAscend &middot; Montreal</p>
+    </section>
+
+    <!-- Result: not at this time -->
+    <section class="result" id="result-other" aria-labelledby="ro-title">
+      <span class="ornament" aria-hidden="true">&#10022; &#10022; &#10022;</span>
+      <p class="eyebrow">Thank you</p>
+      <h2 class="question" id="ro-title" tabindex="-1">Thank you for sharing your brand <em>with us.</em></h2>
+      <p class="intro-body">Our Monthly Content Partnership may not be the right fit just yet, and that is completely fine. We have kept your details, and we will reach out if something better suited to where you are becomes available.</p>
+      <p><a class="btn" href="https://www.instagram.com/grandascend_media/" target="_blank" rel="noopener">Follow us on Instagram<span class="arrow" aria-hidden="true"></span></a></p>
+      <p class="sig">GrandAscend &middot; Montreal</p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="apply-footer">&copy; 2026 GrandAscend &nbsp;&middot;&nbsp; Montreal</footer>
+
+<script>
+/* ─────────────────────────────────────────────
+   Settings Helia can change.
+   MINIMUM_PRICE: shown on the investment question.
+   BOOKING_URL: paste a Calendly or HubSpot Meetings
+   link here and qualified applicants get a
+   "Book your strategy call" button. Leave it empty
+   to review applications first and reply by email.
+   ───────────────────────────────────────────── */
+var MINIMUM_PRICE = "$1,500";
+var BOOKING_URL   = "";
+
+var form      = document.getElementById("apply-form");
+var steps     = Array.prototype.slice.call(form.querySelectorAll(".step"));
+var controls  = document.getElementById("controls");
+var nextBtn   = document.getElementById("next-btn");
+var nextLabel = document.getElementById("next-label");
+var backBtn   = document.getElementById("back-btn");
+var enterHint = document.getElementById("enter-hint");
+var countEl   = document.getElementById("step-count");
+var barEl     = document.getElementById("progress-bar");
+var statusEl  = document.getElementById("form-status");
+var current   = 0;
+var questionCount = steps.length - 1;   /* everything after the intro */
+var sending   = false;
+
+var priceEls = document.querySelectorAll(".js-price");
+for (var p = 0; p < priceEls.length; p++) priceEls[p].textContent = MINIMUM_PRICE;
+
+/* Where the visitor came from, e.g. grandascend.co/apply?src=bio or ?src=reel */
+var params = new URLSearchParams(window.location.search);
+var source = params.get("src") || params.get("utm_source") || params.get("utm_campaign") || "direct";
+
+function isLast(i) { return i === steps.length - 1; }
+
+function show(i, goingBack) {
+  steps[current].classList.remove("active", "back");
+  current = i;
+  var step = steps[current];
+  step.classList.toggle("back", !!goingBack);
+  step.classList.add("active");
+
+  var onIntro = current === 0;
+  controls.hidden = onIntro;
+  backBtn.hidden = onIntro;
+  countEl.textContent = onIntro ? "" : current + " / " + questionCount;
+  barEl.style.width = (current / questionCount * 100) + "%";
+  nextLabel.textContent = isLast(current) ? "Submit application" : "Continue";
+  enterHint.hidden = !step.querySelector(".text-input");
+  statusEl.textContent = "";
+
+  /* Move focus to the new question so screen readers announce it
+     and typing starts straight in the text field. */
+  var input = step.querySelector(".text-input");
+  if (input && !goingBack) input.focus({ preventScroll: true });
+  else step.querySelector(".question").focus({ preventScroll: true });
+  window.scrollTo(0, 0);
+}
+
+function stepError(step, message) {
+  var err = step.querySelector(".field-error");
+  if (!err) return;
+  err.textContent = message;
+  var line = step.querySelector(".field-line");
+  if (line) line.classList.toggle("invalid", !!message);
+  var list = step.querySelector(".choices");
+  if (list) list.classList.toggle("invalid", !!message);
+}
+
+function validateStep(step) {
+  var input = step.querySelector(".text-input");
+  if (input) {
+    var value = input.value.trim();
+    if (input.name === "instagram") { value = value.replace(/^@+/, ""); input.value = value; }
+    if (!value) { stepError(step, "Please fill this in to continue."); input.focus(); return false; }
+    if (input.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+      stepError(step, "Please enter a valid email address."); input.focus(); return false;
+    }
+  } else if (step.querySelector("input[type=radio]") && !step.querySelector("input[type=radio]:checked")) {
+    stepError(step, "Please choose one to continue.");
+    return false;
+  }
+  stepError(step, "");
+  return true;
+}
+
+function next() {
+  if (sending) return;
+  if (!validateStep(steps[current])) return;
+  if (isLast(current)) submit();
+  else show(current + 1);
+}
+
+function back() {
+  if (current > 0) show(current - 1, true);
+}
+
+form.querySelector("[data-next]").addEventListener("click", next);
+nextBtn.addEventListener("click", next);
+backBtn.addEventListener("click", back);
+
+/* Enter moves forward from a text field. */
+form.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && e.target.classList.contains("text-input")) {
+    e.preventDefault();
+    next();
+  }
+});
+form.addEventListener("submit", function (e) { e.preventDefault(); next(); });
+
+/* Tapping a choice moves on by itself. Keyboard selection only
+   fires a click on the hidden radio itself, so it waits for Continue. */
+form.addEventListener("click", function (e) {
+  var choice = e.target.closest && e.target.closest(".choice");
+  if (!choice || e.target.tagName === "INPUT") return;
+  stepError(steps[current], "");
+  var at = current;
+  setTimeout(function () { if (current === at) next(); }, 320);
+});
+form.addEventListener("input", function (e) {
+  if (e.target.classList.contains("text-input")) stepError(steps[current], "");
+});
+
+function val(name) {
+  var el = form.querySelector('[name="' + name + '"]:checked') || form.querySelector('[name="' + name + '"]:not([type=radio])');
+  return el ? el.value.trim() : "";
+}
+
+function setLoading(on) {
+  sending = on;
+  nextBtn.disabled = on;
+  backBtn.disabled = on;
+  nextLabel.textContent = on ? "Sending" : "Submit application";
+  var s = document.getElementById("submit-spinner");
+  if (on && !s) {
+    s = document.createElement("span");
+    s.className = "spinner"; s.id = "submit-spinner"; s.setAttribute("aria-hidden", "true");
+    nextBtn.appendChild(s);
+  } else if (!on && s) s.remove();
+}
+
+function submit() {
+  var qualified = val("investment") === "Yes";
+  var data = {
+    "form-name":  qualified ? "grandascend-qualified-lead" : "grandascend-other-lead",
+    "bot-field":  val("bot-field"),
+    "name":       val("name"),
+    "brand":      val("brand"),
+    "instagram":  val("instagram"),
+    "category":   val("category"),
+    "stage":      val("stage"),
+    "goal":       val("goal"),
+    "start":      val("start"),
+    "investment": qualified ? "Yes, " + MINIMUM_PRICE + " USD per month" : "Not at this time",
+    "email":      val("email"),
+    "source":     source
+  };
+
+  setLoading(true);
+  fetch(window.location.pathname, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(data).toString()
+  }).then(function (response) {
+    if (!response.ok) throw new Error("Netlify returned " + response.status);
+    finish(qualified, data.name);
+  }).catch(function () {
+    setLoading(false);
+    statusEl.textContent = "Something went wrong on our end and your application did not go through. Please try again, or email contact@grandascend.co.";
+  });
+}
+
+function finish(qualified, name) {
+  form.hidden = true;
+  countEl.textContent = "";
+  barEl.style.width = "100%";
+  var firstName = name.split(/\s+/)[0];
+  var nameEls = document.querySelectorAll(".js-first-name");
+  for (var n = 0; n < nameEls.length; n++) nameEls[n].textContent = firstName;
+
+  if (qualified && BOOKING_URL) {
+    document.getElementById("booking-link").href = BOOKING_URL;
+    document.getElementById("booking-wrap").hidden = false;
+  }
+  var result = document.getElementById(qualified ? "result-qualified" : "result-other");
+  result.classList.add("active");
+  result.querySelector(".question").focus({ preventScroll: true });
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
