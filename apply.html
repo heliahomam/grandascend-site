@@ -20,10 +20,10 @@
 
 :root {
   --cream: #F5F0E8;
-  --paper: #EEEBE5;
+  --paper: #F5F0E8;
   --beige: #E8E0D0;
-  --taupe: #B5A898;
-  --blush: #e6b7bd;
+  --gold: #B5A898;
+  --taupe: #8C7E72;
   --charcoal: #2A2A2A;
   --ink: #1C1C1C;
   --white: #FDFAF5;
@@ -52,10 +52,10 @@ img { display: block; max-width: 100%; }
 a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 
 /* Paper grounds: crumpled black and warm light paper, as in the template */
-.dark-paper { position: relative; background-color: #1E1E1E; background-image: radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.07), transparent 55%), radial-gradient(ellipse at 85% 80%, rgba(255,255,255,0.05), transparent 50%); color: var(--cream); isolation: isolate; }
+.dark-paper { position: relative; background-color: #2A2A2A; background-image: radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.07), transparent 55%), radial-gradient(ellipse at 85% 80%, rgba(255,255,255,0.05), transparent 50%); color: var(--cream); isolation: isolate; }
 .dark-paper::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('images/paper-grain.svg'); opacity: 0.16; pointer-events: none; }
 .light-paper { position: relative; background: var(--paper); isolation: isolate; }
-.light-paper::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('images/paper-grain.svg'); opacity: 0.13; mix-blend-mode: multiply; filter: invert(1); pointer-events: none; }
+.light-paper::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('images/paper-grain.svg'); opacity: 0.09; mix-blend-mode: multiply; filter: invert(1); pointer-events: none; }
 
 /* Three-part header strip, like the top of every template slide */
 .strip {
@@ -85,7 +85,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .hero-title-wrap { grid-area: title; padding: 34px 24px 0; position: relative; }
 .hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(86px, 25vw, 210px); line-height: 0.84; letter-spacing: -0.02em; }
 .hero h1 em { display: block; font-style: italic; }
-.hero h1 .blush { color: var(--blush); }
+.hero h1 .accent { color: var(--gold); }
 .hero-media { grid-area: media; position: relative; padding: 44px 24px 20px; }
 .hero-copy { grid-area: copy; padding: 20px 24px 72px; }
 .hero-lede { font-size: 13px; line-height: 1.85; letter-spacing: 0.02em; color: var(--beige); max-width: 44ch; margin-bottom: 34px; }
@@ -184,13 +184,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 
 .other-wrap { margin-top: 18px; }
 
-/* Investment card: dark paper, as in the template's dark slides */
-.investment { position: relative; margin-bottom: 18px; padding: 30px 28px 28px; display: grid; gap: 6px; color: var(--cream); background: #1E1E1E; isolation: isolate; box-shadow: 0 20px 40px -26px rgba(0,0,0,0.6); }
-.investment::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('images/paper-grain.svg'); opacity: 0.16; }
-.investment small { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush); }
-.investment strong { font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 8vw, 80px); line-height: 1; }
-.investment strong em { font-family: var(--sans); font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--beige); margin-left: 10px; }
-.investment p { font-size: 12px; line-height: 1.8; color: var(--beige); opacity: 0.85; max-width: 52ch; }
+/* Investment: a quiet line of text, no box */
+.investment { margin: 22px 0 26px; display: grid; gap: 4px; }
+.investment small { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); }
+.investment strong { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.2; color: var(--ink); }
+.investment strong::before { content: 'From '; font-style: italic; }
+.investment strong em { font-family: var(--serif); font-style: italic; font-size: 30px; letter-spacing: 0; text-transform: none; color: var(--ink); margin-left: 6px; }
+.investment p { font-size: 12px; line-height: 1.8; color: var(--ink-soft); max-width: 52ch; }
 
 .field-error { font-size: 12px; font-weight: 500; color: var(--error-light); margin-top: 12px; }
 .field-error:empty { display: none; }
@@ -235,9 +235,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .social-links a:hover { background: var(--cream); color: var(--ink); }
 .social-links svg { width: 17px; height: 17px; }
 .social-photo { position: relative; min-height: 460px; }
-.social-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: grayscale(0.15); }
+.social-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: sepia(0.14) saturate(0.95); }
 .social-photo .polaroid { position: absolute; left: 24px; bottom: 28px; width: 150px; transform: rotate(-6deg); padding: 8px 8px 30px; }
 .social-photo .polaroid .frame { aspect-ratio: 1; }
+.social-photo .polaroid img { object-position: center 30%; }
 .social-photo .polaroid .tape { top: -11px; left: 30%; width: 70px; height: 22px; transform: rotate(-6deg); }
 
 /* ── FOOTER ── */
@@ -331,7 +332,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
     </ul></nav>
   </div>
   <div class="hero-title-wrap">
-    <h1><em class="rise">Work</em><span class="rise d1">with <span class="blush">us</span></span></h1>
+    <h1><em class="rise">Work</em><span class="rise d1">with <span class="accent">us</span></span></h1>
   </div>
   <div class="hero-media rise d2">
     <p class="note">LVMH certified strategist <svg viewBox="0 0 46 34" aria-hidden="true"><path d="M3 4 C 12 24, 26 30, 40 24 M33 19 L40 24 L32 29"/></svg></p>
@@ -468,7 +469,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
     </div>
 
     <div class="collage reveal" aria-hidden="true">
-      <figure class="polaroid p1"><span class="tape"></span><div class="frame"><img src="images/shoot-moodboard.jpg" alt="" loading="lazy"></div></figure>
+      <figure class="polaroid p1"><span class="tape"></span><div class="frame"><img src="images/shoot-studio-chair.jpg" alt="" loading="lazy"></div></figure>
       <figure class="polaroid p2"><span class="tape"></span><div class="frame"><img src="images/shoot-helia-laptop.jpg" alt="" loading="lazy"></div></figure>
       <p class="note">the studio, Montreal <svg viewBox="0 0 46 34" aria-hidden="true"><path d="M3 4 C 12 24, 26 30, 40 24 M33 19 L40 24 L32 29"/></svg></p>
     </div>
@@ -491,7 +492,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
     </div>
     <div class="social-photo">
       <img src="images/shoot-helia-camera.jpg" alt="Helia Homam holding a camera on set" loading="lazy">
-      <figure class="polaroid" aria-hidden="true"><span class="tape"></span><div class="frame"><img src="images/shoot-studio-chair-sm.jpg" alt="" loading="lazy"></div></figure>
+      <figure class="polaroid" aria-hidden="true"><span class="tape"></span><div class="frame"><img src="images/shoot-heels-laptop-sm.jpg" alt="" loading="lazy"></div></figure>
     </div>
   </section>
 </main>
