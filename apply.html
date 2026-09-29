@@ -189,6 +189,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .investment small { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); }
 .investment strong { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.2; color: var(--ink); }
 .investment strong::before { content: 'From '; font-style: italic; }
+.investment.fixed strong::before { content: none; }
 .investment strong em { font-family: var(--serif); font-style: italic; font-size: 30px; letter-spacing: 0; text-transform: none; color: var(--ink); margin-left: 6px; }
 .investment p { font-size: 12px; line-height: 1.8; color: var(--ink-soft); max-width: 52ch; }
 
@@ -425,6 +426,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
             <label class="choice"><input type="radio" name="service" value="social"><span>Social Media and Content</span></label>
             <label class="choice"><input type="radio" name="service" value="website"><span>Website Design</span></label>
             <label class="choice"><input type="radio" name="service" value="branding"><span>Brand Identity</span></label>
+            <label class="choice"><input type="radio" name="service" value="consultation"><span>Brand Consultation</span></label>
           </div>
           <p class="field-error" role="alert"></p>
         </fieldset>
@@ -547,7 +549,8 @@ var SERVICES = {
   strategy: { name: "Brand Strategy",                    price: "$2,000", unit: "USD",           note: "Starting investment. Includes market research, competitive analysis, positioning and a strategic roadmap. Final pricing is tailored on our strategy call." },
   social:   { name: "Social Media and Content Creation", price: "$1,500", unit: "USD per month", note: "Starting monthly investment, with a three month minimum commitment. Final pricing is tailored on our strategy call." },
   website:  { name: "Website Design",                    price: "$2,000", unit: "USD",           note: "Starting investment. Final pricing depends on the size of your site and is tailored on our strategy call." },
-  branding: { name: "Brand Identity",                    price: "$3,000", unit: "USD",           note: "Starting investment. Includes logo, visual identity, brand book and brand kit. Final pricing is tailored on our strategy call." }
+  branding: { name: "Brand Identity",                    price: "$3,000", unit: "USD",           note: "Starting investment. Includes logo, visual identity, brand book and brand kit. Final pricing is tailored on our strategy call." },
+  consultation: { name: "Brand Consultation",              price: "$450",   unit: "USD",           note: "A 90-minute private session with Helia, followed by a written action plan within 48 hours.", fixed: true }
 };
 var BOOKING_URL = "";
 
@@ -594,6 +597,7 @@ function fillInvestment() {
   document.getElementById("inv-price").textContent = s.price;
   document.getElementById("inv-unit").textContent  = s.unit;
   document.getElementById("inv-note").textContent  = s.note;
+  document.querySelector(".investment").classList.toggle("fixed", !!s.fixed);
 }
 
 /* Keep the question in view when a step changes height. */
@@ -733,7 +737,7 @@ function submit() {
     "business":     val("business"),
     "instagram":    val("instagram"),
     "service":      service.name,
-    "investment":   (qualified ? "Yes, from " : "Not at this time, from ") + service.price + " " + service.unit,
+    "investment":   (qualified ? "Yes, " : "Not at this time, ") + (service.fixed ? "" : "from ") + service.price + " " + service.unit,
     "source":       source
   };
 
