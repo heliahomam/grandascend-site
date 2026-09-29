@@ -314,9 +314,6 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   .ph-foot { position: static; margin: 0 24px; padding: 18px 0 30px; flex-direction: column; align-items: flex-start; gap: 6px; }
   .ph-foot .hide-sm, .ph-note { display: none; }
   #about.editorial { padding: 90px 24px 100px; }
-  .work-home { padding: 90px 20px 100px; }
-  .work-home-grid { grid-template-columns: 1fr; gap: 64px; }
-  .work-phone { right: -8px; width: 26%; border-width: 4px; border-radius: 14px; }
   #about.editorial .about-grid { grid-template-columns: 1fr; gap: 60px; }
   .about-collage { min-height: 460px; }
 }
@@ -336,12 +333,25 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 .work-home-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
 .work-card { display: block; text-decoration: none; color: var(--charcoal); cursor: none; }
 .work-shot { position: relative; border: 1px solid #BDB2A3; padding: 8px; background: var(--white); margin-bottom: 34px; }
-.work-site { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; display: block; transition: transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.work-site-crop { aspect-ratio: 16/10; overflow: hidden; }
+.work-site { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.work-card:hover .work-site { transform: scale(1.03); }
 .work-phone { position: absolute; right: -18px; bottom: -26px; width: 22%; aspect-ratio: 9/19; object-fit: cover; object-position: top; border: 5px solid var(--charcoal); border-radius: 18px; box-shadow: 0 24px 40px -18px rgba(0,0,0,0.45); transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
 .work-card:hover .work-phone { transform: translateY(-8px) rotate(-2deg); }
 .work-name { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(32px, 3vw, 44px); line-height: 1.05; margin-bottom: 10px; }
 .work-tags { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--taupe); }
 .work-home-cta { text-align: center; margin-top: 80px; }
+@media (max-width: 760px) {
+  .work-home { padding: 80px 20px 90px; }
+  .work-home-head { margin-bottom: 48px; }
+  .work-home-grid { grid-template-columns: 1fr; gap: 70px; }
+  .work-shot { padding: 6px; margin-bottom: 30px; }
+  .work-phone { right: -6px; bottom: -22px; width: 25%; border-width: 3px; border-radius: 12px; }
+  .work-name { font-size: 36px; }
+  .work-tags { font-size: 9px; letter-spacing: 0.2em; line-height: 1.8; }
+  .work-home-cta { margin-top: 60px; }
+  .work-home-cta .ph-btn { width: 100%; justify-content: center; }
+}
 .ph-btn.dark { background: var(--charcoal); color: var(--cream); }
 .ph-btn.dark:hover { background: var(--black); }
 
@@ -719,7 +729,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   <div class="work-home-grid">
     <a class="work-card anim-fade-up" href="services.html#work">
       <div class="work-shot">
-        <img class="work-site" src="images/img-07-568a9aca59.svg" alt="The Roza Grip Socks website" loading="lazy">
+        <div class="work-site-crop"><img class="work-site" src="images/work-roza-site.jpg" alt="The Roza Grip Socks website" loading="lazy"></div>
         <img class="work-phone" src="images/img-08-45f84fc342.jpg" alt="The Roza Grip Socks Instagram feed" loading="lazy">
       </div>
       <h3 class="work-name">Roza Grip Socks</h3>
@@ -727,7 +737,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
     </a>
     <a class="work-card anim-fade-up delay-1" href="https://herheart.io" target="_blank" rel="noopener">
       <div class="work-shot">
-        <img class="work-site" src="images/img-09-670d13af7a.svg" alt="The HerHeart website" loading="lazy">
+        <div class="work-site-crop"><img class="work-site" src="images/work-herheart-site.jpg" alt="The HerHeart website" loading="lazy"></div>
         <img class="work-phone" src="images/img-10-64547a0fb2.jpg" alt="The HerHeart Instagram feed" loading="lazy">
       </div>
       <h3 class="work-name">HerHeart</h3>
