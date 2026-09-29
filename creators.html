@@ -11,14 +11,17 @@
 <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600;700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/300.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/600.css" rel="stylesheet">
 <style>
 
 :root {
   --cream: #F5F0E8;
   --beige: #E8E0D0;
   --taupe: #B5A898;
-  --blush: #e6b7bd;
+  --gold: #B5A898;
   --charcoal: #2A2A2A;
   --black: #1A1A1A;
   --white: #FDFAF5;
@@ -27,8 +30,8 @@
   --error-light: #7A2E1E;
   --ink-soft: #4A4038;
   --rule: rgba(42,42,42,0.22);
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'Montserrat', sans-serif;
+  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --sans: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -64,7 +67,7 @@ nav.scrolled .nav-links a { color: var(--charcoal); }
 .nav-cta { color: var(--charcoal) !important; background: var(--cream); padding: 12px 24px !important; transition: background 0.3s ease, color 0.3s ease !important; }
 nav.scrolled .nav-cta { color: var(--cream) !important; background: var(--charcoal); }
 .nav-cta::after { display: none !important; }
-.nav-cta:hover { background: var(--blush) !important; color: var(--charcoal) !important; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--charcoal) !important; }
 
 .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 200; }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); transition: all 0.3s ease; transform-origin: center; }
@@ -155,7 +158,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   display: flex; align-items: center; gap: 16px;
   margin-bottom: 34px;
 }
-.eyebrow::after { content: ''; height: 1px; width: 48px; background: var(--blush); opacity: 0.55; animation: drawWide 1s 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+.eyebrow::after { content: ''; height: 1px; width: 48px; background: var(--gold); opacity: 0.55; animation: drawWide 1s 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
 
 .hero h1 {
   font-family: var(--serif);
@@ -169,7 +172,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   margin-bottom: 40px;
   animation: clipUp 1.15s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
 }
-.hero h1 em { font-style: italic; color: var(--blush); }
+.hero h1 em { font-style: italic; color: var(--gold); }
 
 .hero-intro {
   font-size: 14px; font-weight: 300; line-height: 2;
@@ -183,10 +186,10 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   animation: revealUp 0.8s 1.5s backwards;
 }
 .scroll-cue span { font-size: 8px; letter-spacing: 0.34em; text-transform: uppercase; color: var(--muted); }
-.scroll-cue i { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--blush), transparent); animation: scrollLine 2.4s 2s infinite; }
+.scroll-cue i { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollLine 2.4s 2s infinite; }
 
 /* ── BODY: editorial two-column ── */
-.body-wrap { background: var(--blush); }
+.body-wrap { background: var(--beige); }
 .body-grid {
   max-width: 1180px; margin: 0 auto;
   padding: 96px 24px 120px;
@@ -351,7 +354,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     <li><a href="services.html" onclick="closeMenu()">Services</a></li>
     <li><a href="careers.html" onclick="closeMenu()">Careers</a></li>
     <li><a href="creators.html" class="active" onclick="closeMenu()">Creators</a></li>
-    <li><a href="index.html#contact" class="nav-cta" onclick="closeMenu()">Let's Talk</a></li>
+    <li><a href="apply.html" class="nav-cta" onclick="closeMenu()">Let's Talk</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>

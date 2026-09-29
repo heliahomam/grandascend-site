@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work With Us &middot; GrandAscend</title>
+<meta name="description" content="Apply to work with GrandAscend. Brand strategy, content creation, websites and brand identity for luxury and beauty brands, led by founder Helia Homam.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" as="image" href="images/shoot-helia-portrait.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600;700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/600.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/700.css" rel="stylesheet">
+<style>
+
+:root {
+  --cream: #F5F0E8;
+  --paper: #F5F0E8;
+  --beige: #E8E0D0;
+  --gold: #B5A898;
+  --taupe: #8C7E72;
+  --charcoal: #2A2A2A;
+  --ink: #1C1C1C;
+  --white: #FDFAF5;
+  --muted: #9A9189;
+  --ink-soft: #5E554D;
+  --error-light: #7A2E1E;
+  --rule: rgba(28,28,28,0.28);
+  --rule-light: rgba(245,240,232,0.22);
+  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --sans: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --hand: 'Patrick Hand SC', 'Comic Sans MS', cursive;
+  --ease: cubic-bezier(0.16,1,0.3,1);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+/* Paper grounds: crumpled black and warm light paper, as in the template */
+.dark-paper { position: relative; background-color: #2A2A2A; background-image: radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.07), transparent 55%), radial-gradient(ellipse at 85% 80%, rgba(255,255,255,0.05), transparent 50%); color: var(--cream); isolation: isolate; }
+.dark-paper::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('images/paper-grain.svg'); opacity: 0.16; pointer-events: none; }
+.light-paper { position: relative; background: var(--paper); isolation: isolate; }
+.light-paper::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('images/paper-grain.svg'); opacity: 0.09; mix-blend-mode: multiply; filter: invert(1); pointer-events: none; }
+
+/* Three-part header strip, like the top of every template slide */
+.strip {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px;
+  padding: 22px 24px; font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.strip a { color: inherit; text-decoration: none; }
+.strip .wordmark { display: flex; align-items: center; gap: 9px; }
+.strip .wordmark img { height: 16px; width: auto; filter: brightness(6); }
+.strip .mid { text-align: center; display: none; line-height: 1.7; }
+.strip nav { justify-self: end; grid-column: 3; }
+.strip nav ul { list-style: none; display: flex; gap: 22px; }
+.strip nav li.hide-sm { display: none; }
+.strip nav a { position: relative; }
+.strip nav a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: currentColor; transition: width 0.4s var(--ease); }
+.strip nav a:hover::after, .strip nav a[aria-current]::after { width: 100%; }
+
+/* Handwritten notes with drawn arrows */
+.note { font-family: var(--hand); font-size: 17px; letter-spacing: 0.04em; line-height: 1.2; display: inline-flex; align-items: flex-end; gap: 6px; }
+.note svg { width: 46px; height: 34px; flex-shrink: 0; overflow: visible; }
+.note path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── HERO ── */
+.hero { display: grid; grid-template-areas: "strip" "title" "media" "copy"; }
+.hero > .strip { grid-area: strip; }
+.hero-body { display: contents; }
+.hero-title-wrap { grid-area: title; padding: 34px 24px 0; position: relative; }
+.hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(86px, 25vw, 210px); line-height: 0.84; letter-spacing: -0.02em; }
+.hero h1 em { display: block; font-style: italic; }
+.hero h1 .accent { color: var(--gold); }
+.hero-media { grid-area: media; position: relative; padding: 44px 24px 20px; }
+.hero-copy { grid-area: copy; padding: 20px 24px 72px; }
+.hero-lede { font-size: 13px; line-height: 1.85; letter-spacing: 0.02em; color: var(--beige); max-width: 44ch; margin-bottom: 34px; }
+.hero-details { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 28px; max-width: 480px; margin-top: 40px; padding-top: 26px; border-top: 1px solid var(--rule-light); }
+.hero-details dt { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
+.hero-details dd { font-size: 12px; line-height: 1.6; color: var(--beige); opacity: 0.85; }
+.hero-details a { color: inherit; }
+
+/* Polaroids with tape */
+.polaroid { position: relative; background: #FBFAF7; padding: 12px 12px 46px; box-shadow: 0 24px 50px -24px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.12); }
+.polaroid img { width: 100%; height: 100%; object-fit: cover; }
+.polaroid .frame { overflow: hidden; }
+.tape { position: absolute; width: 96px; height: 28px; background: rgba(226,219,205,0.78); box-shadow: 0 1px 2px rgba(0,0,0,0.12); z-index: 2; }
+.tape::before, .tape::after { content: ''; position: absolute; top: 0; bottom: 0; width: 6px; background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(0,0,0,0.06) 3px 5px); }
+.tape::before { left: 0; } .tape::after { right: 0; }
+
+.hero-polaroid { width: min(78%, 360px); margin-left: auto; transform: rotate(3deg); }
+.hero-polaroid .frame { aspect-ratio: 4 / 5; }
+.hero-polaroid .tape { top: -13px; left: 50%; transform: translateX(-50%) rotate(-4deg); }
+.hero-media .note { color: var(--cream); margin: 0 0 18px 6%; }
+.hero-media .note svg { transform: rotate(-4deg) translateY(10px); }
+
+/* Buttons: squared, editorial */
+.btn {
+  display: inline-flex; align-items: center; gap: 16px;
+  font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 18px 30px; border: 1px solid currentColor; background: transparent; color: inherit;
+  cursor: pointer; text-decoration: none; transition: background 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+.btn .arrow { width: 16px; height: 1px; background: currentColor; transition: width 0.4s var(--ease); }
+.btn:hover:not(:disabled) .arrow { width: 30px; }
+.btn.light:hover { background: var(--cream); color: var(--ink); }
+.btn.solid { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.btn.solid:hover:not(:disabled) { background: #000; }
+.btn.outline:hover { background: var(--ink); color: var(--cream); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ── APPLICATION ── */
+.apply-section { padding: 88px 24px 110px; }
+.apply-inner { max-width: 1280px; margin: 0 auto; display: grid; gap: 70px; }
+.apply-head { position: relative; margin-bottom: 44px; }
+.big-title { font-family: var(--serif); font-weight: 400; font-size: clamp(64px, 12vw, 132px); line-height: 0.88; letter-spacing: -0.02em; }
+.big-title em { font-style: italic; }
+.apply-head .note { margin-top: 14px; color: var(--ink-soft); }
+.apply-head .note svg { transform: scaleX(-1) rotate(10deg); }
+.lede { font-size: 13px; line-height: 1.85; letter-spacing: 0.02em; color: var(--ink-soft); max-width: 50ch; margin-top: 22px; }
+
+.progress-row { display: flex; align-items: center; gap: 16px; margin-bottom: 34px; }
+.step-count { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.progress { flex: 1; height: 1px; background: var(--rule); position: relative; }
+.progress span { position: absolute; left: 0; top: -0.5px; height: 2px; width: 0; background: var(--ink); transition: width 0.7s var(--ease); }
+
+.step { display: none; border: none; min-width: 0; }
+.step.active { display: block; animation: stepIn 0.7s var(--ease) both; }
+.step.back { animation-name: stepInBack; }
+@keyframes stepIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes stepInBack { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: none; } }
+
+.question {
+  display: block; font-family: var(--serif); font-weight: 400;
+  font-size: clamp(36px, 5vw, 54px); line-height: 1.02; letter-spacing: -0.01em;
+  text-wrap: balance; margin-bottom: 10px; outline: none;
+}
+.question em { font-style: italic; }
+.hint { font-size: 12px; line-height: 1.8; color: var(--ink-soft); margin-bottom: 22px; }
+.question + .choices, .question + .fields, .question + .pill-field, .question + .investment { margin-top: 26px; }
+
+/* Text fields: a single underline, like the template's ruled lists */
+.fields { display: grid; gap: 8px; }
+@media (min-width: 600px) { .fields.two { grid-template-columns: 1fr 1fr; gap: 32px; } }
+.pill-field { display: flex; align-items: baseline; gap: 4px; border-bottom: 1px solid var(--rule); transition: border-color 0.3s ease; }
+.pill-field:focus-within { border-bottom-color: var(--ink); }
+.pill-field.invalid { border-bottom-color: var(--error-light); }
+.pill-field > span { font-size: 17px; color: var(--ink-soft); }
+.text-input { font-family: var(--sans); font-size: 17px; font-weight: 400; color: var(--ink); background: transparent; border: none; outline: none; width: 100%; padding: 16px 0 12px; border-radius: 0; }
+.text-input::placeholder { color: var(--ink-soft); opacity: 0.6; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+
+/* Choices: uppercase rows over thin rules */
+.choices { display: grid; border-top: 1px solid var(--rule); }
+.choice { position: relative; display: block; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; pointer-events: none; }
+.choice > span {
+  display: flex; align-items: center; gap: 14px;
+  padding: 17px 4px; border-bottom: 1px solid var(--rule);
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.5;
+  transition: padding-left 0.45s var(--ease), border-color 0.3s ease, background 0.3s ease;
+}
+.choice > span::before { content: ''; flex-shrink: 0; width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--ink); transition: background 0.3s ease; }
+.choice > span::after { content: '\2192'; margin-left: auto; opacity: 0; transform: translateX(-8px); transition: opacity 0.3s ease, transform 0.4s var(--ease); font-weight: 400; }
+.choice:hover > span { padding-left: 12px; border-bottom-color: var(--ink); }
+.choice:hover > span::after { opacity: 1; transform: none; }
+.choice input:checked + span { border-bottom-color: var(--ink); padding-left: 12px; }
+.choice input:checked + span::before { background: var(--ink); }
+.choice input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
+.choices.invalid { border-top-color: var(--error-light); }
+
+.other-wrap { margin-top: 18px; }
+
+/* Investment: a quiet line of text, no box */
+.investment { margin: 22px 0 26px; display: grid; gap: 4px; }
+.investment small { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); }
+.investment strong { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.2; color: var(--ink); }
+.investment strong::before { content: 'From '; font-style: italic; }
+.investment.fixed strong::before { content: none; }
+.investment strong em { font-family: var(--serif); font-style: italic; font-size: 30px; letter-spacing: 0; text-transform: none; color: var(--ink); margin-left: 6px; }
+.investment p { font-size: 12px; line-height: 1.8; color: var(--ink-soft); max-width: 52ch; }
+
+.field-error { font-size: 12px; font-weight: 500; color: var(--error-light); margin-top: 12px; }
+.field-error:empty { display: none; }
+.consent { font-size: 11px; line-height: 1.7; color: var(--ink-soft); margin-top: 18px; max-width: 56ch; }
+.suggest-btn { font: inherit; font-weight: 600; color: var(--ink); background: none; border: none; border-bottom: 1px solid currentColor; padding: 0; margin-left: 4px; cursor: pointer; }
+.form-status { font-size: 12px; line-height: 1.75; color: var(--error-light); margin-top: 16px; }
+.form-status:empty { display: none; }
+
+.controls { display: flex; align-items: center; gap: 26px; margin-top: 34px; flex-wrap: wrap; }
+.btn-back { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; background: none; border: none; border-bottom: 1px solid currentColor; color: var(--ink-soft); cursor: pointer; padding: 4px 0; }
+.btn-back:hover { color: var(--ink); }
+.enter-hint { display: none; font-family: var(--hand); font-size: 15px; color: var(--ink-soft); }
+@media (hover: hover) and (min-width: 700px) { .enter-hint { display: inline; } }
+
+.spinner { width: 11px; height: 11px; border: 1px solid rgba(245,240,232,0.3); border-top-color: var(--cream); border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.result { display: none; }
+.result.active { display: block; animation: stepIn 0.8s var(--ease) both; }
+.result .note { color: var(--ink-soft); margin-bottom: 18px; }
+.result p.body { font-size: 13px; line-height: 1.9; color: var(--ink-soft); max-width: 48ch; margin: 18px 0 32px; }
+
+/* Taped polaroids beside the questions */
+.collage { position: relative; min-height: 540px; }
+.collage .polaroid { position: absolute; }
+.collage .p1 { top: 0; right: 4%; width: 58%; transform: rotate(4deg); }
+.collage .p1 .frame { aspect-ratio: 4 / 5; }
+.collage .p1 .tape { top: -12px; right: 18%; transform: rotate(8deg); }
+.collage .p2 { bottom: 0; left: 0; width: 54%; transform: rotate(-5deg); }
+.collage .p2 .frame { aspect-ratio: 3 / 4; }
+.collage .p2 .tape { top: -12px; left: 14%; transform: rotate(-10deg); }
+.collage .note { position: absolute; right: 0; bottom: 18%; color: var(--ink-soft); flex-direction: column-reverse; align-items: flex-start; }
+.collage .note svg { transform: rotate(200deg); margin-left: 8px; }
+
+/* ── SOCIAL ── */
+.social { display: grid; overflow: hidden; }
+.social-copy { padding: 80px 24px 60px; position: relative; }
+.social-copy h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 9vw, 104px); line-height: 0.9; letter-spacing: -0.02em; margin-bottom: 24px; }
+.social-copy h2 em { font-style: italic; }
+.social-copy p { font-size: 13px; line-height: 1.85; color: var(--beige); max-width: 42ch; margin-bottom: 30px; }
+.social-copy .note { color: var(--cream); margin-bottom: 20px; }
+.social-links { display: flex; gap: 12px; }
+.social-links a { width: 46px; height: 46px; border: 1px solid var(--rule-light); display: grid; place-items: center; color: var(--cream); transition: background 0.3s ease, color 0.3s ease; }
+.social-links a:hover { background: var(--cream); color: var(--ink); }
+.social-links svg { width: 17px; height: 17px; }
+.social-photo { position: relative; min-height: 460px; }
+.social-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: sepia(0.12); }
+.social-photo .polaroid { position: absolute; left: 24px; bottom: 28px; width: 150px; transform: rotate(-6deg); padding: 8px 8px 30px; }
+.social-photo .polaroid .frame { aspect-ratio: 4 / 5; }
+.social-photo .polaroid img { object-position: center 60%; }
+.social-photo .polaroid .tape { top: -11px; left: 30%; width: 70px; height: 22px; transform: rotate(-6deg); }
+
+/* ── FOOTER ── */
+.site-footer { padding: 70px 24px 36px; display: grid; gap: 40px; max-width: 1280px; margin: 0 auto; }
+.footer-title { font-family: var(--serif); font-size: 44px; line-height: 1; }
+.footer-title em { font-style: italic; }
+.footer-col h3 { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding-bottom: 10px; margin-bottom: 12px; border-bottom: 1px solid var(--rule); max-width: 260px; }
+.footer-menu { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px 28px; max-width: 280px; }
+.footer-menu a, .back-top { font-size: 11px; color: var(--ink); text-decoration: none; }
+.footer-menu a:hover { text-decoration: underline; }
+.footer-about p { font-size: 11px; line-height: 1.85; color: var(--ink-soft); max-width: 40ch; }
+.back-top { display: inline-block; margin-top: 16px; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+.copyright { grid-column: 1 / -1; font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); padding-top: 22px; border-top: 1px solid var(--rule); }
+.filmstrip { display: grid; grid-template-columns: repeat(4, 1fr); }
+.filmstrip img { width: 100%; height: 96px; object-fit: cover; object-position: center 35%; filter: grayscale(1) contrast(1.05); transition: filter 0.5s ease; }
+.filmstrip img:hover { filter: none; }
+
+/* Scroll reveals */
+.js .reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.js .reveal.visible { opacity: 1; transform: none; }
+.js .rise { opacity: 0; transform: translateY(40px); animation: rise 1.1s var(--ease) forwards; }
+.js .rise.d1 { animation-delay: 0.12s; } .js .rise.d2 { animation-delay: 0.3s; } .js .rise.d3 { animation-delay: 0.5s; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+/* ── DESKTOP ── */
+@media (min-width: 960px) {
+  .strip { padding: 26px 48px; }
+  .strip .mid { display: block; }
+  .strip nav li.hide-sm { display: list-item; }
+  .hero { grid-template-columns: 1.15fr 0.85fr; grid-template-areas: "strip strip" "title media" "copy media"; grid-template-rows: auto 1fr auto; min-height: 100vh; min-height: 100dvh; align-content: center; }
+  .hero-title-wrap { padding: 40px 0 0 48px; align-self: end; }
+  .hero h1 { font-size: clamp(130px, 13.5vw, 230px); }
+  .hero-copy { padding: 34px 0 64px 48px; }
+  .hero-media { padding: 60px 64px 60px 0; align-self: center; }
+  .hero-polaroid { width: min(100%, 420px); margin: 0 auto; }
+  .hero-media .note { margin-left: 0; }
+
+  .apply-section { padding: 130px 48px 150px; }
+  .apply-inner { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 100px; }
+  .collage { min-height: 680px; margin-top: 30px; }
+
+  .social { grid-template-columns: 1fr 1fr; }
+  .social-copy { padding: 120px 72px 120px 48px; align-self: center; }
+  .social-photo { min-height: 720px; }
+  .social-photo .polaroid { left: -70px; bottom: 60px; width: 210px; }
+
+  .site-footer { grid-template-columns: 1.2fr 1fr 1fr; gap: 0; padding: 90px 48px 40px; }
+  .site-footer > .footer-col { padding: 0 48px; border-left: 1px solid var(--rule); }
+  .site-footer > .footer-col:first-child { padding-left: 0; border-left: none; }
+  .copyright { margin-top: 48px; }
+  .filmstrip { grid-template-columns: repeat(8, 1fr); }
+  .filmstrip img { height: 130px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .js .reveal, .js .rise { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+<script>document.documentElement.className += " js";</script>
+
+<!-- Netlify Forms build-time detection. Not rendered to visitors.
+     Qualified applicants (said yes to the investment) go to one form,
+     everyone else to the other, so notifications can be set on the first only. -->
+<form name="grandascend-qualified-lead" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field">
+  <input type="text" name="firstName"><input type="text" name="lastName"><input type="email" name="email">
+  <input type="text" name="industry"><input type="text" name="businessType"><input type="text" name="business">
+  <input type="text" name="instagram"><input type="text" name="service"><input type="text" name="investment">
+  <input type="text" name="source"><input type="hidden" name="subject">
+</form>
+<form name="grandascend-other-lead" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field">
+  <input type="text" name="firstName"><input type="text" name="lastName"><input type="email" name="email">
+  <input type="text" name="industry"><input type="text" name="businessType"><input type="text" name="business">
+  <input type="text" name="instagram"><input type="text" name="service"><input type="text" name="investment">
+  <input type="text" name="source"><input type="hidden" name="subject">
+</form>
+
+<header class="hero dark-paper">
+  <div class="strip">
+    <a href="index.html" class="wordmark"><img src="images/logo-mark-ga.png" alt="">GrandAscend</a>
+    <p class="mid">contact@grandascend.co<br>Montreal, serving Canada and the US</p>
+    <nav aria-label="Main"><ul>
+      <li class="hide-sm"><a href="about.html">About</a></li>
+      <li class="hide-sm"><a href="services.html">Services</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="apply.html" aria-current="page">Apply</a></li>
+    </ul></nav>
+  </div>
+  <div class="hero-title-wrap">
+    <h1><em class="rise">Work</em><span class="rise d1">with <span class="accent">us</span></span></h1>
+  </div>
+  <div class="hero-media rise d2">
+    <p class="note">Helia Homam, founder <svg viewBox="0 0 46 34" aria-hidden="true"><path d="M3 4 C 12 24, 26 30, 40 24 M33 19 L40 24 L32 29"/></svg></p>
+    <figure class="polaroid hero-polaroid"><span class="tape" aria-hidden="true"></span><div class="frame"><img src="images/shoot-helia-portrait.jpg" alt="Helia Homam, founder of GrandAscend, in front of a campaign moodboard" fetchpriority="high"></div></figure>
+    
+  </div>
+  <div class="hero-copy rise d3">
+    <p class="hero-lede">Strategy, content and identity for luxury and beauty brands. We partner with a limited number of brands each month. Tell us about yours, and if it is a fit, we will invite you to a private strategy call.</p>
+    <a href="#apply" class="btn light">Begin your application<span class="arrow" aria-hidden="true"></span></a>
+    <dl class="hero-details">
+      <div><dt>Clients</dt><dd>Luxury and beauty brands in Canada and the US</dd></div>
+      <div><dt>Reply</dt><dd>Within two business days</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+  <section class="apply-section light-paper" id="apply">
+    <div class="apply-inner">
+    <div class="apply-main">
+      <div class="apply-head reveal">
+        <h2 class="big-title"><em>Let's</em> begin.</h2>
+        <p class="note">seven questions, about two minutes <svg viewBox="0 0 46 34" aria-hidden="true"><path d="M3 4 C 12 24, 26 30, 40 24 M33 19 L40 24 L32 29"/></svg></p>
+      </div>
+
+      <div class="progress-row reveal">
+        <p class="step-count" id="step-count" aria-live="polite">01 / 07</p>
+        <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+      </div>
+
+      <form id="apply-form" class="reveal" novalidate>
+        <!-- Honeypot: real visitors never see or fill this. -->
+        <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <!-- 1. Name -->
+        <fieldset class="step active" data-step="name">
+          <legend class="question" tabindex="-1">First, what is <em>your name?</em></legend>
+          <div class="fields two">
+            <div class="pill-field"><input class="text-input" id="f-first" name="firstName" type="text" maxlength="60" autocomplete="given-name" placeholder="First name" aria-label="First name"></div>
+            <div class="pill-field"><input class="text-input" id="f-last" name="lastName" type="text" maxlength="60" autocomplete="family-name" placeholder="Last name" aria-label="Last name"></div>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </fieldset>
+
+        <!-- 2. Email -->
+        <section class="step" data-step="email">
+          <label class="question" for="f-email" tabindex="-1">The best email <em>to reach you?</em></label>
+          <p class="hint">Every application is reviewed personally. This is where our reply will go.</p>
+          <div class="pill-field"><input class="text-input" id="f-email" name="email" type="email" maxlength="120" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="you@yourbrand.com"></div>
+          <p class="field-error" role="alert"></p>
+        </section>
+
+        <!-- 3. Industry -->
+        <fieldset class="step" data-step="industry">
+          <legend class="question" tabindex="-1">Which industry is <em>your business in?</em></legend>
+          <div class="choices grid">
+            <label class="choice"><input type="radio" name="industry" value="Beauty and skincare"><span>Beauty and skincare</span></label>
+            <label class="choice"><input type="radio" name="industry" value="Fashion and accessories"><span>Fashion and accessories</span></label>
+            <label class="choice"><input type="radio" name="industry" value="Hospitality, dining and events"><span>Hospitality and dining</span></label>
+            <label class="choice"><input type="radio" name="industry" value="Wellness and lifestyle"><span>Wellness and lifestyle</span></label>
+            <label class="choice"><input type="radio" name="industry" value="Other"><span>Other</span></label>
+          </div>
+          <div class="other-wrap" id="other-wrap" hidden>
+            <div class="pill-field"><input class="text-input" id="f-business-type" name="businessType" type="text" maxlength="80" placeholder="Tell us your type of business" aria-label="Your type of business"></div>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </fieldset>
+
+        <!-- 4. Business name -->
+        <section class="step" data-step="business">
+          <label class="question" for="f-business" tabindex="-1">What is the name of <em>your business?</em></label>
+          <div class="pill-field"><input class="text-input" id="f-business" name="business" type="text" maxlength="100" autocomplete="organization" placeholder="Business name"></div>
+          <p class="field-error" role="alert"></p>
+        </section>
+
+        <!-- 5. Instagram -->
+        <section class="step" data-step="instagram">
+          <label class="question" for="f-instagram" tabindex="-1">Your business <em>Instagram handle?</em></label>
+          <p class="hint">We look at every account before we reply.</p>
+          <div class="pill-field"><span aria-hidden="true">@</span><input class="text-input" id="f-instagram" name="instagram" type="text" maxlength="100" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="yourbusiness or profile link"></div>
+          <p class="field-error" role="alert"></p>
+        </section>
+
+        <!-- 6. Service. Each value matches an entry in SERVICES in the script below. -->
+        <fieldset class="step" data-step="service">
+          <legend class="question" tabindex="-1">Which service are you <em>interested in?</em></legend>
+          <div class="choices grid">
+            <label class="choice"><input type="radio" name="service" value="strategy"><span>Brand Strategy</span></label>
+            <label class="choice"><input type="radio" name="service" value="social"><span>Social Media and Content</span></label>
+            <label class="choice"><input type="radio" name="service" value="website"><span>Website Design</span></label>
+            <label class="choice"><input type="radio" name="service" value="branding"><span>Brand Identity</span></label>
+            <label class="choice"><input type="radio" name="service" value="consultation"><span>Brand Consultation</span></label>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </fieldset>
+
+        <!-- 7. Investment: the qualifying question. Filled in from SERVICES. -->
+        <fieldset class="step" data-step="investment">
+          <legend class="question" tabindex="-1">If accepted, is this investment <em>within your budget?</em></legend>
+          <div class="investment">
+            <small id="inv-name"></small>
+            <strong><span id="inv-price"></span><em id="inv-unit"></em></strong>
+            <p id="inv-note"></p>
+          </div>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="investment" value="Yes"><span>Yes, I am ready to invest at this level</span></label>
+            <label class="choice"><input type="radio" name="investment" value="No"><span>Not at this time</span></label>
+          </div>
+          <p class="field-error" role="alert"></p>
+          <p class="consent">By sending this application, you agree that GrandAscend may contact you about your enquiry. Your details are kept private and never shared.</p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </fieldset>
+
+        <div class="controls">
+          <button type="button" class="btn solid" id="next-btn"><span id="next-label">Continue</span><span class="arrow" aria-hidden="true"></span></button>
+          <button type="button" class="btn-back" id="back-btn" hidden>Back</button>
+          <span class="enter-hint" id="enter-hint">or press Enter</span>
+        </div>
+      </form>
+
+      <!-- Result: said yes to the investment -->
+      <section class="result" id="result-qualified" aria-labelledby="rq-title">
+        <p class="note">application received &#10003;</p>
+        <h2 class="question" id="rq-title" tabindex="-1">Thank you, <span class="js-first-name"></span>. <em>We are glad you are here.</em></h2>
+        <p class="body">Your application is with Helia. We review every brand personally, and if we are the right partner for you, we will be in touch within two business days to schedule your strategy call.</p>
+        <p id="booking-wrap" hidden><a class="btn solid" id="booking-link" href="#" target="_blank" rel="noopener">Book your strategy call<span class="arrow" aria-hidden="true"></span></a></p>
+      </section>
+
+      <!-- Result: not at this time -->
+      <section class="result" id="result-other" aria-labelledby="ro-title">
+        <p class="note">thank you</p>
+        <h2 class="question" id="ro-title" tabindex="-1">Thank you for sharing your brand <em>with us.</em></h2>
+        <p class="body">This may not be the right moment to work together, and that is completely fine. We have kept your details, and we will reach out if something better suited to where you are becomes available.</p>
+        <p><a class="btn outline" href="https://www.instagram.com/grandascend_media/" target="_blank" rel="noopener">Follow us on Instagram<span class="arrow" aria-hidden="true"></span></a></p>
+      </section>
+    </div>
+
+    <div class="collage reveal" aria-hidden="true">
+      <figure class="polaroid p1"><span class="tape"></span><div class="frame"><img src="images/shoot-studio-chair.jpg" alt="" loading="lazy"></div></figure>
+      <figure class="polaroid p2"><span class="tape"></span><div class="frame"><img src="images/shoot-helia-laptop.jpg" alt="" loading="lazy"></div></figure>
+      <p class="note">on set in Montreal <svg viewBox="0 0 46 34" aria-hidden="true"><path d="M3 4 C 12 24, 26 30, 40 24 M33 19 L40 24 L32 29"/></svg></p>
+    </div>
+    </div>
+  </section>
+
+  <section class="social dark-paper" aria-labelledby="social-title">
+    <div class="social-copy reveal">
+      <p class="note">behind the scenes <svg viewBox="0 0 46 34" aria-hidden="true"><path d="M3 4 C 12 24, 26 30, 40 24 M33 19 L40 24 L32 29"/></svg></p>
+      <h2 id="social-title"><em>Follow</em> the work.</h2>
+      <p>Launches, shoots and the details that make a brand feel expensive. Come and see what we are building.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/grandascend_media/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="mailto:contact@grandascend.co" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="social-photo">
+      <img src="images/bts-directing.jpg" alt="Helia Homam directing a photoshoot with a model in the background" loading="lazy">
+    </div>
+  </section>
+</main>
+
+<footer class="light-paper">
+  <div class="site-footer">
+    <div class="footer-col">
+      <p class="footer-title"><em>Grand</em>Ascend</p>
+      <a href="#top" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
+    </div>
+    <div class="footer-col">
+      <h3>Menu</h3>
+      <ul class="footer-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="creators.html">Creators</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="#apply">Work with us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-about">
+      <h3>About</h3>
+      <p>A creative marketing agency for luxury and beauty brands, based in Montreal and serving Canada and the US. Founded by Helia Homam.</p>
+    </div>
+    <p class="copyright">&copy; 2026 GrandAscend</p>
+  </div>
+  <div class="filmstrip" aria-hidden="true">
+    <img src="images/shoot-helia-portrait-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-moodboard-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-heels-laptop-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-studio-desk-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-helia-moodboard-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-studio-chair-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-helia-laptop-sm.jpg" alt="" loading="lazy">
+    <img src="images/shoot-moodboard-sofa-sm.jpg" alt="" loading="lazy">
+  </div>
+</footer>
+
+<script>
+/* ─────────────────────────────────────────────
+   Settings Helia can change.
+   SERVICES: the starting price shown for each
+   service on the investment question.
+   BOOKING_URL: paste a Calendly or HubSpot Meetings
+   link here and qualified applicants get a
+   "Book your strategy call" button. Leave it empty
+   to review applications first and reply by email.
+   ───────────────────────────────────────────── */
+var SERVICES = {
+  strategy: { name: "Brand Strategy",                    price: "$2,000", unit: "USD",           note: "Starting investment. Includes market research, competitive analysis, positioning and a strategic roadmap. Final pricing is tailored on our strategy call." },
+  social:   { name: "Social Media and Content Creation", price: "$1,500", unit: "USD per month", note: "Starting monthly investment, with a three month minimum commitment. Final pricing is tailored on our strategy call." },
+  website:  { name: "Website Design",                    price: "$2,000", unit: "USD",           note: "Starting investment. Final pricing depends on the size of your site and is tailored on our strategy call." },
+  branding: { name: "Brand Identity",                    price: "$2,500", unit: "USD",           note: "Starting investment. Includes logo, visual identity, brand book and brand kit. Final pricing is tailored on our strategy call." },
+  consultation: { name: "Brand Consultation",              price: "$200",   unit: "USD",           note: "A 90-minute private session with Helia, followed by a written action plan within 48 hours.", fixed: true }
+};
+var BOOKING_URL = "";
+
+var form      = document.getElementById("apply-form");
+var steps     = Array.prototype.slice.call(form.querySelectorAll(".step"));
+var nextBtn   = document.getElementById("next-btn");
+var nextLabel = document.getElementById("next-label");
+var backBtn   = document.getElementById("back-btn");
+var enterHint = document.getElementById("enter-hint");
+var countEl   = document.getElementById("step-count");
+var barEl     = document.getElementById("progress-bar");
+var statusEl  = document.getElementById("form-status");
+var otherWrap = document.getElementById("other-wrap");
+var anchorEl  = document.querySelector(".progress-row");
+var current   = 0;
+var sending   = false;
+
+/* Where the visitor came from, e.g. grandascend.co/apply?src=bio or ?src=reel */
+var params = new URLSearchParams(window.location.search);
+var source = params.get("src") || params.get("utm_source") || params.get("utm_campaign") || "direct";
+
+function pad(n) { return (n < 10 ? "0" : "") + n; }
+function isLast(i) { return i === steps.length - 1; }
+
+function visibleInputs(step) {
+  return Array.prototype.filter.call(step.querySelectorAll(".text-input"), function (el) {
+    return !el.closest("[hidden]");
+  });
+}
+
+function updateChrome() {
+  countEl.textContent = pad(current + 1) + " / " + pad(steps.length);
+  barEl.style.width = ((current + 1) / steps.length * 100) + "%";
+  backBtn.hidden = current === 0;
+  nextLabel.textContent = isLast(current) ? "Send off" : "Continue";
+  enterHint.hidden = !visibleInputs(steps[current]).length;
+}
+
+/* Show the starting price for whichever service was chosen. */
+function fillInvestment() {
+  var s = SERVICES[val("service")];
+  if (!s) return;
+  document.getElementById("inv-name").textContent  = s.name;
+  document.getElementById("inv-price").textContent = s.price;
+  document.getElementById("inv-unit").textContent  = s.unit;
+  document.getElementById("inv-note").textContent  = s.note;
+  document.querySelector(".investment").classList.toggle("fixed", !!s.fixed);
+}
+
+/* Keep the question in view when a step changes height. */
+function keepInView() {
+  var top = anchorEl.getBoundingClientRect().top;
+  if (top < 0 || top > window.innerHeight * 0.5) {
+    window.scrollTo({ top: window.scrollY + top - 24, behavior: "smooth" });
+  }
+}
+
+function show(i, goingBack) {
+  steps[current].classList.remove("active", "back");
+  current = i;
+  var step = steps[current];
+  if (step.dataset.step === "investment") fillInvestment();
+  step.classList.toggle("back", !!goingBack);
+  step.classList.add("active");
+  statusEl.textContent = "";
+  updateChrome();
+  keepInView();
+
+  /* Move focus to the new question so screen readers announce it
+     and typing starts straight in the text field. */
+  var input = visibleInputs(step)[0];
+  if (input && !goingBack && !step.querySelector("input[type=radio]")) input.focus({ preventScroll: true });
+  else step.querySelector(".question").focus({ preventScroll: true });
+}
+
+function stepError(step, message) {
+  var err = step.querySelector(".field-error");
+  if (!err) return;
+  err.textContent = message;
+  var fields = step.querySelectorAll(".pill-field");
+  for (var l = 0; l < fields.length; l++) {
+    var fieldInput = fields[l].querySelector("input");
+    var isBad = !!message && (!fieldInput.value.trim() || fieldInput.dataset.bad === "1");
+    fields[l].classList.toggle("invalid", isBad);
+    if (isBad) fieldInput.setAttribute("aria-invalid", "true"); else fieldInput.removeAttribute("aria-invalid");
+  }
+  var list = step.querySelector(".choices");
+  if (list) list.classList.toggle("invalid", !!message && !step.querySelector("input[type=radio]:checked"));
+}
+
+/* ── Email checks ──
+   Catches malformed addresses and common typos in popular providers
+   (gmial.com, gmail.con, hotmial.com...) and offers a one-tap fix. */
+var EMAIL_PATTERN = /^[a-z0-9](?:[a-z0-9._%+'-]*[a-z0-9_%+'-])?@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,24}$/;
+var DOMAIN_TYPOS = {
+  "gmial.com": "gmail.com", "gmai.com": "gmail.com", "gamil.com": "gmail.com", "gnail.com": "gmail.com",
+  "gmaill.com": "gmail.com", "gmal.com": "gmail.com", "gmail.co": "gmail.com", "gmail.cm": "gmail.com",
+  "gmail.con": "gmail.com", "gmail.cmo": "gmail.com", "gmail.om": "gmail.com", "gmail.comm": "gmail.com",
+  "gmail.ca": "gmail.com", "googlemail.co": "googlemail.com",
+  "hotmial.com": "hotmail.com", "hotmal.com": "hotmail.com", "hotmai.com": "hotmail.com", "hotmail.co": "hotmail.com",
+  "hotmail.con": "hotmail.com", "hotmil.com": "hotmail.com",
+  "yahooo.com": "yahoo.com", "yaho.com": "yahoo.com", "yahoo.co": "yahoo.com", "yahoo.con": "yahoo.com", "yhaoo.com": "yahoo.com",
+  "outlok.com": "outlook.com", "outloo.com": "outlook.com", "outlook.co": "outlook.com", "outlook.con": "outlook.com",
+  "iclod.com": "icloud.com", "icloud.co": "icloud.com", "icloud.con": "icloud.com", "icoud.com": "icloud.com",
+  "live.co": "live.com", "live.con": "live.com", "me.co": "me.com"
+};
+var TLD_TYPOS = { "con": "com", "cmo": "com", "ocm": "com", "comm": "com", "vom": "com", "xom": "com", "cpm": "com" };
+
+function emailProblem(value) {
+  if (value.indexOf("@") === -1) return { message: "Please include the @ in your email address." };
+  if (!EMAIL_PATTERN.test(value) || value.indexOf("..") !== -1) return { message: "That email doesn't look right. Please check it." };
+  var at = value.lastIndexOf("@"), local = value.slice(0, at), domain = value.slice(at + 1);
+  var fixed = DOMAIN_TYPOS[domain];
+  if (!fixed) {
+    var parts = domain.split("."), tld = parts[parts.length - 1];
+    if (TLD_TYPOS[tld]) { parts[parts.length - 1] = TLD_TYPOS[tld]; fixed = parts.join("."); }
+  }
+  if (fixed) return { message: "It looks like there may be a typo.", suggestion: local + "@" + fixed };
+  return null;
+}
+
+function offerSuggestion(step, input, suggestion) {
+  var err = step.querySelector(".field-error");
+  var btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "suggest-btn";
+  btn.textContent = "Use " + suggestion;
+  btn.addEventListener("click", function () {
+    input.value = suggestion;
+    input.dataset.bad = "";
+    stepError(step, "");
+    input.focus();
+  });
+  err.appendChild(document.createTextNode(" "));
+  err.appendChild(btn);
+}
+
+/* Accepts "@brand", "brand" or a pasted profile link, keeps just the handle. */
+function cleanHandle(value) {
+  var v = value.trim().replace(/^https?:\/\//i, "").replace(/^(www\.)?(instagram\.com|instagr\.am)\//i, "");
+  return v.split(/[/?#]/)[0].replace(/^@+/, "");
+}
+
+function checkText(name, value) {
+  if (name === "instagram" && !/^[A-Za-z0-9._]{1,30}$/.test(value)) {
+    return "Instagram handles use only letters, numbers, periods and underscores (30 characters max).";
+  }
+  if ((name === "firstName" || name === "lastName") && (/[@<>]|https?:|www\./i.test(value) || /\d/.test(value))) {
+    return "Please enter your name using letters only.";
+  }
+  if ((name === "business" || name === "businessType") && /[<>]|https?:/i.test(value)) {
+    return "Please enter the name only, without links.";
+  }
+  return null;
+}
+
+function validateStep(step) {
+  if (step.querySelector("input[type=radio]") && !step.querySelector("input[type=radio]:checked")) {
+    stepError(step, "Please choose one to continue.");
+    return false;
+  }
+  var inputs = visibleInputs(step);
+  for (var i = 0; i < inputs.length; i++) {
+    var input = inputs[i];
+    var value = input.value.trim();
+    if (input.name === "instagram") { value = cleanHandle(value); input.value = value; }
+    input.dataset.bad = "";
+    if (!value) { stepError(step, "Please fill this in to continue."); input.focus(); return false; }
+    var textProblem = checkText(input.name, value);
+    if (textProblem) { input.dataset.bad = "1"; stepError(step, textProblem); input.focus(); return false; }
+    if (input.type === "email") {
+      value = value.replace(/\s+/g, "").toLowerCase();
+      input.value = value;
+      var problem = emailProblem(value);
+      input.dataset.bad = problem ? "1" : "";
+      if (problem) {
+        stepError(step, problem.message);
+        if (problem.suggestion) offerSuggestion(step, input, problem.suggestion);
+        input.focus();
+        return false;
+      }
+    }
+  }
+  stepError(step, "");
+  return true;
+}
+
+function next() {
+  if (sending) return;
+  if (!validateStep(steps[current])) return;
+  if (isLast(current)) submit();
+  else show(current + 1);
+}
+
+function back() {
+  if (current > 0) show(current - 1, true);
+}
+
+nextBtn.addEventListener("click", next);
+backBtn.addEventListener("click", back);
+
+/* Enter moves forward from a text field. */
+form.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && e.target.classList.contains("text-input")) {
+    e.preventDefault();
+    next();
+  }
+});
+form.addEventListener("submit", function (e) { e.preventDefault(); next(); });
+
+/* Choosing "Other" reveals a box to type the type of business. */
+form.addEventListener("change", function (e) {
+  if (e.target.name !== "industry") return;
+  var isOther = e.target.value === "Other";
+  otherWrap.hidden = !isOther;
+  enterHint.hidden = !isOther;
+  if (isOther) document.getElementById("f-business-type").focus();
+});
+
+/* Tapping a choice moves on by itself, except for "Other" (they still need
+   to type) and the final question (they press Send off). Keyboard selection
+   only fires a click on the hidden radio itself, so it waits for Continue. */
+form.addEventListener("click", function (e) {
+  var choice = e.target.closest && e.target.closest(".choice");
+  if (!choice || e.target.tagName === "INPUT") return;
+  stepError(steps[current], "");
+  var radio = choice.querySelector("input");
+  if (radio.value === "Other" || isLast(current)) return;
+  var at = current;
+  setTimeout(function () { if (current === at) next(); }, 320);
+});
+form.addEventListener("input", function (e) {
+  if (e.target.classList.contains("text-input")) stepError(steps[current], "");
+});
+
+function val(name) {
+  var el = form.querySelector('[name="' + name + '"]:checked') || form.querySelector('[name="' + name + '"]:not([type=radio])');
+  return el ? el.value.trim() : "";
+}
+
+function setLoading(on) {
+  sending = on;
+  nextBtn.disabled = on;
+  backBtn.disabled = on;
+  nextLabel.textContent = on ? "Sending" : "Send off";
+  var s = document.getElementById("submit-spinner");
+  if (on && !s) {
+    s = document.createElement("span");
+    s.className = "spinner"; s.id = "submit-spinner"; s.setAttribute("aria-hidden", "true");
+    nextBtn.appendChild(s);
+  } else if (!on && s) s.remove();
+}
+
+function submit() {
+  var qualified = val("investment") === "Yes";
+  var service = SERVICES[val("service")];
+  var data = {
+    "form-name":    qualified ? "grandascend-qualified-lead" : "grandascend-other-lead",
+    "bot-field":    val("bot-field"),
+    "firstName":    val("firstName"),
+    "lastName":     val("lastName"),
+    "email":        val("email"),
+    "industry":     val("industry"),
+    "businessType": val("industry") === "Other" ? val("businessType") : "",
+    "business":     val("business"),
+    "instagram":    val("instagram"),
+    "service":      service.name,
+    "investment":   (qualified ? "Yes, " : "Not at this time, ") + (service.fixed ? "" : "from ") + service.price + " " + service.unit,
+    "source":       source,
+    /* Netlify uses this as the notification email subject. */
+    "subject":      (qualified ? "New qualified lead: " : "New lead (not ready yet): ") + service.name + ", " + val("business") + " (" + val("firstName") + " " + val("lastName") + ")"
+  };
+
+  setLoading(true);
+  var controller = window.AbortController ? new AbortController() : null;
+  var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+  fetch(window.location.pathname, {
+    method: "POST",
+    signal: controller ? controller.signal : undefined,
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(data).toString()
+  }).then(function (response) {
+    clearTimeout(timer);
+    if (!response.ok) throw new Error("Netlify returned " + response.status);
+    finish(qualified, data.firstName);
+  }).catch(function () {
+    clearTimeout(timer);
+    setLoading(false);
+    statusEl.textContent = "Something went wrong on our end and your application did not go through. Please try again, or email contact@grandascend.co.";
+  });
+}
+
+function finish(qualified, firstName) {
+  form.hidden = true;
+  anchorEl.hidden = true;
+  var nameEls = document.querySelectorAll(".js-first-name");
+  for (var n = 0; n < nameEls.length; n++) nameEls[n].textContent = firstName;
+
+  if (qualified && BOOKING_URL) {
+    document.getElementById("booking-link").href = BOOKING_URL;
+    document.getElementById("booking-wrap").hidden = false;
+  }
+  var result = document.getElementById(qualified ? "result-qualified" : "result-other");
+  result.classList.add("active");
+  var top = result.getBoundingClientRect().top;
+  if (top < 0 || top > window.innerHeight * 0.6) window.scrollTo({ top: window.scrollY + top - 90, behavior: "smooth" });
+  result.querySelector(".question").focus({ preventScroll: true });
+}
+
+updateChrome();
+
+/* Scroll reveals, same pattern as the rest of the site. */
+var revealObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+var revealTargets = document.querySelectorAll(".reveal");
+for (var r = 0; r < revealTargets.length; r++) revealObserver.observe(revealTargets[r]);
+</script>
+
+</body>
+</html>
