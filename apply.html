@@ -424,11 +424,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
         <fieldset class="step" data-step="service">
           <legend class="question" tabindex="-1">Which service are you <em>interested in?</em></legend>
           <div class="choices grid">
-            <label class="choice"><input type="radio" name="service" value="strategy"><span>Brand Strategy</span></label>
-            <label class="choice"><input type="radio" name="service" value="social"><span>Social Media and Content</span></label>
-            <label class="choice"><input type="radio" name="service" value="website"><span>Website Design</span></label>
+            <label class="choice"><input type="radio" name="service" value="session"><span>Brand Session</span></label>
+            <label class="choice"><input type="radio" name="service" value="audit"><span>Instagram and Brand Audit</span></label>
+            <label class="choice"><input type="radio" name="service" value="vipday"><span>Strategy VIP Day</span></label>
             <label class="choice"><input type="radio" name="service" value="branding"><span>Brand Identity</span></label>
-            <label class="choice"><input type="radio" name="service" value="consultation"><span>Brand Consultation</span></label>
+            <label class="choice"><input type="radio" name="service" value="website"><span>Website</span></label>
+            <label class="choice"><input type="radio" name="service" value="partnership"><span>Monthly Partnership</span></label>
           </div>
           <p class="field-error" role="alert"></p>
         </fieldset>
@@ -548,13 +549,22 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
    to review applications first and reply by email.
    ───────────────────────────────────────────── */
 var SERVICES = {
-  strategy: { name: "Brand Strategy",                    price: "$2,000", unit: "USD",           note: "Starting investment. Includes market research, competitive analysis, positioning and a strategic roadmap. Final pricing is tailored on our strategy call." },
-  social:   { name: "Social Media and Content Creation", price: "$1,500", unit: "USD per month", note: "Starting monthly investment, with a three month minimum commitment. Final pricing is tailored on our strategy call." },
-  website:  { name: "Website Design",                    price: "$2,000", unit: "USD",           note: "Starting investment. Final pricing depends on the size of your site and is tailored on our strategy call." },
-  branding: { name: "Brand Identity",                    price: "$2,500", unit: "USD",           note: "Starting investment. Includes logo, visual identity, brand book and brand kit. Final pricing is tailored on our strategy call." },
-  consultation: { name: "Brand Consultation",              price: "$200",   unit: "USD",           note: "A 90-minute private session with Helia, followed by a written action plan within 48 hours.", fixed: true }
+  session:     { name: "Brand Session",              price: "$350",   unit: "CAD",           note: "A 90-minute private session with Helia and a short written plan. Credited toward any project booked within 30 days.", fixed: true },
+  audit:       { name: "Instagram and Brand Audit",  price: "$750",   unit: "CAD",           note: "A written audit of your feed, brand and competitors, with a 60-minute walkthrough. Credited toward any project.", fixed: true },
+  vipday:      { name: "Strategy VIP Day",           price: "$2,500", unit: "CAD",           note: "One day: positioning, audience, content pillars and a 90-day plan, delivered the same day.", fixed: true },
+  branding:    { name: "Brand Identity",             price: "$4,500", unit: "CAD",           note: "Starting investment. Includes logo suite, colour and typography, brand guidelines and social templates. Final pricing is confirmed on our call." },
+  website:     { name: "Website",                    price: "$4,500", unit: "CAD",           note: "Starting investment for a site of up to 6 pages on Shopify or Wix, bilingual-ready. Final pricing is confirmed on our call." },
+  partnership: { name: "Monthly Partnership",        price: "$1,800", unit: "CAD per month", note: "Starting monthly investment, with a three-month minimum. Three levels, from $1,800 to $4,500 per month." }
 };
 var BOOKING_URL = "";
+
+/* Preselect a service when arriving from the services page, e.g. apply.html?service=audit */
+(function () {
+  var wanted = new URLSearchParams(window.location.search).get("service");
+  if (!wanted || !SERVICES[wanted]) return;
+  var input = document.querySelector('input[name="service"][value="' + wanted + '"]');
+  if (input) input.checked = true;
+})();
 
 var form      = document.getElementById("apply-form");
 var steps     = Array.prototype.slice.call(form.querySelectorAll(".step"));
