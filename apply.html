@@ -195,6 +195,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 
 .field-error { font-size: 12px; font-weight: 500; color: var(--error-light); margin-top: 12px; }
 .field-error:empty { display: none; }
+.suggest-btn { font: inherit; font-weight: 600; color: var(--ink); background: none; border: none; border-bottom: 1px solid currentColor; padding: 0; margin-left: 4px; cursor: pointer; }
 .form-status { font-size: 12px; line-height: 1.75; color: var(--error-light); margin-top: 16px; }
 .form-status:empty { display: none; }
 
@@ -631,10 +632,58 @@ function stepError(step, message) {
   err.textContent = message;
   var fields = step.querySelectorAll(".pill-field");
   for (var l = 0; l < fields.length; l++) {
-    fields[l].classList.toggle("invalid", !!message && !fields[l].querySelector("input").value.trim());
+    var fieldInput = fields[l].querySelector("input");
+    fields[l].classList.toggle("invalid", !!message && (!fieldInput.value.trim() || fieldInput.dataset.bad === "1"));
   }
   var list = step.querySelector(".choices");
   if (list) list.classList.toggle("invalid", !!message && !step.querySelector("input[type=radio]:checked"));
+}
+
+/* ── Email checks ──
+   Catches malformed addresses and common typos in popular providers
+   (gmial.com, gmail.con, hotmial.com...) and offers a one-tap fix. */
+var EMAIL_PATTERN = /^[a-z0-9](?:[a-z0-9._%+'-]*[a-z0-9_%+'-])?@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,24}$/;
+var DOMAIN_TYPOS = {
+  "gmial.com": "gmail.com", "gmai.com": "gmail.com", "gamil.com": "gmail.com", "gnail.com": "gmail.com",
+  "gmaill.com": "gmail.com", "gmal.com": "gmail.com", "gmail.co": "gmail.com", "gmail.cm": "gmail.com",
+  "gmail.con": "gmail.com", "gmail.cmo": "gmail.com", "gmail.om": "gmail.com", "gmail.comm": "gmail.com",
+  "gmail.ca": "gmail.com", "googlemail.co": "googlemail.com",
+  "hotmial.com": "hotmail.com", "hotmal.com": "hotmail.com", "hotmai.com": "hotmail.com", "hotmail.co": "hotmail.com",
+  "hotmail.con": "hotmail.com", "hotmil.com": "hotmail.com",
+  "yahooo.com": "yahoo.com", "yaho.com": "yahoo.com", "yahoo.co": "yahoo.com", "yahoo.con": "yahoo.com", "yhaoo.com": "yahoo.com",
+  "outlok.com": "outlook.com", "outloo.com": "outlook.com", "outlook.co": "outlook.com", "outlook.con": "outlook.com",
+  "iclod.com": "icloud.com", "icloud.co": "icloud.com", "icloud.con": "icloud.com", "icoud.com": "icloud.com",
+  "live.co": "live.com", "live.con": "live.com", "me.co": "me.com"
+};
+var TLD_TYPOS = { "con": "com", "cmo": "com", "ocm": "com", "comm": "com", "vom": "com", "xom": "com", "cpm": "com" };
+
+function emailProblem(value) {
+  if (value.indexOf("@") === -1) return { message: "Please include the @ in your email address." };
+  if (!EMAIL_PATTERN.test(value) || value.indexOf("..") !== -1) return { message: "That email doesn't look right. Please check it." };
+  var at = value.lastIndexOf("@"), local = value.slice(0, at), domain = value.slice(at + 1);
+  var fixed = DOMAIN_TYPOS[domain];
+  if (!fixed) {
+    var parts = domain.split("."), tld = parts[parts.length - 1];
+    if (TLD_TYPOS[tld]) { parts[parts.length - 1] = TLD_TYPOS[tld]; fixed = parts.join("."); }
+  }
+  if (fixed) return { message: "It looks like there may be a typo.", suggestion: local + "@" + fixed };
+  return null;
+}
+
+function offerSuggestion(step, input, suggestion) {
+  var err = step.querySelector(".field-error");
+  var btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "suggest-btn";
+  btn.textContent = "Use " + suggestion;
+  btn.addEventListener("click", function () {
+    input.value = suggestion;
+    input.dataset.bad = "";
+    stepError(step, "");
+    input.focus();
+  });
+  err.appendChild(document.createTextNode(" "));
+  err.appendChild(btn);
 }
 
 function validateStep(step) {
@@ -648,8 +697,17 @@ function validateStep(step) {
     var value = input.value.trim();
     if (input.name === "instagram") { value = value.replace(/^@+/, ""); input.value = value; }
     if (!value) { stepError(step, "Please fill this in to continue."); input.focus(); return false; }
-    if (input.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
-      stepError(step, "Please enter a valid email address."); input.focus(); return false;
+    if (input.type === "email") {
+      value = value.replace(/\s+/g, "").toLowerCase();
+      input.value = value;
+      var problem = emailProblem(value);
+      input.dataset.bad = problem ? "1" : "";
+      if (problem) {
+        stepError(step, problem.message);
+        if (problem.suggestion) offerSuggestion(step, input, problem.suggestion);
+        input.focus();
+        return false;
+      }
     }
   }
   stepError(step, "");
