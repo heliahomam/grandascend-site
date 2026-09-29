@@ -235,7 +235,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 /* PHOTO HERO: full-bleed shoot photo with an editorial headline */
 .photo-hero { position: relative; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: #2A2A2A; color: var(--cream); }
 .photo-hero picture, .photo-hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.photo-hero picture img { object-fit: cover; object-position: 70% 30%; transform: scale(1.06); animation: heroZoom 2.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+.photo-hero picture img { object-fit: cover; object-position: 60% 100%; transform: scale(1.06); animation: heroZoom 2.4s cubic-bezier(0.16,1,0.3,1) forwards; }
 @keyframes heroZoom { to { transform: scale(1); } }
 .photo-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(34,31,28,0.78) 0%, rgba(34,31,28,0.5) 38%, rgba(34,31,28,0) 66%), linear-gradient(0deg, rgba(34,31,28,0.7) 0%, rgba(34,31,28,0) 32%), linear-gradient(180deg, rgba(34,31,28,0.45) 0%, rgba(34,31,28,0) 18%); }
 .photo-hero-content { position: relative; z-index: 2; padding: 0 60px 150px; max-width: 900px; }
@@ -252,8 +252,9 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 .ph-link { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(245,240,232,0.5); padding-bottom: 4px; }
 .ph-link:hover { border-color: var(--cream); }
 .ph-foot { position: absolute; z-index: 2; left: 60px; right: 60px; bottom: 34px; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 18px; border-top: 1px solid rgba(245,240,232,0.22); font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.8); opacity: 0; animation: fadeIn 1s ease 1.3s forwards; }
-.ph-note { position: absolute; z-index: 2; right: 12%; top: 26%; font-family: var(--hand); font-size: 18px; letter-spacing: 0.04em; color: var(--cream); display: flex; align-items: flex-end; gap: 6px; opacity: 0; animation: fadeIn 1s ease 1.6s forwards; }
-.ph-note svg { width: 46px; height: 34px; overflow: visible; transform: scaleX(-1) rotate(20deg); }
+.ph-note { position: absolute; z-index: 2; right: 30%; top: 44%; font-family: var(--hand); font-size: 18px; letter-spacing: 0.04em; color: var(--cream); display: flex; align-items: flex-end; gap: 6px; opacity: 0; animation: fadeIn 1s ease 1.6s forwards; }
+.ph-note { flex-direction: column; align-items: flex-end; }
+.ph-note svg { width: 46px; height: 34px; overflow: visible; order: 2; transform: rotate(60deg); margin-right: -10px; }
 .ph-note path, .hand-note path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Light nav while it sits over the photo */
@@ -293,7 +294,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 
 @media (max-width: 960px) {
   .photo-hero { justify-content: flex-end; }
-  .photo-hero picture img { object-position: 60% 20%; }
+  .photo-hero picture img { object-position: 50% 60%; }
   .photo-hero-shade { background: linear-gradient(0deg, rgba(34,31,28,0.9) 0%, rgba(34,31,28,0.6) 42%, rgba(34,31,28,0) 72%), linear-gradient(180deg, rgba(34,31,28,0.45) 0%, rgba(34,31,28,0) 20%); }
   .photo-hero-content { padding: 0 24px 120px; }
   .ph-title { font-size: clamp(46px, 12.5vw, 72px); }
@@ -508,12 +509,11 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 <!-- HERO -->
 <section class="photo-hero" id="home">
   <picture>
-    <source media="(max-width: 760px)" srcset="images/shoot-helia-portrait.jpg">
+    <source media="(max-width: 760px)" srcset="images/shoot-studio-desk.jpg">
     <source media="(max-width: 1440px)" srcset="images/shoot-hero-wide-md.jpg">
-    <img src="images/shoot-hero-wide.jpg" alt="Helia Homam, founder of GrandAscend" fetchpriority="high">
+    <img src="images/shoot-hero-wide.jpg" alt="A camera and a laptop showing the GrandAscend logo on set" fetchpriority="high">
   </picture>
   <div class="photo-hero-shade"></div>
-  <p class="ph-note" aria-hidden="true"><svg viewBox="0 0 46 34" aria-hidden="true"><path d="M3 4 C 12 24, 26 30, 40 24 M33 19 L40 24 L32 29"/></svg>Helia Homam, founder</p>
   <div class="photo-hero-content">
     <div class="ph-badge"><span class="lvmh-dot"></span>LVMH Certified Strategist</div>
     <h1 class="ph-title">Your brand, built<br>for the tier you're<br><em>reaching for.</em></h1>
@@ -561,7 +561,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
     <div class="about-right anim-right">
       <div class="about-collage" aria-hidden="true">
         <figure class="polaroid p1"><span class="tape"></span><div class="frame"><img src="images/shoot-helia-moodboard.jpg" alt="" loading="lazy"></div></figure>
-        <figure class="polaroid p2"><span class="tape"></span><div class="frame"><img src="images/shoot-studio-desk.jpg" alt="" loading="lazy"></div></figure>
+        <figure class="polaroid p2"><span class="tape"></span><div class="frame"><img src="images/shoot-heels-laptop.jpg" alt="" loading="lazy"></div></figure>
         <p class="hand-note">every brand starts with a moodboard <svg viewBox="0 0 46 34" aria-hidden="true"><path d="M3 4 C 12 24, 26 30, 40 24 M33 19 L40 24 L32 29"/></svg></p>
       </div>
     </div>
