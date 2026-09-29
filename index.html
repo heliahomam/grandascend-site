@@ -122,9 +122,12 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 .clients-label { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.5em; text-transform: uppercase; color: rgba(245,240,232,0.3); text-align: center; margin-bottom: 50px; padding: 0 60px; }
 .logos-row { display: flex; align-items: center; }
 .logos-track { display: flex; align-items: center; gap: 80px; animation: logosMarquee 26s linear infinite; }
-.client-logo { height: 56px; width: auto; flex-shrink: 0; opacity: 1; object-fit: contain; }
-.client-logo[src*="logo-farasha"] { height: 58px; }
-.client-logo[src*="logo-roza"] { height: 40px; }
+.client-logo { --h: 56px; height: var(--h); width: auto; flex-shrink: 0; opacity: 1; object-fit: contain; }
+.client-logo[src*="logo-herheart"] { --h: 60px; }
+.client-logo[src*="logo-roza"] { --h: 42px; }
+.client-logo[src*="logo-farasha"] { --h: 62px; }
+.client-logo[src*="logo-honeeynail"] { --h: 70px; }
+.client-logo[src*="logo-spaperlla"] { --h: 92px; }
 
 /* SERVICES */
 #services { padding: 140px 60px; background: var(--charcoal); }
@@ -527,8 +530,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   #clients { padding: 60px 0; }
   .clients-label { padding: 0 24px; }
   .logos-track { gap: 36px; }
-  .client-logo { height: 34px !important; }
-  .client-logo[src*="logo-roza"] { height: 24px !important; }
+  .client-logo { height: calc(var(--h) * 0.62) !important; }
 
   /* SERVICES */
   #services { padding: 80px 24px; }
@@ -604,8 +606,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   .about-stats { grid-template-columns: 1fr 1fr; }
   .footer-top { grid-template-columns: 1fr; gap: 30px; }
   .logos-track { gap: 24px; }
-  .client-logo { height: 26px !important; }
-  .client-logo[src*="logo-roza"] { height: 19px !important; }
+  .client-logo { height: calc(var(--h) * 0.5) !important; }
   .process-steps { grid-template-columns: 1fr; }
   #blog [style*="grid-template-columns:repeat(4,1fr)"] { 
     grid-template-columns: repeat(2, 1fr) !important; 
