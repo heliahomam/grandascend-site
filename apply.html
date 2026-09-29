@@ -195,6 +195,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 
 .field-error { font-size: 12px; font-weight: 500; color: var(--error-light); margin-top: 12px; }
 .field-error:empty { display: none; }
+.consent { font-size: 11px; line-height: 1.7; color: var(--ink-soft); margin-top: 18px; max-width: 56ch; }
 .suggest-btn { font: inherit; font-weight: 600; color: var(--ink); background: none; border: none; border-bottom: 1px solid currentColor; padding: 0; margin-left: 4px; cursor: pointer; }
 .form-status { font-size: 12px; line-height: 1.75; color: var(--error-light); margin-top: 16px; }
 .form-status:empty { display: none; }
@@ -374,8 +375,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
         <fieldset class="step active" data-step="name">
           <legend class="question" tabindex="-1">First, what is <em>your name?</em></legend>
           <div class="fields two">
-            <div class="pill-field"><input class="text-input" id="f-first" name="firstName" type="text" autocomplete="given-name" placeholder="First name" aria-label="First name"></div>
-            <div class="pill-field"><input class="text-input" id="f-last" name="lastName" type="text" autocomplete="family-name" placeholder="Last name" aria-label="Last name"></div>
+            <div class="pill-field"><input class="text-input" id="f-first" name="firstName" type="text" maxlength="60" autocomplete="given-name" placeholder="First name" aria-label="First name"></div>
+            <div class="pill-field"><input class="text-input" id="f-last" name="lastName" type="text" maxlength="60" autocomplete="family-name" placeholder="Last name" aria-label="Last name"></div>
           </div>
           <p class="field-error" role="alert"></p>
         </fieldset>
@@ -384,7 +385,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
         <section class="step" data-step="email">
           <label class="question" for="f-email" tabindex="-1">The best email <em>to reach you?</em></label>
           <p class="hint">Every application is reviewed personally. This is where our reply will go.</p>
-          <div class="pill-field"><input class="text-input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@yourbrand.com"></div>
+          <div class="pill-field"><input class="text-input" id="f-email" name="email" type="email" maxlength="120" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="you@yourbrand.com"></div>
           <p class="field-error" role="alert"></p>
         </section>
 
@@ -399,7 +400,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
             <label class="choice"><input type="radio" name="industry" value="Other"><span>Other</span></label>
           </div>
           <div class="other-wrap" id="other-wrap" hidden>
-            <div class="pill-field"><input class="text-input" id="f-business-type" name="businessType" type="text" placeholder="Tell us your type of business" aria-label="Your type of business"></div>
+            <div class="pill-field"><input class="text-input" id="f-business-type" name="businessType" type="text" maxlength="80" placeholder="Tell us your type of business" aria-label="Your type of business"></div>
           </div>
           <p class="field-error" role="alert"></p>
         </fieldset>
@@ -407,7 +408,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
         <!-- 4. Business name -->
         <section class="step" data-step="business">
           <label class="question" for="f-business" tabindex="-1">What is the name of <em>your business?</em></label>
-          <div class="pill-field"><input class="text-input" id="f-business" name="business" type="text" autocomplete="organization" placeholder="Business name"></div>
+          <div class="pill-field"><input class="text-input" id="f-business" name="business" type="text" maxlength="100" autocomplete="organization" placeholder="Business name"></div>
           <p class="field-error" role="alert"></p>
         </section>
 
@@ -415,7 +416,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
         <section class="step" data-step="instagram">
           <label class="question" for="f-instagram" tabindex="-1">Your business <em>Instagram handle?</em></label>
           <p class="hint">We look at every account before we reply.</p>
-          <div class="pill-field"><span aria-hidden="true">@</span><input class="text-input" id="f-instagram" name="instagram" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="yourbusiness"></div>
+          <div class="pill-field"><span aria-hidden="true">@</span><input class="text-input" id="f-instagram" name="instagram" type="text" maxlength="100" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="yourbusiness or profile link"></div>
           <p class="field-error" role="alert"></p>
         </section>
 
@@ -445,6 +446,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
             <label class="choice"><input type="radio" name="investment" value="No"><span>Not at this time</span></label>
           </div>
           <p class="field-error" role="alert"></p>
+          <p class="consent">By sending this application, you agree that GrandAscend may contact you about your enquiry. Your details are kept private and never shared.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </fieldset>
 
@@ -633,7 +635,9 @@ function stepError(step, message) {
   var fields = step.querySelectorAll(".pill-field");
   for (var l = 0; l < fields.length; l++) {
     var fieldInput = fields[l].querySelector("input");
-    fields[l].classList.toggle("invalid", !!message && (!fieldInput.value.trim() || fieldInput.dataset.bad === "1"));
+    var isBad = !!message && (!fieldInput.value.trim() || fieldInput.dataset.bad === "1");
+    fields[l].classList.toggle("invalid", isBad);
+    if (isBad) fieldInput.setAttribute("aria-invalid", "true"); else fieldInput.removeAttribute("aria-invalid");
   }
   var list = step.querySelector(".choices");
   if (list) list.classList.toggle("invalid", !!message && !step.querySelector("input[type=radio]:checked"));
@@ -686,6 +690,25 @@ function offerSuggestion(step, input, suggestion) {
   err.appendChild(btn);
 }
 
+/* Accepts "@brand", "brand" or a pasted profile link, keeps just the handle. */
+function cleanHandle(value) {
+  var v = value.trim().replace(/^https?:\/\//i, "").replace(/^(www\.)?(instagram\.com|instagr\.am)\//i, "");
+  return v.split(/[/?#]/)[0].replace(/^@+/, "");
+}
+
+function checkText(name, value) {
+  if (name === "instagram" && !/^[A-Za-z0-9._]{1,30}$/.test(value)) {
+    return "Instagram handles use only letters, numbers, periods and underscores (30 characters max).";
+  }
+  if ((name === "firstName" || name === "lastName") && (/[@<>]|https?:|www\./i.test(value) || /\d/.test(value))) {
+    return "Please enter your name using letters only.";
+  }
+  if ((name === "business" || name === "businessType") && /[<>]|https?:/i.test(value)) {
+    return "Please enter the name only, without links.";
+  }
+  return null;
+}
+
 function validateStep(step) {
   if (step.querySelector("input[type=radio]") && !step.querySelector("input[type=radio]:checked")) {
     stepError(step, "Please choose one to continue.");
@@ -695,8 +718,11 @@ function validateStep(step) {
   for (var i = 0; i < inputs.length; i++) {
     var input = inputs[i];
     var value = input.value.trim();
-    if (input.name === "instagram") { value = value.replace(/^@+/, ""); input.value = value; }
+    if (input.name === "instagram") { value = cleanHandle(value); input.value = value; }
+    input.dataset.bad = "";
     if (!value) { stepError(step, "Please fill this in to continue."); input.focus(); return false; }
+    var textProblem = checkText(input.name, value);
+    if (textProblem) { input.dataset.bad = "1"; stepError(step, textProblem); input.focus(); return false; }
     if (input.type === "email") {
       value = value.replace(/\s+/g, "").toLowerCase();
       input.value = value;
@@ -801,14 +827,19 @@ function submit() {
   };
 
   setLoading(true);
+  var controller = window.AbortController ? new AbortController() : null;
+  var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
   fetch(window.location.pathname, {
     method: "POST",
+    signal: controller ? controller.signal : undefined,
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(data).toString()
   }).then(function (response) {
+    clearTimeout(timer);
     if (!response.ok) throw new Error("Netlify returned " + response.status);
     finish(qualified, data.firstName);
   }).catch(function () {
+    clearTimeout(timer);
     setLoading(false);
     statusEl.textContent = "Something went wrong on our end and your application did not go through. Please try again, or email contact@grandascend.co.";
   });
@@ -826,6 +857,8 @@ function finish(qualified, firstName) {
   }
   var result = document.getElementById(qualified ? "result-qualified" : "result-other");
   result.classList.add("active");
+  var top = result.getBoundingClientRect().top;
+  if (top < 0 || top > window.innerHeight * 0.6) window.scrollTo({ top: window.scrollY + top - 90, behavior: "smooth" });
   result.querySelector(".question").focus({ preventScroll: true });
 }
 
