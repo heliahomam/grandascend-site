@@ -9,7 +9,7 @@
 <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" as="image" href="images/shoot-hero-wide-md.jpg" media="(min-width: 761px)">
+<link rel="preload" as="image" href="images/shoot-hero-moodboard-md.jpg" media="(min-width: 761px)">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600;700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/300.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/400.css" rel="stylesheet">
@@ -235,7 +235,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 /* PHOTO HERO: full-bleed shoot photo with an editorial headline */
 .photo-hero { position: relative; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: #2A2A2A; color: var(--cream); }
 .photo-hero picture, .photo-hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.photo-hero picture img { object-fit: cover; object-position: 100% 70%; transform: scale(1.06); animation: heroZoom 2.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+.photo-hero picture img { object-fit: cover; object-position: 50% 40%; transform: scale(1.06); animation: heroZoom 2.4s cubic-bezier(0.16,1,0.3,1) forwards; }
 @keyframes heroZoom { to { transform: scale(1); } }
 .photo-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(34,31,28,0.82) 0%, rgba(34,31,28,0.55) 40%, rgba(34,31,28,0.05) 62%, rgba(34,31,28,0) 100%), linear-gradient(0deg, rgba(34,31,28,0.7) 0%, rgba(34,31,28,0) 32%), linear-gradient(180deg, rgba(34,31,28,0.45) 0%, rgba(34,31,28,0) 18%); }
 .photo-hero-content { position: relative; z-index: 2; padding: 0 60px 150px; max-width: 900px; }
@@ -296,7 +296,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   /* Phones: photo on top with the laptop in view, copy below on charcoal */
   .photo-hero { display: block; min-height: 0; }
   .photo-hero picture { position: relative; display: block; height: 54vh; min-height: 360px; max-height: 500px; }
-  .photo-hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-position: 50% 92%; }
+  .photo-hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-position: 50% 45%; }
   .photo-hero-shade { top: 0; bottom: auto; height: 54vh; min-height: 360px; max-height: 500px; background: linear-gradient(0deg, #2A2A2A 0%, rgba(42,42,42,0) 40%), linear-gradient(180deg, rgba(34,31,28,0.55) 0%, rgba(34,31,28,0) 26%); }
   .photo-hero-content { padding: 0 24px 40px; margin-top: -54px; }
   .ph-badge { margin-bottom: 22px; }
@@ -512,9 +512,9 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 <!-- HERO -->
 <section class="photo-hero" id="home">
   <picture>
-    <source media="(max-width: 760px)" srcset="images/shoot-studio-desk.jpg">
-    <source media="(max-width: 1440px)" srcset="images/shoot-hero-wide-md.jpg">
-    <img src="images/shoot-hero-wide.jpg" alt="A camera and a laptop showing the GrandAscend logo on set" fetchpriority="high">
+    <source media="(max-width: 760px)" srcset="images/shoot-hero-moodboard-tall.jpg">
+    <source media="(max-width: 1440px)" srcset="images/shoot-hero-moodboard-md.jpg">
+    <img src="images/shoot-hero-moodboard.jpg" alt="A GrandAscend campaign moodboard of black and white fashion prints" fetchpriority="high">
   </picture>
   <div class="photo-hero-shade"></div>
   <div class="photo-hero-content">
