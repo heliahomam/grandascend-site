@@ -150,6 +150,8 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 .polaroid .frame { overflow: hidden; }
 .polaroid img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .tape { position: absolute; width: 96px; height: 28px; background: rgba(226,219,205,0.8); box-shadow: 0 1px 2px rgba(0,0,0,0.12); z-index: 2; }
+.story-cert { max-width: 560px; margin-left: auto; }
+.story-cert img { width: 100%; height: auto; display: block; }
 .story-collage { position: relative; min-height: 620px; }
 .story-collage .polaroid { position: absolute; }
 .story-collage .p1 { top: 0; right: 4%; width: 64%; transform: rotate(3deg); }
@@ -171,6 +173,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 .story-quote-section::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('images/paper-grain.svg'); opacity: 0.16; pointer-events: none; }
 @media (max-width: 960px) {
   .story-collage { min-height: 480px; }
+  .story-cert { margin: 0 auto; }
   .story-strip { grid-template-columns: 1fr 1fr; gap: 26px; padding: 0 24px 90px; }
   .story-strip .polaroid:nth-child(3) { display: none; }
 }
@@ -260,11 +263,9 @@ footer { background: var(--black); padding: 80px 60px 40px; }
     <p class="story-lede">Storytelling and community building are things I've done my whole life. GrandAscend exists because I believe the same instinct that grows a following is the instinct that grows a brand.</p>
   </div>
   <div class="story-hero-img-wrap anim-right">
-    <div class="story-collage">
-      <figure class="polaroid p1"><span class="tape" aria-hidden="true"></span><div class="frame"><img src="images/shoot-helia-camera.jpg" alt="Helia Homam holding a camera on set"></div></figure>
-      <figure class="polaroid p2" aria-hidden="true"><span class="tape"></span><div class="frame"><img src="images/shoot-helia-laptop.jpg" alt=""></div></figure>
-      <p class="hand-note" aria-hidden="true">Helia, on set in Montreal <svg viewBox="0 0 46 34" aria-hidden="true"><path d="M3 4 C 12 24, 26 30, 40 24 M33 19 L40 24 L32 29"/></svg></p>
-    </div>
+    <figure class="story-cert">
+      <img src="images/helia-lvmh-certificate.webp" alt="Helia Homam at her desk with her Inside LVMH Certificate in Creation &amp; Branding and Retail &amp; Customer Experience" width="1000" height="1004">
+    </figure>
   </div>
 </section>
 
@@ -302,13 +303,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   </div>
 </section>
 
-<!-- PHOTO STRIP -->
-<div class="story-strip anim-fade-up" aria-hidden="true">
-  <figure class="polaroid"><span class="tape"></span><div class="frame"><img src="images/shoot-studio-chair.jpg" alt="" loading="lazy"></div></figure>
-  <figure class="polaroid"><span class="tape"></span><div class="frame"><img src="images/shoot-moodboard-sofa.jpg" alt="" loading="lazy"></div></figure>
-  <figure class="polaroid"><span class="tape"></span><div class="frame"><img src="images/shoot-heels-laptop.jpg" alt="" loading="lazy"></div></figure>
-</div>
-
 <!-- PULL QUOTE -->
 <div class="story-quote-section anim-fade-up">
   <p class="story-quote">I don't just want your brand to look good. <em>I want it to work.</em></p>
@@ -338,10 +332,11 @@ footer { background: var(--black); padding: 80px 60px 40px; }
     <div>
       <div class="footer-col-title">Services</div>
       <ul class="footer-links">
-        <li><a href="services.html#branding">Branding &amp; Identity</a></li>
-        <li><a href="services.html#content-creation">Content Creation</a></li>
-        <li><a href="services.html#web-design">Web Design</a></li>
-        <li><a href="services.html#brand-strategy">Brand Strategy</a></li>
+        <li><a href="services.html#start-here">Brand Session &amp; Audit</a></li>
+        <li><a href="services.html#vip-day">Strategy VIP Day</a></li>
+        <li><a href="services.html#brand-identity">Brand Identity</a></li>
+        <li><a href="services.html#website">Website</a></li>
+        <li><a href="services.html#partnership">Monthly Partnership</a></li>
       </ul>
     </div>
     <div>

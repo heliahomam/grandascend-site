@@ -305,6 +305,9 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   .ph-foot { position: static; margin: 0 24px; padding: 18px 0 30px; flex-direction: column; align-items: flex-start; gap: 6px; }
   .ph-foot .hide-sm, .ph-note { display: none; }
   #about.editorial { padding: 90px 24px 100px; }
+  .work-home { padding: 90px 20px 100px; }
+  .work-home-grid { grid-template-columns: 1fr; gap: 64px; }
+  .work-phone { right: -8px; width: 26%; border-width: 4px; border-radius: 14px; }
   #about.editorial .about-grid { grid-template-columns: 1fr; gap: 60px; }
   .about-collage { min-height: 460px; }
 }
@@ -315,6 +318,23 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes logosMarquee { from { transform: translateX(0); } to { transform: translateX(-14.2857143%); } }
 
+
+/* SELECTED WORK (homepage) */
+.work-home { padding: 130px 60px 140px; background: var(--cream); }
+.work-home-head { text-align: center; margin-bottom: 70px; }
+.work-home-title { font-family: var(--serif); font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: 0.95; color: var(--charcoal); }
+.work-home-title em { font-style: italic; color: var(--taupe); }
+.work-home-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.work-card { display: block; text-decoration: none; color: var(--charcoal); cursor: none; }
+.work-shot { position: relative; border: 1px solid #BDB2A3; padding: 8px; background: var(--white); margin-bottom: 34px; }
+.work-site { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; display: block; transition: transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.work-phone { position: absolute; right: -18px; bottom: -26px; width: 22%; aspect-ratio: 9/19; object-fit: cover; object-position: top; border: 5px solid var(--charcoal); border-radius: 18px; box-shadow: 0 24px 40px -18px rgba(0,0,0,0.45); transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.work-card:hover .work-phone { transform: translateY(-8px) rotate(-2deg); }
+.work-name { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(32px, 3vw, 44px); line-height: 1.05; margin-bottom: 10px; }
+.work-tags { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--taupe); }
+.work-home-cta { text-align: center; margin-top: 80px; }
+.ph-btn.dark { background: var(--charcoal); color: var(--cream); }
+.ph-btn.dark:hover { background: var(--black); }
 
 /* HAMBURGER */
 .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 200; }
@@ -520,7 +540,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   <div class="photo-hero-content">
     <div class="ph-badge"><span class="lvmh-dot"></span>LVMH Certified Strategist</div>
     <h1 class="ph-title">Your brand, built<br>for the tier you're<br><em>reaching for.</em></h1>
-    <p class="ph-desc">A creative house for luxury and beauty brands. We build brand identity, content, and Shopify stores so your brand looks and sells like the premium it is.</p>
+    <p class="ph-desc">Brand identity, content and websites for luxury and beauty brands.</p>
     <div class="ph-actions">
       <a href="services.html" class="ph-btn">Discover our packages<span class="arrow" aria-hidden="true"></span></a>
       <a href="apply.html" class="ph-link">Let's talk</a>
@@ -537,22 +557,22 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 <section id="about" class="editorial">
   <div class="about-grid">
     <div class="about-left anim-left">
-      <div class="section-label">01 Who We Are</div>
+      <div class="section-label">Who We Are</div>
       <h2 class="about-headline">A creative house for <em>visionary</em> brands.</h2>
-      <p class="about-body">GrandAscend is a Montreal-based creative marketing agency specializing in luxury and beauty branding. Founded by LVMH-certified strategist Helia Homam, the agency brings together brand strategy, content creation, and Shopify design to help ambitious businesses rise above the noise.</p>
-      <p class="about-body">Every brand has a story worth telling. We help you find it, shape it, and share it with the world through strategy, design, and content that actually connects.</p>
+      <p class="about-body">A Montreal agency founded by Helia Homam. We find your brand's story, shape it, and share it through strategy, design and content that connects.</p>
+      <a href="about.html" class="service-link" style="color:var(--charcoal);margin-top:26px;">Our story <span class="service-arrow"></span></a>
       <div class="result-label" style="margin-top:40px;">Helia Homam's Track Record</div>
       <div class="about-stats" style="margin-top:14px;">
         <div class="stat-box">
-          <div class="stat-num" data-count="54">0</div>
+          <div class="stat-num">54K+</div>
           <div class="stat-label">Followers Reached</div>
         </div>
         <div class="stat-box">
-          <div class="stat-num" data-count="4">0</div>
+          <div class="stat-num">4+</div>
           <div class="stat-label">Years Experience</div>
         </div>
         <div class="stat-box">
-          <div class="stat-num" data-count="10">0</div>
+          <div class="stat-num">10+</div>
           <div class="stat-label">Brands Worked With</div>
         </div>
         <div class="stat-box">
@@ -624,169 +644,32 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   </div>
 </div>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="services-header anim-fade-up">
-    <div>
-      <div class="section-label section-label-light">02 What We Do</div>
-      <h2 class="services-title">Services that<br><em>move</em> brands.</h2>
-    </div>
-    <p class="services-intro">From content to strategy to full digital presence, we offer everything an ambitious brand needs to grow.</p>
+<!-- SELECTED WORK -->
+<section id="work" class="work-home">
+  <div class="work-home-head anim-fade-up">
+    <div class="section-label" style="justify-content:center;">Selected Work</div>
+    <h2 class="work-home-title">Brands we <em>built.</em></h2>
   </div>
-  <div class="services-grid">
-    <div class="service-card anim-fade-up">
-      <div class="service-num">01</div>
-      <div class="service-line"></div>
-      <h3 class="service-name">Branding &amp; Identity</h3>
-      <p class="service-desc">Logo design, visual identity, and full rebrands for founders and product businesses ready to look as considered as they are.</p>
-      <a href="services.html#branding" class="service-link">Enquire <span class="service-arrow"></span></a>
-    </div>
-    <div class="service-card anim-fade-up delay-1">
-      <div class="service-num">02</div>
-      <div class="service-line"></div>
-      <h3 class="service-name">Content Creation</h3>
-      <p class="service-desc">Photography, Reels, and TikTok content shot in our Montreal studio. Editorial quality, delivered monthly and ready to post.</p>
-      <a href="services.html#content-creation" class="service-link">Enquire <span class="service-arrow"></span></a>
-    </div>
-    <div class="service-card anim-fade-up delay-2">
-      <div class="service-num">03</div>
-      <div class="service-line"></div>
-      <h3 class="service-name">Web Design</h3>
-      <p class="service-desc">Beautiful, conversion-focused websites on Shopify and Wix. Designed to reflect your brand and built to perform.</p>
-      <a href="services.html#web-design" class="service-link">Enquire <span class="service-arrow"></span></a>
-    </div>
-    <div class="service-card anim-fade-up delay-3">
-      <div class="service-num">04</div>
-      <div class="service-line"></div>
-      <h3 class="service-name">Brand Strategy</h3>
-      <p class="service-desc">Identity, positioning, and messaging that sets you apart. We help you define who you are and how you show up in the world.</p>
-      <a href="services.html#brand-strategy" class="service-link">Enquire <span class="service-arrow"></span></a>
-    </div>
+  <div class="work-home-grid">
+    <a class="work-card anim-fade-up" href="services.html#work">
+      <div class="work-shot">
+        <img class="work-site" src="images/img-07-568a9aca59.svg" alt="The Roza Grip Socks website" loading="lazy">
+        <img class="work-phone" src="images/img-08-45f84fc342.jpg" alt="The Roza Grip Socks Instagram feed" loading="lazy">
+      </div>
+      <h3 class="work-name">Roza Grip Socks</h3>
+      <p class="work-tags">Shopify &middot; Branding &middot; Social media</p>
+    </a>
+    <a class="work-card anim-fade-up delay-1" href="https://herheart.io" target="_blank" rel="noopener">
+      <div class="work-shot">
+        <img class="work-site" src="images/img-09-670d13af7a.svg" alt="The HerHeart website" loading="lazy">
+        <img class="work-phone" src="images/img-10-64547a0fb2.jpg" alt="The HerHeart Instagram feed" loading="lazy">
+      </div>
+      <h3 class="work-name">HerHeart</h3>
+      <p class="work-tags">Identity &middot; Shopify &middot; Email &middot; Wholesale</p>
+    </a>
   </div>
-  <div style="display:flex; justify-content:center; margin-top:60px;">
-    <a href="services.html" class="service-link anim-fade-up" style="color:var(--taupe);">See All Services <span class="service-arrow"></span></a>
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="portfolio-header">
-    <div class="anim-left">
-      <div class="section-label">03 Our Work</div>
-      <h2 class="portfolio-title">Results we are<br><em>proud of.</em></h2>
-    </div>
-    <p class="portfolio-intro anim-right">A selection of brands we have had the pleasure of building, growing, and transforming through strategy and creative execution.</p>
-  </div>
-
-  <div class="portfolio-case" style="display:block;border-bottom:2px solid var(--beige);margin-bottom:100px;padding-bottom:100px;">
-    <!-- Info above -->
-    <div class="anim-fade-up" style="margin-bottom:40px;">
-      <div class="portfolio-client-tag">E-Commerce and Branding</div>
-      <h3 class="portfolio-name">Roza Grip Socks</h3>
-      <p class="portfolio-desc">Full Shopify website design and launch, brand identity development, and social media strategy for this Montreal-based activewear brand. Built from scratch into a fully operational e-commerce business.</p>
-      <div class="portfolio-result">
-        <div class="result-label">Result</div>
-        <div class="result-text">Full e-commerce store launched with cohesive brand identity and digital presence built from zero.</div>
-      </div>
-      <div class="portfolio-tags">
-        <span class="portfolio-tag">Shopify</span>
-        <span class="portfolio-tag">Branding</span>
-        <span class="portfolio-tag">E-Commerce</span>
-        <span class="portfolio-tag">Social Media</span>
-      </div>
-    </div>
-    <!-- Devices below at natural size -->
-    <div style="position:relative;display:inline-block;max-width:700px;margin-bottom:120px;">
-      <div class="device-wrap anim-scale">
-      <div class="laptop-frame">
-        <div class="laptop-screen">
-        <img src="images/img-07-568a9aca59.svg" alt="Roza website" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;" loading="lazy" />
-      </div>
-      </div>
-      <div class="laptop-base"></div>
-      <div class="laptop-stand"></div>
-    <div style="position:absolute;bottom:-15px;right:-15px;width:95px;z-index:10;">
-      <div style="background:#0a0a0a;border-radius:28px;padding:6px 5px;box-shadow:0 20px 40px rgba(0,0,0,0.5),0 0 0 1px #2a2a2a;">
-        <div style="width:30%;height:4px;background:#000;border-radius:8px;margin:2px auto 5px;"></div>
-        <div style="border-radius:22px;overflow:hidden;aspect-ratio:9/19.5;background:#000;">
-          <img src="images/img-08-45f84fc342.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;" loading="lazy" />
-        </div>
-        <div style="width:30%;height:3px;background:#333;border-radius:2px;margin:6px auto 0;"></div>
-      </div>
-    </div>
-    </div>
-    </div>
-  </div>
-
-  <div class="portfolio-case reverse">
-    <div class="portfolio-info anim-left">
-      <div class="portfolio-client-tag">Brand Identity and E-Commerce</div>
-      <h3 class="portfolio-name">HerHeart</h3>
-      <p class="portfolio-desc">Built the HerHeart brand from the ground up including logo, visual identity, packaging, Shopify store, Etsy shop, email automation, and a loyal community of repeat buyers.</p>
-      <div class="portfolio-result">
-        <div class="result-label">Result</div>
-        <div class="result-text">1,500+ revenue in first 2 months. Wholesale placement at Honeyrose Hotel boutique. Loyal repeat customer base built organically.</div>
-      </div>
-      <div class="portfolio-tags">
-        <span class="portfolio-tag">Branding</span>
-        <span class="portfolio-tag">Shopify</span>
-        <span class="portfolio-tag">Klaviyo</span>
-        <span class="portfolio-tag">Content</span>
-        <span class="portfolio-tag">Wholesale</span>
-      </div>
-    </div>
-    <div class="device-wrap anim-scale">
-      <div class="laptop-frame">
-        <div class="laptop-screen">
-        <img src="images/img-09-670d13af7a.svg" alt="HerHeart website" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;" loading="lazy" />
-      </div>
-      </div>
-      <div class="laptop-base"></div>
-      <div class="laptop-stand"></div>
-    
-    <div style="position:absolute;bottom:-15px;left:-15px;width:95px;z-index:10;">
-      <div style="background:#0a0a0a;border-radius:28px;padding:6px 5px;box-shadow:0 20px 40px rgba(0,0,0,0.5),0 0 0 1px #2a2a2a;">
-        <div style="width:30%;height:4px;background:#000;border-radius:8px;margin:2px auto 5px;"></div>
-        <div style="border-radius:22px;overflow:hidden;aspect-ratio:9/19.5;background:#000;">
-          <img src="images/img-10-64547a0fb2.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;" loading="lazy" />
-        </div>
-        <div style="width:30%;height:3px;background:#333;border-radius:2px;margin:6px auto 0;"></div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="section-label anim-fade-up" style="justify-content: center;">04 How We Work</div>
-  <h2 class="process-title anim-fade-up delay-1">Our <em>process.</em></h2>
-  <div class="process-steps">
-    <div class="process-step anim-fade-up">
-      <div class="step-num">01</div>
-      <h3 class="step-name">Discovery</h3>
-      <p class="step-desc">We learn everything about your brand, your goals, and your audience. No assumptions, just deep listening and sharp questions.</p>
-    </div>
-    <div class="process-step anim-fade-up delay-1">
-      <div class="step-num">02</div>
-      <h3 class="step-name">Strategy</h3>
-      <p class="step-desc">We build a custom roadmap including content plan, brand positioning, and digital strategy tailored specifically to your vision.</p>
-    </div>
-    <div class="process-step anim-fade-up delay-2">
-      <div class="step-num">03</div>
-      <h3 class="step-name">Creation</h3>
-      <p class="step-desc">We execute with precision, shooting content, designing assets, and building digital experiences that reflect your brand at its best.</p>
-    </div>
-    <div class="process-step anim-fade-up delay-3">
-      <div class="step-num">04</div>
-      <h3 class="step-name">Growth</h3>
-      <p class="step-desc">We track, optimize, and iterate. Your brand keeps getting stronger, smarter, and more visible with every cycle.</p>
-    </div>
+  <div class="work-home-cta anim-fade-up">
+    <a href="services.html" class="ph-btn dark">Discover our packages<span class="arrow" aria-hidden="true"></span></a>
   </div>
 </section>
 
@@ -799,7 +682,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 
 <section id="blog" style="padding: 140px 60px; background: var(--charcoal);">
   <div class="anim-left" style="text-align:center; margin-bottom: 60px;">
-    <div class="section-label section-label-light" style="justify-content:center;">05 Follow Along</div>
+    <div class="section-label section-label-light" style="justify-content:center;">Follow Along</div>
     <h2 style="font-family: var(--serif); font-size: clamp(36px, 4vw, 64px); font-weight: 400; color: var(--white); line-height: 1.05; margin-bottom: 16px;">
       Find us on <em style="font-style:italic; color: var(--taupe);">Instagram.</em>
     </h2>
@@ -870,10 +753,11 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
     <div>
       <div class="footer-col-title">Services</div>
       <ul class="footer-links">
-        <li><a href="services.html#branding">Branding &amp; Identity</a></li>
-        <li><a href="services.html#content-creation">Content Creation</a></li>
-        <li><a href="services.html#web-design">Web Design</a></li>
-        <li><a href="services.html#brand-strategy">Brand Strategy</a></li>
+        <li><a href="services.html#start-here">Brand Session &amp; Audit</a></li>
+        <li><a href="services.html#vip-day">Strategy VIP Day</a></li>
+        <li><a href="services.html#brand-identity">Brand Identity</a></li>
+        <li><a href="services.html#website">Website</a></li>
+        <li><a href="services.html#partnership">Monthly Partnership</a></li>
       </ul>
     </div>
     <div>
