@@ -386,6 +386,29 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   .folio { display: none; }
 }
 
+/* BLURRED PORTRAIT HERO: dark, one line of small capitals across the middle */
+.blur-hero { position: relative; height: 100vh; height: 100svh; min-height: 560px; overflow: hidden; background: #1E1915; color: var(--cream); }
+.blur-hero picture, .blur-hero img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.blur-hero img { object-fit: cover; object-position: 70% 50%; opacity: 0; transform: scale(1.04); animation: bhIn 2.2s cubic-bezier(0.16,1,0.3,1) 0.1s forwards; }
+@keyframes bhIn { to { opacity: 1; transform: scale(1); } }
+.bh-line { position: absolute; left: 60px; right: 60px; top: 50%; transform: translateY(-50%); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; font-size: 11px; font-weight: 500; letter-spacing: 0.22em; line-height: 1.6; text-transform: uppercase; color: rgba(245,240,232,0.92); opacity: 0; animation: fadeIn 1.2s ease 0.9s forwards; }
+.bh-line p { margin: 0; }
+.bh-mid { text-align: center; }
+.bh-right { text-align: right; }
+.bh-foot { position: absolute; left: 60px; right: 60px; bottom: 44px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; opacity: 0; animation: fadeIn 1.2s ease 1.3s forwards; }
+.bh-title { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 2.6vw, 40px); line-height: 1.12; max-width: 17em; color: var(--cream); }
+.bh-title em { font-style: italic; color: #CFC3B4; }
+.bh-link { display: inline-flex; align-items: center; gap: 14px; flex-shrink: 0; font-size: 10px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); text-decoration: none; padding-bottom: 8px; border-bottom: 1px solid rgba(245,240,232,0.5); transition: border-color 0.3s; }
+.bh-link:hover { border-color: var(--cream); }
+.bh-link .arrow { width: 22px; height: 1px; background: currentColor; transition: width 0.4s cubic-bezier(0.16,1,0.3,1); }
+.bh-link:hover .arrow { width: 36px; }
+@media (max-width: 760px) {
+  .bh-line { left: 20px; right: 20px; top: 46%; grid-template-columns: 1fr 1fr; gap: 18px 12px; font-size: 9px; letter-spacing: 0.18em; }
+  .bh-mid { display: none; }
+  .bh-foot { left: 20px; right: 20px; bottom: 28px; flex-direction: column; align-items: flex-start; gap: 24px; }
+  .bh-title { font-size: 30px; }
+}
+
 /* HAMBURGER */
 .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 200; }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); transition: all 0.3s ease; transform-origin: center; }
@@ -559,7 +582,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 
 </style>
 </head>
-<body>
+<body class="photo-top">
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-follower" id="cursorFollower"></div>
@@ -580,33 +603,19 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
 
 <!-- HERO -->
-<section class="spread" id="home">
-  <div class="spread-run">
-    <span>GrandAscend &middot; The Brand Issue</span>
-    <span class="hide-sm">Montreal &middot; Canada &amp; US</span>
-    <span>N&deg;01</span>
+<section class="blur-hero" id="home">
+  <picture>
+    <source media="(max-width: 760px)" srcset="images/hero-blur-tall.jpg">
+    <img src="images/hero-blur.jpg" alt="Helia Homam, founder of GrandAscend, on a call" fetchpriority="high">
+  </picture>
+  <div class="bh-line">
+    <p>Brand direction by<br>GrandAscend</p>
+    <p class="bh-mid">Montreal, 2026<br>Visual &amp; verbal identity</p>
+    <p class="bh-right">LVMH certified<br>strategist</p>
   </div>
-  <div class="spread-grid">
-    <div class="spread-left">
-      <div class="ph-badge spread-badge"><span class="lvmh-dot"></span>LVMH Certified Strategist</div>
-      <h1 class="spread-title">Your brand, built for the tier you're <em>reaching for.</em></h1>
-      <div class="spread-bottom">
-        <p class="spread-desc">Brand identity, content and websites for luxury and beauty brands.</p>
-        <div class="ph-actions">
-          <a href="services.html" class="ph-btn dark">Discover our packages<span class="arrow" aria-hidden="true"></span></a>
-          <a href="apply.html" class="ph-link spread-link">Let's talk</a>
-        </div>
-      </div>
-      <span class="folio">02</span>
-    </div>
-    <div class="spread-right">
-      <figure class="spread-photo"><img src="images/shoot-hero-moodboard-tall.jpg" alt="A GrandAscend moodboard of black and white fashion references" fetchpriority="high"></figure>
-      <figure class="spread-inset">
-        <div class="mat"><img src="images/shoot-helia-camera-sm.jpg" alt="Helia Homam, founder of GrandAscend, holding a camera"></div>
-      </figure>
-      <p class="fig-cap spread-cap">Fig. 01 &middot; The moodboard</p>
-      <span class="folio right">03</span>
-    </div>
+  <div class="bh-foot">
+    <h1 class="bh-title">Your brand, built for the tier you're <em>reaching for.</em></h1>
+    <a href="services.html" class="bh-link">Discover our packages<span class="arrow" aria-hidden="true"></span></a>
   </div>
 </section>
 
