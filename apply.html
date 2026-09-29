@@ -312,14 +312,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
   <input type="text" name="firstName"><input type="text" name="lastName"><input type="email" name="email">
   <input type="text" name="industry"><input type="text" name="businessType"><input type="text" name="business">
   <input type="text" name="instagram"><input type="text" name="service"><input type="text" name="investment">
-  <input type="text" name="source">
+  <input type="text" name="source"><input type="hidden" name="subject">
 </form>
 <form name="grandascend-other-lead" netlify netlify-honeypot="bot-field" hidden>
   <input type="text" name="bot-field">
   <input type="text" name="firstName"><input type="text" name="lastName"><input type="email" name="email">
   <input type="text" name="industry"><input type="text" name="businessType"><input type="text" name="business">
   <input type="text" name="instagram"><input type="text" name="service"><input type="text" name="investment">
-  <input type="text" name="source">
+  <input type="text" name="source"><input type="hidden" name="subject">
 </form>
 
 <header class="hero dark-paper">
@@ -737,7 +737,9 @@ function submit() {
     "instagram":    val("instagram"),
     "service":      service.name,
     "investment":   (qualified ? "Yes, " : "Not at this time, ") + (service.fixed ? "" : "from ") + service.price + " " + service.unit,
-    "source":       source
+    "source":       source,
+    /* Netlify uses this as the notification email subject. */
+    "subject":      (qualified ? "New qualified lead: " : "New lead (not ready yet): ") + service.name + ", " + val("business") + " (" + val("firstName") + " " + val("lastName") + ")"
   };
 
   setLoading(true);
