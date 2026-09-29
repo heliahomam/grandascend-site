@@ -203,7 +203,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60
 .toggle { flex-shrink: 0; width: 34px; height: 20px; border-radius: 999px; background: var(--cream); position: relative; }
 .toggle::after { content: ''; position: absolute; right: 3px; top: 3px; width: 14px; height: 14px; border-radius: 50%; background: var(--charcoal); }
 .addons { background: var(--cream); }
-.addons .price-box { border-color: var(--charcoal); }
+.addons .price-box { border-color: var(--charcoal); border-top: 1px solid var(--charcoal); background: var(--cream); padding-top: 34px; }
+.addons .price-box > h3 { position: static; transform: none; font-size: 13px; letter-spacing: 0.3em; color: var(--charcoal); margin: 0 0 26px; }
+.addons .price-box > h3::before { max-width: 40px; }
+.addons .price-box > h3::after { max-width: none; }
+.addons .terms { color: #4A4038; }
 .addons .price-lines { margin-bottom: 18px; }
 .terms { font-size: 11px; line-height: 1.8; color: var(--ink-soft); letter-spacing: 0.02em; }
 
