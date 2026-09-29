@@ -410,6 +410,30 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 .bh-title em { font-style: italic; color: #CFC3B4; }
 .bh-link { display: inline-flex; align-items: center; gap: 14px; flex-shrink: 0; font-size: 10px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); text-decoration: none; padding-bottom: 8px; border-bottom: 1px solid rgba(245,240,232,0.5); transition: border-color 0.3s; }
 .bh-link:hover { border-color: var(--cream); }
+/* Centred version: muted taupe photo, cream type, services along the bottom */
+.blur-hero.centred { background: #8E857B; }
+.bh-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(880px, 88%); text-align: center; opacity: 0; animation: fadeIn 1.2s ease 0.9s forwards; }
+.bh-kicker { font-size: 10px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(245,240,232,0.88); margin: 0 0 26px; }
+.blur-hero.centred .bh-title { font-size: clamp(40px, 5.2vw, 78px); line-height: 1.02; max-width: none; margin: 0 auto 34px; text-shadow: 0 1px 24px rgba(40,34,28,0.25); }
+.blur-hero.centred .bh-title em { color: var(--cream); }
+.bh-services { position: absolute; left: 20px; right: 20px; bottom: 46px; margin: 0; text-align: center; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; line-height: 1.9; text-transform: uppercase; color: rgba(245,240,232,0.92); opacity: 0; animation: fadeIn 1.2s ease 1.3s forwards; }
+.bh-services em { font-style: italic; }
+.bh-services span { margin: 0 8px; opacity: 0.6; }
+@media (max-width: 760px) {
+  .bh-kicker { font-size: 9px; letter-spacing: 0.24em; margin-bottom: 20px; }
+  .blur-hero.centred .bh-title { font-size: 38px; }
+  .bh-services { font-size: 9px; letter-spacing: 0.12em; bottom: 30px; }
+  .bh-services span { margin: 0 4px; }
+}
+
+/* Light version: soft cream backdrop, charcoal type */
+.blur-hero.light { background: #E4DCD2; color: var(--charcoal); }
+.blur-hero.light .bh-line { color: var(--charcoal); }
+.blur-hero.light .bh-title { color: var(--charcoal); }
+.blur-hero.light .bh-title em { color: #7A6D62; }
+.blur-hero.light .bh-link { color: var(--charcoal); border-color: rgba(42,42,42,0.45); }
+.blur-hero.light .bh-link:hover { border-color: var(--charcoal); }
+.blur-hero.light img { object-position: 60% 50%; }
 .bh-link .arrow { width: 22px; height: 1px; background: currentColor; transition: width 0.4s cubic-bezier(0.16,1,0.3,1); }
 .bh-link:hover .arrow { width: 36px; }
 @media (max-width: 760px) {
@@ -613,20 +637,17 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
 
 <!-- HERO -->
-<section class="blur-hero" id="home">
+<section class="blur-hero centred" id="home">
   <picture>
-    <source media="(max-width: 760px)" srcset="images/hero-blur-tall.jpg">
-    <img src="images/hero-blur.jpg" alt="Helia Homam, founder of GrandAscend, on a call" fetchpriority="high">
+    <source media="(max-width: 760px)" srcset="images/hero-mood-blur-tall.jpg">
+    <img src="images/hero-mood-blur.jpg" alt="Helia Homam pinning references to a moodboard, in motion" fetchpriority="high">
   </picture>
-  <div class="bh-line">
-    <p>Brand direction by<br>GrandAscend</p>
-    <p class="bh-mid">Montreal, 2026<br>Visual &amp; verbal identity</p>
-    <p class="bh-right">LVMH certified<br>strategist</p>
-  </div>
-  <div class="bh-foot">
+  <div class="bh-center">
+    <p class="bh-kicker">LVMH certified strategist &middot; Montreal</p>
     <h1 class="bh-title">Your brand, built for the tier you're <em>reaching for.</em></h1>
     <a href="services.html" class="bh-link">Discover our packages<span class="arrow" aria-hidden="true"></span></a>
   </div>
+  <p class="bh-services">Brand strategy <span>|</span> <em>Brand identity</em> <span>|</span> Content creation <span>|</span> <em>Websites</em> <span>|</span> Social media</p>
 </section>
 
 <!-- ABOUT -->
@@ -659,8 +680,8 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
     </div>
     <div class="about-right anim-right">
       <div class="about-collage" aria-hidden="true">
-        <figure class="ed p1"><div class="mat"><img src="images/shoot-helia-moodboard.jpg" alt="" loading="lazy"></div><figcaption class="fig-cap">Fig. 02 &middot; Building a moodboard</figcaption></figure>
-        <figure class="ed p2"><div class="mat"><img src="images/shoot-heels-laptop.jpg" alt="" loading="lazy"></div><figcaption class="fig-cap">Fig. 03 &middot; On set</figcaption></figure>
+        <figure class="ed p1"><div class="mat"><img src="images/shoot-heels-laptop.jpg" alt="" loading="lazy"></div><figcaption class="fig-cap">Fig. 02 &middot; On set</figcaption></figure>
+        <figure class="ed p2"><div class="mat"><img src="images/shoot-studio-desk.jpg" alt="" loading="lazy"></div><figcaption class="fig-cap">Fig. 03 &middot; The desk</figcaption></figure>
         <span class="about-word" aria-hidden="true">Vision</span>
       </div>
     </div>
