@@ -290,6 +290,8 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 .about-collage .ed.p1 .mat { aspect-ratio: 4 / 5; }
 .about-collage .ed.p2 { bottom: 0; right: 0; width: 46%; z-index: 2; transform: none; }
 .about-collage .ed.p2 .mat { aspect-ratio: 3 / 4; }
+.about-collage .ed.solo { position: relative; width: 78%; }
+.about-collage .ed.solo .mat { aspect-ratio: 2 / 3; }
 .about-word { position: absolute; right: 0; top: 2%; font-family: var(--serif); font-style: italic; font-size: clamp(60px, 7vw, 116px); line-height: 1; color: var(--taupe); opacity: 0.5; writing-mode: vertical-rl; transform: rotate(180deg); pointer-events: none; }
 .about-collage .polaroid { position: absolute; }
 .about-collage .p1 { top: 0; left: 6%; width: 56%; transform: rotate(-4deg); }
@@ -315,7 +317,9 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   .ph-foot .hide-sm, .ph-note { display: none; }
   #about.editorial { padding: 90px 24px 100px; }
   #about.editorial .about-grid { grid-template-columns: 1fr; gap: 60px; }
-  .about-collage { min-height: 460px; }
+  .about-collage { min-height: 0; }
+  .about-collage .ed.solo { width: 100%; }
+  .about-word { display: none; }
 }
 
 /* KEYFRAMES */
@@ -680,8 +684,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
     </div>
     <div class="about-right anim-right">
       <div class="about-collage" aria-hidden="true">
-        <figure class="ed p1"><div class="mat"><img src="images/shoot-heels-laptop.jpg" alt="" loading="lazy"></div><figcaption class="fig-cap">Fig. 02 &middot; On set</figcaption></figure>
-        <figure class="ed p2"><div class="mat"><img src="images/shoot-studio-desk.jpg" alt="" loading="lazy"></div><figcaption class="fig-cap">Fig. 03 &middot; The desk</figcaption></figure>
+        <figure class="ed solo"><div class="mat"><img src="images/shoot-helia-table.jpg" srcset="images/shoot-helia-table-sm.jpg 600w, images/shoot-helia-table.jpg 1333w" sizes="(max-width: 960px) 90vw, 40vw" alt="Helia Homam reviewing GrandAscend prints over coffee" loading="lazy"></div><figcaption class="fig-cap">Fig. 02 &middot; Reviewing the prints</figcaption></figure>
         <span class="about-word" aria-hidden="true">Vision</span>
       </div>
     </div>
