@@ -336,6 +336,43 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 .ph-btn.dark { background: var(--charcoal); color: var(--cream); }
 .ph-btn.dark:hover { background: var(--black); }
 
+/* EDITORIAL SPREAD HERO: a text page and a photo page, like an open magazine */
+.spread { position: relative; padding: 104px 60px 44px; background: var(--cream); isolation: isolate; }
+.spread::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('images/paper-grain.svg'); opacity: 0.09; mix-blend-mode: multiply; filter: invert(1); pointer-events: none; }
+.spread-run { display: flex; justify-content: space-between; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--charcoal); font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: var(--charcoal); }
+.spread-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 200px); min-height: calc(100dvh - 200px); }
+.spread-left { position: relative; display: flex; flex-direction: column; padding: 56px 56px 50px 0; border-right: 1px solid rgba(42,42,42,0.25); }
+.spread-badge { color: var(--charcoal); border-color: rgba(42,42,42,0.3); align-self: flex-start; }
+.spread-title { font-family: var(--serif); font-weight: 400; font-size: clamp(64px, 7.4vw, 128px); line-height: 0.9; letter-spacing: -0.02em; color: var(--charcoal); margin: 10px 0 40px; opacity: 0; animation: fadeUp 1.1s ease 0.4s forwards; }
+.spread-title em { font-style: italic; color: var(--taupe); }
+.spread-bottom { margin-top: auto; opacity: 0; animation: fadeUp 1s ease 0.8s forwards; }
+.spread-desc { font-size: 14px; line-height: 1.85; color: var(--charcoal); opacity: 0.8; max-width: 36ch; margin-bottom: 30px; }
+.spread-link { color: var(--charcoal); border-color: rgba(42,42,42,0.5); }
+.spread-link:hover { border-color: var(--charcoal); }
+.folio { position: absolute; bottom: 12px; left: 0; font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--taupe); }
+.folio.right { left: auto; right: 0; }
+.spread-right { position: relative; padding: 36px 0 50px 56px; }
+.spread-photo { position: relative; height: 100%; min-height: 520px; overflow: hidden; }
+.spread-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; transform: scale(1.05); animation: heroZoom 2.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+.spread-pol { position: absolute; left: -34px; bottom: 90px; width: 170px; padding: 9px 9px 34px; transform: rotate(-5deg); z-index: 2; opacity: 0; animation: fadeIn 1s ease 1.1s forwards; }
+.spread-pol .frame { aspect-ratio: 4 / 5; }
+.spread-pol .tape { top: -12px; left: 30%; width: 80px; transform: rotate(-6deg); }
+.spread-note { position: absolute; left: 160px; bottom: 6px; z-index: 2; color: var(--ink-soft, #5E554D); font-size: 17px; flex-direction: row-reverse; opacity: 0; animation: fadeIn 1s ease 1.5s forwards; }
+.spread-note svg { transform: scaleX(-1) rotate(-20deg); }
+@media (max-width: 960px) {
+  .spread { padding: 84px 20px 30px; }
+  .spread-run { font-size: 8px; letter-spacing: 0.24em; }
+  .spread-run .hide-sm { display: none; }
+  .spread-grid { grid-template-columns: 1fr; min-height: 0; }
+  .spread-right { order: -1; padding: 20px 0 0; }
+  .spread-photo { min-height: 0; height: auto; aspect-ratio: 4 / 5; max-height: 62vh; width: 100%; }
+  .spread-pol { left: auto; right: 14px; bottom: -30px; width: 116px; padding: 6px 6px 24px; transform: rotate(4deg); }
+  .spread-note { display: none; }
+  .spread-left { border-right: none; padding: 40px 0 44px; }
+  .spread-title { font-size: clamp(50px, 14vw, 76px); margin-bottom: 30px; }
+  .folio { display: none; }
+}
+
 /* HAMBURGER */
 .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 200; }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); transition: all 0.3s ease; transform-origin: center; }
@@ -509,7 +546,7 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 
 </style>
 </head>
-<body class="photo-top">
+<body>
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-follower" id="cursorFollower"></div>
@@ -530,26 +567,31 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
 
 <!-- HERO -->
-<section class="photo-hero" id="home">
-  <picture>
-    <source media="(max-width: 760px)" srcset="images/shoot-studio-desk.jpg">
-    <source media="(max-width: 1440px)" srcset="images/shoot-hero-wide-md.jpg">
-    <img src="images/shoot-hero-wide.jpg" alt="A camera and a laptop showing the GrandAscend logo on set" fetchpriority="high">
-  </picture>
-  <div class="photo-hero-shade"></div>
-  <div class="photo-hero-content">
-    <div class="ph-badge"><span class="lvmh-dot"></span>LVMH Certified Strategist</div>
-    <h1 class="ph-title">Your brand, built<br>for the tier you're<br><em>reaching for.</em></h1>
-    <p class="ph-desc">Brand identity, content and websites for luxury and beauty brands.</p>
-    <div class="ph-actions">
-      <a href="services.html" class="ph-btn">Discover our packages<span class="arrow" aria-hidden="true"></span></a>
-      <a href="apply.html" class="ph-link">Let's talk</a>
-    </div>
+<section class="spread" id="home">
+  <div class="spread-run">
+    <span>GrandAscend &middot; The Brand Issue</span>
+    <span class="hide-sm">Montreal &middot; Canada &amp; US</span>
+    <span>N&deg;01</span>
   </div>
-  <div class="ph-foot">
-    <span>Montreal &middot; Serving Canada and the US</span>
-    <span>Trusted by Roza Grip Socks &middot; HerHeart</span>
-    <span class="hide-sm">Scroll &darr;</span>
+  <div class="spread-grid">
+    <div class="spread-left">
+      <div class="ph-badge spread-badge"><span class="lvmh-dot"></span>LVMH Certified Strategist</div>
+      <h1 class="spread-title">Your brand, built for the tier you're <em>reaching for.</em></h1>
+      <div class="spread-bottom">
+        <p class="spread-desc">Brand identity, content and websites for luxury and beauty brands.</p>
+        <div class="ph-actions">
+          <a href="services.html" class="ph-btn dark">Discover our packages<span class="arrow" aria-hidden="true"></span></a>
+          <a href="apply.html" class="ph-link spread-link">Let's talk</a>
+        </div>
+      </div>
+      <span class="folio">02</span>
+    </div>
+    <div class="spread-right">
+      <figure class="spread-photo"><img src="images/shoot-studio-desk.jpg" alt="The GrandAscend desk on set, a camera and a laptop showing the GrandAscend logo" fetchpriority="high"></figure>
+      <figure class="polaroid spread-pol" aria-hidden="true"><span class="tape"></span><div class="frame"><img src="images/shoot-helia-camera-sm.jpg" alt=""></div></figure>
+      <p class="hand-note spread-note" aria-hidden="true">Helia, on set <svg viewBox="0 0 46 34"><path d="M3 4 C 12 24, 26 30, 40 24 M33 19 L40 24 L32 29"/></svg></p>
+      <span class="folio right">03</span>
+    </div>
   </div>
 </section>
 
