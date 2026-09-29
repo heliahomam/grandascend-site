@@ -211,25 +211,6 @@ nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); 
 .blog-post-title { font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--white); line-height: 1.3; margin-bottom: 12px; }
 .blog-excerpt { font-family: var(--sans); font-size: 11px; font-weight: 300; line-height: 1.7; color: rgba(245,240,232,0.45); }
 
-/* CONTACT */
-#contact { padding: 140px 60px; background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
-.contact-title { font-family: var(--serif); font-size: clamp(36px, 4vw, 64px); font-weight: 400; line-height: 1.1; color: var(--charcoal); margin-bottom: 32px; }
-.contact-title em { font-style: italic; color: var(--taupe); }
-.contact-body { font-family: var(--sans); font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--charcoal); opacity: 0.75; letter-spacing: 0.03em; margin-bottom: 40px; }
-.contact-info { display: flex; flex-direction: column; gap: 20px; }
-.contact-item { display: flex; gap: 20px; align-items: flex-start; }
-.contact-label { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--taupe); width: 80px; padding-top: 2px; flex-shrink: 0; }
-.contact-value { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--charcoal); letter-spacing: 0.02em; }
-.contact-form { display: flex; flex-direction: column; gap: 20px; }
-.form-group { display: flex; flex-direction: column; gap: 8px; }
-.form-label { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--taupe); }
-.form-input, .form-textarea, .form-select { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--charcoal); background: transparent; border: none; border-bottom: 1px solid var(--beige); padding: 14px 0; outline: none; transition: border-color 0.3s ease; letter-spacing: 0.03em; }
-.form-input::placeholder, .form-textarea::placeholder { color: var(--taupe); opacity: 0.5; }
-.form-input:focus, .form-textarea:focus { border-color: var(--charcoal); }
-.form-textarea { resize: none; height: 100px; }
-.form-select { cursor: none; }
-.form-submit { display: inline-flex; align-items: center; gap: 16px; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white); background: var(--charcoal); border: none; padding: 18px 40px; cursor: none; transition: all 0.3s ease; margin-top: 12px; align-self: flex-start; }
-.form-submit:hover { background: var(--black); transform: translateY(-2px); }
 
 /* FOOTER */
 footer { background: var(--black); padding: 80px 60px 40px; }
@@ -396,8 +377,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   /* INSTAGRAM */
   #blog { padding: 80px 24px; }
 
-  /* CONTACT */
-  #contact { grid-template-columns: 1fr; padding: 80px 24px; gap: 50px; }
 
   /* FOOTER */
   footer { padding: 60px 24px 30px; }
@@ -419,7 +398,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
     grid-template-columns: repeat(2, 1fr) !important; 
   }
   .portfolio-name { font-size: 32px; }
-  .contact-title { font-size: 32px; }
 }
   .hero-tag { margin-bottom: 20px !important; }
 
@@ -440,7 +418,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
     <li><a href="services.html" onclick="closeMenu()">Services</a></li>
     <li><a href="careers.html" onclick="closeMenu()">Careers</a></li>
     <li><a href="creators.html" onclick="closeMenu()">Creators</a></li>
-    <li><a href="#contact" class="nav-cta" onclick="closeMenu()">Let's Talk</a></li>
+    <li><a href="apply.html" class="nav-cta" onclick="closeMenu()">Let's Talk</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -517,7 +495,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
     <div class="hero-bottom">
       <p class="hero-desc">GrandAscend is a creative agency for luxury and beauty brands ready to grow. We build brand identity, content, and Shopify stores so your brand looks and sells like the premium it is.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Book a Strategy Call</a>
+        <a href="apply.html" class="btn-primary">Book a Strategy Call</a>
         <a href="#portfolio" class="btn-secondary">See Our Work</a>
       </div>
     </div>
@@ -799,71 +777,19 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-left anim-left">
-    <div class="section-label">06 Contact</div>
-    <h2 class="contact-title">Let's build something <em>remarkable.</em></h2>
-    <p class="contact-body">Ready to take your brand to the next level? We would love to hear about your vision. Fill out the form and we will be in touch within 1 business day.</p>
-    <div class="contact-info">
-      <div class="contact-item">
-        <div class="contact-label">Location</div>
-        <div class="contact-value">Montreal, Quebec, Canada</div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-label">Email</div>
-        <div class="contact-value">contact@grandascend.co</div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-label">Instagram</div>
-        <div class="contact-value">@grandascend_media</div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-label">Available</div>
-        <div class="contact-value">Now accepting new clients</div>
-      </div>
-    </div>
-  </div>
-  <div class="contact-form anim-right" id="contactForm">
-    <div class="form-group">
-      <label class="form-label">Your Name</label>
-      <input type="text" class="form-input" placeholder="First and last name">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Email Address</label>
-      <input type="email" class="form-input" placeholder="Your email address">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Service Interested In</label>
-      <select class="form-select">
-        <option>Content Creation</option>
-        <option>Website Design</option>
-        <option>Social Media Management</option>
-        <option>Brand Strategy</option>
-        <option>Full Package</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Tell Us About Your Brand</label>
-      <textarea class="form-textarea" placeholder="What are you building and where do you want to take it?"></textarea>
-    </div>
-    <button class="form-submit" onclick="sendContactEmail()">Send Message &rarr;</button>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div>
       <div class="footer-brand">GrandAscend</div>
-      <p class="footer-tagline">A creative marketing agency for ambitious brands. Montreal-based, globally minded.</p>
+      <p class="footer-tagline">A creative marketing agency for ambitious brands. Based in Montreal, serving Canada and the US.</p>
     </div>
     <div>
       <div class="footer-col-title">Navigate</div>
       <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="apply.html">Contact</a></li>
       </ul>
     </div>
     <div>
@@ -955,28 +881,6 @@ const counterObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.5 });
 counters.forEach(el => counterObserver.observe(el));
-
-function sendContactEmail() {
-  const name = document.querySelector('#contactForm input[type="text"]').value || '';
-  const email = document.querySelector('#contactForm input[type="email"]').value || '';
-  const service = document.querySelector('#contactForm select').value || '';
-  const message = document.querySelector('#contactForm textarea').value || '';
-
-  if (!name || !email || !message) {
-    alert('Please fill in your name, email, and message before sending.');
-    return;
-  }
-
-  const subject = encodeURIComponent('New Enquiry from ' + name + ': ' + service);
-  const body = encodeURIComponent(
-    'Name: ' + name + '\n' +
-    'Email: ' + email + '\n' +
-    'Service: ' + service + '\n\n' +
-    'Message:\n' + message
-  );
-
-  window.location.href = 'mailto:contact@grandascend.co?subject=' + subject + '&body=' + body;
-}
 
 // Mobile menu
 function toggleMenu() {
