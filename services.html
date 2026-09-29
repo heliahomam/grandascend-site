@@ -88,12 +88,12 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60
 .os-title .row1 { display: flex; align-items: center; gap: 0.18em; }
 .os-title .row1::after { content: ''; flex: 1; height: 2px; background: var(--charcoal); margin-top: 0.08em; }
 .os-title .row2 { display: block; }
-.os-stage { position: relative; display: grid; grid-template-columns: 1fr minmax(0, 480px) 1fr; align-items: start; margin-top: clamp(-190px, -13vw, -60px); }
-.os-figure { grid-column: 2; position: relative; z-index: 2; }
+.os-stage { position: relative; display: grid; grid-template-columns: 1fr minmax(0, 480px) 1fr; align-items: center; margin-top: clamp(-190px, -13vw, -60px); }
+.os-figure { grid-column: 2; position: relative; z-index: 2; padding-top: 120px; }
 .os-figure img { width: 100%; height: auto; display: block; }
-.os-folders { display: grid; gap: 46px; padding-top: 230px; position: relative; z-index: 3; }
+.os-folders { display: grid; gap: 30px; padding-top: 150px; position: relative; z-index: 3; }
 .os-folders.left { grid-column: 1; justify-items: start; padding-left: 4%; }
-.os-folders.right { grid-column: 3; justify-items: end; padding-right: 4%; padding-top: 290px; }
+.os-folders.right { grid-column: 3; justify-items: end; padding-right: 4%; }
 .os-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); }
 .os-foot p { font-size: 13px; line-height: 1.85; color: var(--ink-soft); max-width: 470px; }
 
@@ -351,8 +351,8 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   .os-meta { margin-bottom: 12px; }
   .os-meta .kicker { font-size: 8px; letter-spacing: 0.3em; }
   .os-title { font-size: 26.5vw; }
-  .os-stage { grid-template-columns: 1fr 1fr; margin-top: -9vw; gap: 0 12px; }
-  .os-figure { grid-column: 1 / -1; grid-row: 1; width: 78%; margin: 0 auto; }
+  .os-stage { grid-template-columns: 1fr 1fr; margin-top: -9vw; gap: 0 12px; align-items: start; }
+  .os-figure { grid-column: 1 / -1; grid-row: 1; width: 78%; margin: 0 auto; padding-top: 7vw; }
   .os-folders, .os-folders.left, .os-folders.right { grid-row: 2; padding: 40px 0 0; justify-items: center; gap: 34px; }
   .os-folders.left { grid-column: 1; }
   .os-folders.right { grid-column: 2; }
