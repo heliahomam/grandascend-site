@@ -9,7 +9,10 @@
 <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600;700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/300.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/600.css" rel="stylesheet">
 <style>
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,7 +32,7 @@
 
   body {
     background: var(--light);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     color: var(--charcoal);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -40,13 +43,13 @@
 /* NAV: light over the dark hero, cream once scrolled */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60px; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s ease, padding 0.4s ease; }
 nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 16px 60px; border-bottom: 1px solid rgba(42,42,42,0.10); }
-.nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.4s ease; }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Instrument Serif', 'Times New Roman', serif; font-size: 14px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.4s ease; }
 .nav-logo-mark { height: 20px; width: auto; display: block; filter: brightness(6); transition: filter 0.4s ease; }
 nav.scrolled .nav-logo { color: var(--charcoal); }
 nav.scrolled .nav-logo-mark { filter: none; }
 .nav-logo span { font-style: italic; font-weight: 700; letter-spacing: 0.05em; text-transform: none; }
 .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; margin: 0; padding: 0; }
-.nav-links a { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; position: relative; transition: color 0.4s ease; }
+.nav-links a { font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; position: relative; transition: color 0.4s ease; }
 nav.scrolled .nav-links a { color: var(--charcoal); }
 .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
 .nav-links a:hover::after { width: 100%; }
@@ -122,7 +125,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: clamp(48px, 8vw, 88px);
     font-weight: 300;
     color: var(--cream);
@@ -163,7 +166,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     animation: fadeUp 0.8s 0.8s forwards;
     cursor: pointer;
     background: transparent;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
   }
 
   .hero-cta:hover {
@@ -226,7 +229,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .section-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: 32px;
     font-weight: 400;
     margin-bottom: 32px;
@@ -278,7 +281,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .info-card h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 20px;
@@ -305,7 +308,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     padding: 12px 16px;
     border: 1px solid var(--border);
     border-radius: 8px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     font-size: 13px;
     color: var(--charcoal);
     background: var(--light);
@@ -355,7 +358,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .cat-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: 20px;
     font-weight: 400;
   }
@@ -392,7 +395,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     background: var(--light);
     font-size: 12px;
     font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     color: var(--taupe);
     cursor: pointer;
     transition: all 0.15s;
@@ -426,7 +429,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     border: 1px solid var(--border);
     border-radius: 100px;
     font-size: 12px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     color: var(--taupe);
     background: var(--white);
     cursor: pointer;
@@ -448,7 +451,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     background: var(--charcoal);
     color: var(--cream);
     border: none;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 4px;
@@ -481,7 +484,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .thankyou h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: 52px;
     font-weight: 300;
     margin-bottom: 16px;
@@ -609,7 +612,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .popup-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: clamp(36px, 8vw, 52px);
     font-weight: 300;
     color: var(--charcoal);
@@ -658,7 +661,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     padding: 13px 36px;
     border: 1px solid var(--charcoal);
     color: var(--charcoal);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 3px;
@@ -736,7 +739,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
 <section style="background: var(--charcoal); padding: 80px 32px; text-align: center;">
   <div style="max-width: 600px; margin: 0 auto;">
     <p style="font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;">Always open</p>
-    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 24px;">We may not always have a role open. We always have room for the right person.</h2>
+    <h2 style="font-family: 'Instrument Serif', 'Times New Roman', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 24px;">We may not always have a role open. We always have room for the right person.</h2>
     <p style="font-size: 13px; font-weight: 300; line-height: 1.9; color: #9A9189; margin-bottom: 16px;">GrandAscend is a small, intentional team and we are always growing. Whether we are actively hiring or not, we love meeting people who bring something special. If you feel like you belong in our world, tell us about yourself. We will reach out when the moment is right.</p>
     <p style="font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--gold);">You are not applying for a job. You are joining a family.</p>
   </div>

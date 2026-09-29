@@ -9,7 +9,7 @@
 <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" as="image" href="images/shoot-hero-moodboard-md.jpg" media="(min-width: 761px)">
+<link rel="preload" as="image" href="images/shoot-hero-wide-md.jpg" media="(min-width: 761px)">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600;700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/300.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/400.css" rel="stylesheet">
@@ -235,9 +235,9 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 /* PHOTO HERO: full-bleed shoot photo with an editorial headline */
 .photo-hero { position: relative; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: #2A2A2A; color: var(--cream); }
 .photo-hero picture, .photo-hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.photo-hero picture img { object-fit: cover; object-position: 50% 40%; transform: scale(1.06); animation: heroZoom 2.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+.photo-hero picture img { object-fit: cover; object-position: 100% 70%; transform: scale(1.06); animation: heroZoom 2.4s cubic-bezier(0.16,1,0.3,1) forwards; }
 @keyframes heroZoom { to { transform: scale(1); } }
-.photo-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(34,31,28,0.84) 0%, rgba(34,31,28,0.62) 42%, rgba(34,31,28,0.28) 72%, rgba(34,31,28,0.18) 100%), linear-gradient(0deg, rgba(34,31,28,0.7) 0%, rgba(34,31,28,0) 32%), linear-gradient(180deg, rgba(34,31,28,0.45) 0%, rgba(34,31,28,0) 18%); }
+.photo-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(34,31,28,0.82) 0%, rgba(34,31,28,0.55) 40%, rgba(34,31,28,0.05) 62%, rgba(34,31,28,0) 100%), linear-gradient(0deg, rgba(34,31,28,0.7) 0%, rgba(34,31,28,0) 32%), linear-gradient(180deg, rgba(34,31,28,0.45) 0%, rgba(34,31,28,0) 18%); }
 .photo-hero-content { position: relative; z-index: 2; padding: 0 60px 150px; max-width: 900px; }
 .ph-badge { display: inline-flex; align-items: center; gap: 10px; font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); border: 1px solid rgba(245,240,232,0.35); padding: 9px 16px; margin-bottom: 30px; opacity: 0; animation: fadeUp 1s ease 0.3s forwards; }
 .ph-badge .lvmh-dot { background: var(--taupe); }
@@ -293,13 +293,16 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 .about-collage .hand-note svg { transform: rotate(-30deg); margin-left: 60px; }
 
 @media (max-width: 960px) {
-  .photo-hero { justify-content: flex-end; }
-  .photo-hero picture img { object-position: 50% 40%; }
-  .photo-hero-shade { background: linear-gradient(0deg, rgba(34,31,28,0.9) 0%, rgba(34,31,28,0.6) 42%, rgba(34,31,28,0) 72%), linear-gradient(180deg, rgba(34,31,28,0.45) 0%, rgba(34,31,28,0) 20%); }
-  .photo-hero-content { padding: 0 24px 120px; }
-  .ph-title { font-size: clamp(46px, 12.5vw, 72px); }
-  .ph-desc { font-size: 13px; }
-  .ph-foot { left: 24px; right: 24px; bottom: 26px; flex-direction: column; align-items: flex-start; gap: 6px; }
+  /* Phones: photo on top with the laptop in view, copy below on charcoal */
+  .photo-hero { display: block; min-height: 0; }
+  .photo-hero picture { position: relative; display: block; height: 54vh; min-height: 360px; max-height: 500px; }
+  .photo-hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-position: 50% 92%; }
+  .photo-hero-shade { top: 0; bottom: auto; height: 54vh; min-height: 360px; max-height: 500px; background: linear-gradient(0deg, #2A2A2A 0%, rgba(42,42,42,0) 40%), linear-gradient(180deg, rgba(34,31,28,0.55) 0%, rgba(34,31,28,0) 26%); }
+  .photo-hero-content { padding: 0 24px 40px; margin-top: -54px; }
+  .ph-badge { margin-bottom: 22px; }
+  .ph-title { font-size: clamp(46px, 12.5vw, 72px); margin-bottom: 22px; }
+  .ph-desc { font-size: 13px; margin-bottom: 30px; }
+  .ph-foot { position: static; margin: 0 24px; padding: 18px 0 30px; flex-direction: column; align-items: flex-start; gap: 6px; }
   .ph-foot .hide-sm, .ph-note { display: none; }
   #about.editorial { padding: 90px 24px 100px; }
   #about.editorial .about-grid { grid-template-columns: 1fr; gap: 60px; }
@@ -509,9 +512,9 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
 <!-- HERO -->
 <section class="photo-hero" id="home">
   <picture>
-    <source media="(max-width: 760px)" srcset="images/shoot-hero-moodboard-tall.jpg">
-    <source media="(max-width: 1440px)" srcset="images/shoot-hero-moodboard-md.jpg">
-    <img src="images/shoot-hero-moodboard.jpg" alt="A GrandAscend campaign moodboard of black and white fashion prints" fetchpriority="high">
+    <source media="(max-width: 760px)" srcset="images/shoot-studio-desk.jpg">
+    <source media="(max-width: 1440px)" srcset="images/shoot-hero-wide-md.jpg">
+    <img src="images/shoot-hero-wide.jpg" alt="A camera and a laptop showing the GrandAscend logo on set" fetchpriority="high">
   </picture>
   <div class="photo-hero-shade"></div>
   <div class="photo-hero-content">
@@ -519,8 +522,8 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
     <h1 class="ph-title">Your brand, built<br>for the tier you're<br><em>reaching for.</em></h1>
     <p class="ph-desc">A creative house for luxury and beauty brands. We build brand identity, content, and Shopify stores so your brand looks and sells like the premium it is.</p>
     <div class="ph-actions">
-      <a href="apply.html" class="ph-btn">Let's talk<span class="arrow" aria-hidden="true"></span></a>
-      <a href="#portfolio" class="ph-link">See our work</a>
+      <a href="services.html" class="ph-btn">Discover our packages<span class="arrow" aria-hidden="true"></span></a>
+      <a href="apply.html" class="ph-link">Let's talk</a>
     </div>
   </div>
   <div class="ph-foot">
