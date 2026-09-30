@@ -161,6 +161,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .pill-field.invalid { border-bottom-color: var(--error-light); }
 .pill-field > span { font-size: 17px; color: var(--ink-soft); }
 .text-input { font-family: var(--sans); font-size: 17px; font-weight: 400; color: var(--ink); background: transparent; border: none; outline: none; width: 100%; padding: 16px 0 12px; border-radius: 0; }
+.pill-field.area { align-items: stretch; }
+textarea.text-input { resize: vertical; min-height: 120px; line-height: 1.6; }
 .text-input::placeholder { color: var(--ink-soft); opacity: 0.6; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
 
 /* Choices: uppercase rows over thin rules */
@@ -314,14 +316,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
   <input type="text" name="firstName"><input type="text" name="lastName"><input type="email" name="email">
   <input type="text" name="industry"><input type="text" name="businessType"><input type="text" name="business">
   <input type="text" name="instagram"><input type="text" name="service"><input type="text" name="investment">
-  <input type="text" name="source"><input type="hidden" name="subject">
+  <textarea name="project"></textarea><input type="text" name="source"><input type="hidden" name="subject">
 </form>
 <form name="grandascend-other-lead" netlify netlify-honeypot="bot-field" hidden>
   <input type="text" name="bot-field">
   <input type="text" name="firstName"><input type="text" name="lastName"><input type="email" name="email">
   <input type="text" name="industry"><input type="text" name="businessType"><input type="text" name="business">
   <input type="text" name="instagram"><input type="text" name="service"><input type="text" name="investment">
-  <input type="text" name="source"><input type="hidden" name="subject">
+  <textarea name="project"></textarea><input type="text" name="source"><input type="hidden" name="subject">
 </form>
 
 <header class="hero dark-paper">
@@ -434,22 +436,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
           <p class="field-error" role="alert"></p>
         </fieldset>
 
-        <!-- 7. Investment: the qualifying question. Filled in from SERVICES. -->
-        <fieldset class="step" data-step="investment">
-          <legend class="question" tabindex="-1">If accepted, is this investment <em>within your budget?</em></legend>
-          <div class="investment">
-            <small id="inv-name"></small>
-            <strong><span id="inv-price"></span><em id="inv-unit"></em></strong>
-            <p id="inv-note"></p>
-          </div>
-          <div class="choices">
-            <label class="choice"><input type="radio" name="investment" value="Yes"><span>Yes, I am ready to invest at this level</span></label>
-            <label class="choice"><input type="radio" name="investment" value="No"><span>Not at this time</span></label>
-          </div>
+        <!-- 7. About the business and the project -->
+        <section class="step" data-step="project">
+          <label class="question" for="f-project" tabindex="-1">Tell us a little about <em>your business and the project.</em></label>
+          <p class="hint">What you do, who you serve, and what you would like us to help with.</p>
+          <div class="pill-field area"><textarea class="text-input" id="f-project" name="project" rows="4" maxlength="1500" placeholder="A few sentences is perfect"></textarea></div>
           <p class="field-error" role="alert"></p>
           <p class="consent">By sending this application, you agree that GrandAscend may contact you about your enquiry. Your details are kept private and never shared.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-        </fieldset>
+        </section>
+
 
         <div class="controls">
           <button type="button" class="btn solid" id="next-btn"><span id="next-label">Continue</span><span class="arrow" aria-hidden="true"></span></button>
@@ -598,7 +594,7 @@ function updateChrome() {
   barEl.style.width = ((current + 1) / steps.length * 100) + "%";
   backBtn.hidden = current === 0;
   nextLabel.textContent = isLast(current) ? "Send off" : "Continue";
-  enterHint.hidden = !visibleInputs(steps[current]).length;
+  enterHint.hidden = !visibleInputs(steps[current]).length || !!steps[current].querySelector("textarea");
 }
 
 /* Show the starting price for whichever service was chosen. */
@@ -624,7 +620,6 @@ function show(i, goingBack) {
   steps[current].classList.remove("active", "back");
   current = i;
   var step = steps[current];
-  if (step.dataset.step === "investment") fillInvestment();
   step.classList.toggle("back", !!goingBack);
   step.classList.add("active");
   statusEl.textContent = "";
@@ -644,7 +639,7 @@ function stepError(step, message) {
   err.textContent = message;
   var fields = step.querySelectorAll(".pill-field");
   for (var l = 0; l < fields.length; l++) {
-    var fieldInput = fields[l].querySelector("input");
+    var fieldInput = fields[l].querySelector("input, textarea");
     var isBad = !!message && (!fieldInput.value.trim() || fieldInput.dataset.bad === "1");
     fields[l].classList.toggle("invalid", isBad);
     if (isBad) fieldInput.setAttribute("aria-invalid", "true"); else fieldInput.removeAttribute("aria-invalid");
@@ -713,6 +708,9 @@ function checkText(name, value) {
   if ((name === "firstName" || name === "lastName") && (/[@<>]|https?:|www\./i.test(value) || /\d/.test(value))) {
     return "Please enter your name using letters only.";
   }
+  if (name === "project" && value.length < 20) {
+    return "Please share a sentence or two so we can prepare for your call.";
+  }
   if ((name === "business" || name === "businessType") && /[<>]|https?:/i.test(value)) {
     return "Please enter the name only, without links.";
   }
@@ -766,7 +764,7 @@ backBtn.addEventListener("click", back);
 
 /* Enter moves forward from a text field. */
 form.addEventListener("keydown", function (e) {
-  if (e.key === "Enter" && e.target.classList.contains("text-input")) {
+  if (e.key === "Enter" && e.target.classList.contains("text-input") && e.target.tagName !== "TEXTAREA") {
     e.preventDefault();
     next();
   }
@@ -817,7 +815,8 @@ function setLoading(on) {
 }
 
 function submit() {
-  var qualified = val("investment") === "Yes";
+  /* The budget question is paused, so every application goes to the form that emails Helia. */
+  var qualified = true;
   var service = SERVICES[val("service")];
   var data = {
     "form-name":    qualified ? "grandascend-qualified-lead" : "grandascend-other-lead",
@@ -830,10 +829,10 @@ function submit() {
     "business":     val("business"),
     "instagram":    val("instagram"),
     "service":      service.name,
-    "investment":   (qualified ? "Yes, " : "Not at this time, ") + (service.fixed ? "" : "from ") + service.price + " " + service.unit,
+    "project":      val("project"),
     "source":       source,
     /* Netlify uses this as the notification email subject. */
-    "subject":      (qualified ? "New qualified lead: " : "New lead (not ready yet): ") + service.name + ", " + val("business") + " (" + val("firstName") + " " + val("lastName") + ")"
+    "subject":      "New application: " + service.name + ", " + val("business") + " (" + val("firstName") + " " + val("lastName") + ")"
   };
 
   setLoading(true);
