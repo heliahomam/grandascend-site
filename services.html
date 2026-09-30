@@ -177,6 +177,22 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60
 .frame-photo img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
 .project-media .frame-photo img { aspect-ratio: 4 / 5; }
 
+/* Website slider: Spa Perlla, Roza, HerHeart */
+.site-slider { position: relative; overflow: hidden; touch-action: pan-y; }
+.site-track { display: flex; transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.site-track img { flex: 0 0 100%; min-width: 0; user-select: none; -webkit-user-drag: none; }
+.site-arrow { position: absolute; top: 50%; width: 44px; height: 44px; margin-top: -22px; border-radius: 50%; border: 1px solid rgba(245, 240, 232, 0.7); background: rgba(42, 42, 42, 0.35); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); cursor: pointer; transition: background 0.3s, opacity 0.3s; }
+.site-arrow::before { content: ''; position: absolute; top: 50%; left: 50%; width: 9px; height: 9px; border-top: 1px solid var(--cream); border-right: 1px solid var(--cream); }
+.site-arrow.prev { left: 18px; }
+.site-arrow.next { right: 18px; }
+.site-arrow.prev::before { transform: translate(-30%, -50%) rotate(-135deg); }
+.site-arrow.next::before { transform: translate(-70%, -50%) rotate(45deg); }
+.site-arrow:hover { background: rgba(42, 42, 42, 0.6); }
+.site-arrow[disabled] { opacity: 0; pointer-events: none; }
+.site-caption { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; }
+.site-name { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--charcoal); }
+.site-count { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; color: var(--taupe); }
+
 /* 5. MONTHLY PARTNERSHIP */
 .partnership { padding: 130px 60px 0; background: var(--cream); }
 .tier-boxes { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px; align-items: stretch; }
@@ -610,7 +626,18 @@ footer { background: var(--black); padding: 80px 60px 40px; }
         <a class="text-link" href="apply.html?service=website">Start a project <span class="arrow"></span></a>
       </div>
     </div>
-    <div class="project-media anim-right"><div class="frame-photo"><img src="images/service-web-shopify.jpg" alt="A website designed by GrandAscend" loading="lazy"></div></div>
+    <div class="project-media anim-right">
+      <div class="frame-photo site-slider" id="siteSlider" aria-roledescription="carousel" aria-label="Websites designed by GrandAscend">
+        <div class="site-track">
+          <img src="images/work-spaperlla-site.jpg" alt="The Spa Perlla website" loading="lazy">
+          <img src="images/work-roza-site-mockup.jpg" alt="The Roza Grip Socks website">
+          <img src="images/work-herheart-site-mockup.jpg" alt="The HerHeart website">
+        </div>
+        <button class="site-arrow prev" type="button" aria-label="Previous website"></button>
+        <button class="site-arrow next" type="button" aria-label="Next website"></button>
+      </div>
+      <p class="site-caption" aria-live="polite"><span class="site-name">Spa Perlla</span><span class="site-count">1 / 3</span></p>
+    </div>
   </article>
 </section>
 
@@ -924,6 +951,42 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.anim-fade-up, .anim-left, .anim-right, .anim-scale').forEach(el => observer.observe(el));
+
+// Website slider: arrows and swipe
+(function() {
+  const slider = document.getElementById('siteSlider');
+  if (!slider) return;
+  const track = slider.querySelector('.site-track');
+  const count = track.children.length;
+  const names = ['Spa Perlla', 'Roza Grip Socks', 'HerHeart'];
+  const prev = slider.querySelector('.prev'), next = slider.querySelector('.next');
+  const nameEl = document.querySelector('.site-caption .site-name');
+  const countEl = document.querySelector('.site-caption .site-count');
+  let i = 0;
+  function go(n) {
+    i = Math.max(0, Math.min(count - 1, n));
+    track.style.transform = 'translateX(' + (-100 * i) + '%)';
+    prev.disabled = i === 0;
+    next.disabled = i === count - 1;
+    nameEl.textContent = names[i];
+    countEl.textContent = (i + 1) + ' / ' + count;
+  }
+  prev.addEventListener('click', () => go(i - 1));
+  next.addEventListener('click', () => go(i + 1));
+  slider.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') go(i + 1);
+    if (e.key === 'ArrowLeft') go(i - 1);
+  });
+  let x0 = null;
+  slider.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  slider.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+  go(0);
+})();
 
 // Coverflow carousel
 (function() {
