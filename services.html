@@ -153,8 +153,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60
 .price-box .price { font-family: var(--serif); font-style: italic; font-size: 40px; line-height: 1; color: var(--charcoal); margin: auto 0 20px; }
 .price-box .price small { font-family: var(--sans); font-style: normal; font-size: 10px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink-soft); margin-left: 8px; }
 .price-box .price .from { font-size: 0.55em; margin-right: 4px; }
-.price-box .credit { font-family: var(--hand); font-size: 17px; color: var(--ink-soft); margin: -6px 0 22px; }
-.price-box .text-link { align-self: flex-start; }
+.price-box .credit { font-family: var(--hand); font-size: 17px; color: var(--ink-soft); margin: auto 0 22px; }
+.price-box .text-link { align-self: flex-start; margin-top: auto; }
+.price-box .credit + .text-link { margin-top: 0; }
 
 /* 4. SIGNATURE PROJECTS: editorial rows with a line from the page edge */
 .projects { padding: 130px 0 120px; border-top: 1px solid var(--line); overflow: hidden; }
@@ -467,7 +468,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 <section class="os-hero paper">
   <div class="os-hero-inner">
     <div class="os-meta">
-      <span class="kicker">Services &amp; pricing</span>
+      <span class="kicker">Services</span>
       <span class="kicker">Montreal · Canada &amp; US</span>
     </div>
     <h1 class="os-title"><span class="row1">Our</span><span class="row2">Services</span></h1>
@@ -491,7 +492,7 @@ footer { background: var(--black); padding: 80px 60px 40px; }
     </div>
     <div class="os-foot">
       <p>Brand strategy, identity, websites and social media for local businesses that want to look as good as they are. Open a folder to see what is inside.</p>
-      <span class="kicker">All prices in CAD, plus taxes</span>
+      <span class="kicker">Tailored to your brand</span>
     </div>
   </div>
 </section>
@@ -535,7 +536,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
         <li><span>Your brand, feed and goals, reviewed together</span></li>
         <li><span>A short written plan after the call</span></li>
       </ul>
-      <p class="price">$350 <small>CAD</small></p>
       <p class="credit">credited to any project within 30 days</p>
       <a class="text-link" href="apply.html?service=session">Book a session <span class="arrow"></span></a>
     </article>
@@ -546,7 +546,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
         <li><span>What your competitors are doing</span></li>
         <li><span>60-minute walkthrough call</span></li>
       </ul>
-      <p class="price">$750 <small>CAD</small></p>
       <p class="credit">credited to any project you book</p>
       <a class="text-link" href="apply.html?service=audit">Request an audit <span class="arrow"></span></a>
     </article>
@@ -572,7 +571,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
         <li>Delivered the same day</li>
       </ul>
       <div class="project-foot">
-        <p class="project-price">$2,500 <small>CAD</small></p>
         <a class="text-link" href="apply.html?service=vipday">Book a VIP Day <span class="arrow"></span></a>
       </div>
     </div>
@@ -591,7 +589,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
         <li>Social media templates</li>
       </ul>
       <div class="project-foot">
-        <p class="project-price">from $4,500 <small>CAD</small></p>
         <a class="text-link" href="apply.html?service=branding">Start a project <span class="arrow"></span></a>
       </div>
     </div>
@@ -610,7 +607,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
         <li>Law 25 privacy basics</li>
       </ul>
       <div class="project-foot">
-        <p class="project-price">from $4,500 <small>CAD</small></p>
         <a class="text-link" href="apply.html?service=website">Start a project <span class="arrow"></span></a>
       </div>
     </div>
@@ -635,7 +631,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
         <li><span>Captions and content calendar</span></li>
         <li><span>Monthly report</span></li>
       </ul>
-      <p class="price">$1,800 <small>/ month</small></p>
       <a class="text-link" href="apply.html?service=partnership">Apply <span class="arrow"></span></a>
     </article>
     <article class="price-box featured anim-fade-up">
@@ -648,7 +643,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
         <li><span>Stories and community care</span></li>
         <li><span>Monthly strategy call</span></li>
       </ul>
-      <p class="price">$2,900 <small>/ month</small></p>
       <a class="text-link" href="apply.html?service=partnership">Apply <span class="arrow"></span></a>
     </article>
     <article class="price-box anim-fade-up">
@@ -660,7 +654,6 @@ footer { background: var(--black); padding: 80px 60px 40px; }
         <li><span>1 email campaign</span></li>
         <li><span>Ads management, spend extra</span></li>
       </ul>
-      <p class="price">$4,500 <small>/ month</small></p>
       <a class="text-link" href="apply.html?service=partnership">Apply <span class="arrow"></span></a>
     </article>
   </div>
@@ -682,11 +675,11 @@ footer { background: var(--black); padding: 80px 60px 40px; }
         <article class="price-box">
           <h3>Add-ons</h3>
           <ul class="price-lines">
-            <li><span>Extra half-day shoot</span><i>$900</i></li>
-            <li><span>French copy for bilingual brands</span><i>+15%</i></li>
-            <li><span>Ads management on its own</span><i>from $600 / mo</i></li>
+            <li><span>Extra half-day shoot</span></li>
+            <li><span>French copy for bilingual brands</span></li>
+            <li><span>Ads management on its own</span></li>
           </ul>
-          <p class="terms">Prices in CAD, plus taxes. Partnerships start with three months, then renew quarterly with 30 days' notice, billed on the 1st. Projects start with a 50% deposit.</p>
+          <p class="terms">Partnerships start with three months, then renew quarterly with 30 days' notice, billed on the 1st. Projects start with a 50% deposit.</p>
         </article>
       </div>
     </div>
