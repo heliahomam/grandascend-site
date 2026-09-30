@@ -713,6 +713,8 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   .c-file-input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
   .c-grid .field { position: relative; }
   .c-hp { position: absolute; left: -9999px; }
+  .c-file-error { font-size: 11px; line-height: 1.6; color: #9B3D2E; margin-top: 8px; }
+  .c-file-error:empty { display: none; }
   .c-error { min-height: 20px; margin-top: 18px; font-size: 12px; line-height: 1.6; color: #9B3D2E; }
   .c-error:empty { min-height: 0; margin: 0; }
   .c-next { font-size: 11px; line-height: 1.7; color: var(--taupe); text-align: center; margin-top: 18px; }
@@ -850,6 +852,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
         <label>CV <span class="c-opt">optional, PDF up to 5MB</span></label>
         <label class="c-file" for="cv-file"><span id="cv-name">Choose a file</span></label>
         <input type="file" id="cv-file" name="cv" accept=".pdf,.doc,.docx" class="c-file-input">
+        <p class="c-file-error" id="cv-error" role="alert"></p>
       </div>
       <div class="field c-full">
         <label for="coverletter">A few lines about you <span class="c-opt">optional</span></label>
@@ -933,17 +936,18 @@ const form = document.getElementById("application-form");
 const errorEl = document.getElementById("form-error");
 const cvInput = document.getElementById("cv-file");
 const cvName = document.getElementById("cv-name");
+const cvError = document.getElementById("cv-error");
 /* Netlify accepts 8MB per submission in total; keep the CV well under that. */
 const MAX_CV = 5 * 1024 * 1024;
 
 cvInput.addEventListener("change", () => {
   const f = cvInput.files[0];
-  errorEl.textContent = "";
+  cvError.textContent = "";
   if (!f) { cvName.textContent = "Choose a file"; return; }
   if (f.size > MAX_CV) {
     cvInput.value = "";
     cvName.textContent = "Choose a file";
-    errorEl.textContent = "That file is over 5MB. Please add it to Google Drive or Dropbox and include it in your portfolio link instead.";
+    cvError.textContent = "This file is " + (f.size / 1048576).toFixed(1) + "MB. The limit is 5MB. Please use a smaller PDF, or add it to your portfolio link instead.";
     return;
   }
   cvName.textContent = "\u2713 " + f.name;
@@ -955,6 +959,8 @@ function problem() {
     const el = document.getElementById(id);
     if (!el.value.trim()) { el.focus(); return "Please add " + label + "."; }
   }
+  const cv = cvInput.files[0];
+  if (cv && cv.size > MAX_CV) { cvInput.value = ""; cvName.textContent = "Choose a file"; return "Your CV is over 5MB. Please choose a smaller file."; }
   const email = document.getElementById("uemail");
   if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email.value.trim())) { email.focus(); return "Please check your email address."; }
   const link = document.getElementById("portlink");
