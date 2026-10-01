@@ -152,6 +152,8 @@ footer { background: var(--black); padding: 80px 60px 40px; }
 .tape { position: absolute; width: 96px; height: 28px; background: rgba(226,219,205,0.8); box-shadow: 0 1px 2px rgba(0,0,0,0.12); z-index: 2; }
 .story-cert { max-width: 560px; margin-left: auto; }
 .story-cert img { width: 100%; height: auto; display: block; }
+.cert-cap { margin: -18px 0 0 6%; font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 0.28em; line-height: 2; text-transform: uppercase; color: #5E554D; }
+.cert-cap span { display: block; font-family: var(--serif); font-style: italic; font-size: 20px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--charcoal); }
 .story-collage { position: relative; min-height: 620px; }
 .story-collage .polaroid { position: absolute; }
 .story-collage .p1 { top: 0; right: 4%; width: 64%; transform: rotate(3deg); }
@@ -264,7 +266,8 @@ footer { background: var(--black); padding: 80px 60px 40px; }
   </div>
   <div class="story-hero-img-wrap anim-right">
     <figure class="story-cert">
-      <img src="images/helia-lvmh-certificate.webp" alt="Helia Homam at her desk with her Inside LVMH Certificate in Creation &amp; Branding and Retail &amp; Customer Experience" width="1000" height="1004">
+      <img src="images/helia-lvmh-editorial.webp" srcset="images/helia-lvmh-editorial-sm.webp 600w, images/helia-lvmh-editorial.webp 1200w" sizes="(max-width: 960px) 92vw, 560px" alt="Helia Homam at her desk with her Inside LVMH Certificate in Creation &amp; Branding and Retail &amp; Customer Experience" width="1200" height="1500">
+      <figcaption class="cert-cap"><span>Inside LVMH Certificate</span>Creation &amp; Branding · Retail &amp; Customer Experience</figcaption>
     </figure>
   </div>
 </section>
