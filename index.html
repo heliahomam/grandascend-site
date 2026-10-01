@@ -323,8 +323,20 @@ body.photo-top nav:not(.scrolled) .hamburger span { background: var(--cream); }
   #about.editorial .about-headline { font-size: clamp(36px, 10vw, 56px); line-height: 1; margin-bottom: 24px; }
   #about.editorial .stat-num { font-size: 36px; }
   #about.editorial .stat-box { padding: 18px 16px; }
-  .about-collage { min-height: 0; }
-  .about-collage .ed.solo { width: 100%; }
+  /* Phones: the photo becomes a soft faded backdrop behind the copy instead of a framed print */
+  #about.editorial { position: relative; padding-bottom: 330px !important; }
+  #about.editorial .about-grid { display: block; position: static; }
+  #about.editorial .about-left { position: relative; z-index: 1; }
+  #about.editorial .about-right { position: absolute; left: 0; right: 0; bottom: 0; height: 78%; z-index: 0; pointer-events: none; transform: none; }
+  #about.editorial .about-collage, #about.editorial .about-collage .ed.solo, #about.editorial .about-collage .mat { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; padding: 0; border: 0; background: none; aspect-ratio: auto; }
+  #about.editorial .about-collage img { object-position: 50% 58%; opacity: 0.42; filter: grayscale(0.3) contrast(0.92);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.25) 28%, #000 62%, #000 86%, transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.25) 28%, #000 62%, #000 86%, transparent 100%); }
+  #about.editorial .stat-label, #about.editorial .result-label { color: #5E554D; }
+  #about.editorial .fig-cap { display: none; }
+  #about.editorial .about-stats { background: none; gap: 0; }
+  #about.editorial .stat-box { background: none; border-top: 1px solid rgba(42,42,42,0.14); }
+  #about.editorial .stat-box:nth-child(odd) { border-right: 1px solid rgba(42,42,42,0.14); }
   }
 
 /* KEYFRAMES */
