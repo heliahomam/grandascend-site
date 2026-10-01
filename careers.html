@@ -9,7 +9,10 @@
 <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600;700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/300.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/aileron@5/600.css" rel="stylesheet">
 <style>
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,7 +21,7 @@
     --charcoal: #2A2A2A;
     --cream: #F5F0E8;
     --gold: #B5A898;
-    --blush: #e6b7bd;
+    --gold: #B5A898;
     --taupe: #8C7E72;
     --light: #FAF7F2;
     --border: #E5DED4;
@@ -29,7 +32,7 @@
 
   body {
     background: var(--light);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     color: var(--charcoal);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -40,13 +43,13 @@
 /* NAV: light over the dark hero, cream once scrolled */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60px; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s ease, padding 0.4s ease; }
 nav.scrolled { background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 16px 60px; border-bottom: 1px solid rgba(42,42,42,0.10); }
-.nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.4s ease; }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Instrument Serif', 'Times New Roman', serif; font-size: 14px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.4s ease; }
 .nav-logo-mark { height: 20px; width: auto; display: block; filter: brightness(6); transition: filter 0.4s ease; }
 nav.scrolled .nav-logo { color: var(--charcoal); }
 nav.scrolled .nav-logo-mark { filter: none; }
 .nav-logo span { font-style: italic; font-weight: 700; letter-spacing: 0.05em; text-transform: none; }
 .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; margin: 0; padding: 0; }
-.nav-links a { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; position: relative; transition: color 0.4s ease; }
+.nav-links a { font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); text-decoration: none; position: relative; transition: color 0.4s ease; }
 nav.scrolled .nav-links a { color: var(--charcoal); }
 .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
 .nav-links a:hover::after { width: 100%; }
@@ -54,7 +57,7 @@ nav.scrolled .nav-links a { color: var(--charcoal); }
 .nav-cta { color: var(--charcoal) !important; background: var(--cream); padding: 12px 24px !important; transition: background 0.3s ease, color 0.3s ease !important; }
 nav.scrolled .nav-cta { color: var(--cream) !important; background: var(--charcoal); }
 .nav-cta::after { display: none !important; }
-.nav-cta:hover { background: var(--blush) !important; color: var(--charcoal) !important; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--charcoal) !important; }
 
 .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 200; }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); transition: all 0.3s ease; transform-origin: center; }
@@ -115,14 +118,14 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     font-size: 10px;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: var(--blush);
+    color: var(--gold);
     margin-bottom: 28px;
     opacity: 0;
     animation: fadeUp 0.8s 0.2s forwards;
   }
 
   .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: clamp(48px, 8vw, 88px);
     font-weight: 300;
     color: var(--cream);
@@ -135,14 +138,14 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
 
   .hero h1 em {
     font-style: italic;
-    color: var(--blush);
+    color: var(--gold);
   }
 
   .hero p {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.9;
-    color: #9A9189;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.85);
     max-width: 420px;
     margin: 0 auto 40px;
     opacity: 0;
@@ -152,8 +155,8 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   .hero-cta {
     display: inline-block;
     padding: 14px 40px;
-    border: 1px solid var(--blush);
-    color: var(--blush);
+    border: 1px solid var(--gold);
+    color: var(--gold);
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -163,11 +166,11 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     animation: fadeUp 0.8s 0.8s forwards;
     cursor: pointer;
     background: transparent;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
   }
 
   .hero-cta:hover {
-    background: var(--blush);
+    background: var(--gold);
     color: var(--charcoal);
   }
 
@@ -194,7 +197,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   .scroll-line {
     width: 1px;
     height: 40px;
-    background: linear-gradient(to bottom, var(--blush), transparent);
+    background: linear-gradient(to bottom, var(--gold), transparent);
     animation: scrollLine 2s 1.5s infinite;
   }
 
@@ -218,15 +221,16 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .section-label {
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--taupe);
     margin-bottom: 8px;
   }
 
   .section-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: 32px;
     font-weight: 400;
     margin-bottom: 32px;
@@ -278,7 +282,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .info-card h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 20px;
@@ -305,7 +309,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     padding: 12px 16px;
     border: 1px solid var(--border);
     border-radius: 8px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     font-size: 13px;
     color: var(--charcoal);
     background: var(--light);
@@ -355,7 +359,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .cat-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: 20px;
     font-weight: 400;
   }
@@ -392,7 +396,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     background: var(--light);
     font-size: 12px;
     font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     color: var(--taupe);
     cursor: pointer;
     transition: all 0.15s;
@@ -426,7 +430,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     border: 1px solid var(--border);
     border-radius: 100px;
     font-size: 12px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     color: var(--taupe);
     background: var(--white);
     cursor: pointer;
@@ -448,7 +452,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     background: var(--charcoal);
     color: var(--cream);
     border: none;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 4px;
@@ -481,7 +485,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .thankyou h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: 52px;
     font-weight: 300;
     margin-bottom: 16px;
@@ -609,7 +613,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   }
 
   .popup-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
     font-size: clamp(36px, 8vw, 52px);
     font-weight: 300;
     color: var(--charcoal);
@@ -658,7 +662,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     padding: 13px 36px;
     border: 1px solid var(--charcoal);
     color: var(--charcoal);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Aileron', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 3px;
@@ -682,6 +686,46 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     .rbtn { width: 28px; height: 28px; font-size: 11px; }
     .popup-card { padding: 40px 28px 36px; }
   }
+
+  /* ── New careers layout ── */
+  .c-wrap { max-width: 1040px; margin: 0 auto; }
+  .c-how { background: var(--charcoal); color: var(--cream); padding: 110px 32px; }
+  .c-how .section-label { color: #CFC3B4; }
+  .c-title { font-family: 'Instrument Serif', 'Times New Roman', serif; font-weight: 400; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.12; max-width: 820px; margin: 14px 0 56px; }
+  .c-title em { color: var(--gold); }
+  .c-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; border-top: 1px solid rgba(245,240,232,0.18); padding-top: 34px; }
+  .c-cols h3 { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #CFC3B4; margin-bottom: 14px; }
+  .c-cols p { font-size: 15px; font-weight: 400; line-height: 1.8; color: rgba(245,240,232,0.9); }
+  .c-roles { padding: 110px 32px 30px; }
+  .c-role-list { list-style: none; margin-top: 26px; border-top: 1px solid var(--border); }
+  .c-role-list li { display: grid; grid-template-columns: 70px 1fr; gap: 20px; align-items: baseline; padding: 28px 0; border-bottom: 1px solid var(--border); }
+  .c-num { font-family: 'Instrument Serif', 'Times New Roman', serif; font-style: italic; font-size: 20px; color: var(--taupe); }
+  .c-role-list h3 { font-family: 'Instrument Serif', 'Times New Roman', serif; font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 6px; }
+  .c-role-list p { font-size: 15px; font-weight: 400; line-height: 1.7; color: #5E554D; }
+  .form-section .section-title em { font-style: italic; color: var(--taupe); }
+  .c-lede { font-size: 15px; font-weight: 400; line-height: 1.8; color: #5E554D; margin: -18px 0 34px; }
+  .c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 22px; }
+  .c-full { grid-column: 1 / -1; }
+  .field select { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; font: inherit; font-size: 13px; color: var(--charcoal); background: var(--light); outline: none; appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--taupe) 50%), linear-gradient(135deg, var(--taupe) 50%, transparent 50%); background-position: calc(100% - 20px) 52%, calc(100% - 15px) 52%; background-size: 5px 5px; background-repeat: no-repeat; }
+  .field select:focus { border-color: var(--gold); background-color: var(--white); }
+  .c-opt { font-weight: 400; letter-spacing: 1px; text-transform: none; color: var(--taupe); margin-left: 6px; }
+  .c-help { font-size: 12px; line-height: 1.7; color: #5E554D; margin-top: 8px; }
+  .field .c-file { display: block; padding: 12px 16px; border: 1px dashed var(--gold); border-radius: 8px; font-size: 13px; color: var(--taupe); background: var(--light); cursor: pointer; letter-spacing: 0; text-transform: none; font-weight: 400; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .field .c-file:hover { border-color: var(--charcoal); color: var(--charcoal); }
+  .c-file-input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .c-grid .field { position: relative; }
+  .c-hp { position: absolute; left: -9999px; }
+  .c-file-error { font-size: 11px; line-height: 1.6; color: #9B3D2E; margin-top: 8px; }
+  .c-file-error:empty { display: none; }
+  .c-error { min-height: 20px; margin-top: 18px; font-size: 12px; line-height: 1.6; color: #9B3D2E; }
+  .c-error:empty { min-height: 0; margin: 0; }
+  .c-next { font-size: 12px; line-height: 1.7; color: #5E554D; text-align: center; margin-top: 18px; }
+  @media (max-width: 760px) {
+    .c-how, .c-roles { padding-left: 24px; padding-right: 24px; }
+    .c-cols { grid-template-columns: 1fr; gap: 26px; }
+    .c-grid { grid-template-columns: 1fr; }
+    .c-role-list li { grid-template-columns: 44px 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -693,7 +737,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     <li><a href="services.html" onclick="closeMenu()">Services</a></li>
     <li><a href="careers.html" class="active" onclick="closeMenu()">Careers</a></li>
     <li><a href="creators.html" onclick="closeMenu()">Creators</a></li>
-    <li><a href="index.html#contact" class="nav-cta" onclick="closeMenu()">Let's Talk</a></li>
+    <li><a href="apply.html" class="nav-cta" onclick="closeMenu()">Let's Talk</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -708,53 +752,59 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
      ═══════════════════════════════════════════════ -->
 <form name="grandascend-application" netlify netlify-honeypot="bot-field" hidden>
   <input type="text"   name="full-name">
-  <input type="text"   name="instagram">
   <input type="email"  name="email">
-  <textarea            name="bio"></textarea>
-  <textarea            name="skills-summary"></textarea>
-  <textarea            name="extra-skills"></textarea>
-  <textarea            name="learn"></textarea>
-  <input type="text"   name="hours-per-week">
-  <textarea            name="not-preferred"></textarea>
-  <input type="file"   name="cv">
-  <input type="file"   name="portfolio">
+  <input type="text"   name="discipline">
+  <input type="text"   name="based-in">
   <input type="url"    name="portfolio-link">
+  <input type="text"   name="instagram">
   <textarea            name="cover-letter"></textarea>
+  <input type="file"   name="cv">
 </form>
 
 <section class="hero">
   <p class="hero-tag">GrandAscend ✦ Montreal</p>
   <h1>Join the<br><em>team.</em></h1>
-  <p>We are a creative agency for luxury and beauty brands. Tell us what you are great at and let's find where you fit.</p>
-  <button class="hero-cta" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">Start the assessment</button>
+  <p>A small, founder-led collective of creators, designers and strategists working with luxury and beauty brands.</p>
+  <button class="hero-cta" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">Apply to the collective</button>
   <div class="scroll-hint">
     <span>Scroll</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
-<section style="background: var(--charcoal); padding: 80px 32px; text-align: center;">
-  <div style="max-width: 600px; margin: 0 auto;">
-    <p style="font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--blush); margin-bottom: 20px;">Always open</p>
-    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 24px;">We may not always have a role open. We always have room for the right person.</h2>
-    <p style="font-size: 13px; font-weight: 300; line-height: 1.9; color: #9A9189; margin-bottom: 16px;">GrandAscend is a small, intentional team and we are always growing. Whether we are actively hiring or not, we love meeting people who bring something special. If you feel like you belong in our world, tell us about yourself. We will reach out when the moment is right.</p>
-    <p style="font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--blush);">You are not applying for a job. You are joining a family.</p>
+<!-- HOW WE WORK -->
+<section class="c-how">
+  <div class="c-wrap">
+    <p class="section-label">How we work</p>
+    <h2 class="c-title">We may not always have a role open. <em>We always have room for the right person.</em></h2>
+    <div class="c-cols">
+      <div><h3>Project based</h3><p>We build a small team around each client. Most roles are freelance or contract, booked project by project.</p></div>
+      <div><h3>Montreal and remote</h3><p>Shoots happen in Montreal. Design, editing and strategy can be done from anywhere in Canada or the US.</p></div>
+      <div><h3>Founder led</h3><p>You work directly with Helia. Every application is read personally, and we reach out when a project fits you.</p></div>
+    </div>
   </div>
 </section>
 
-<section class="form-section" id="form">
-  <p class="section-label">Skills Assessment</p>
-  <h2 class="section-title">Tell us about yourself</h2>
-
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot">1</div> Not really</div>
-    <div class="legend-item"><div class="legend-dot">2</div> A little</div>
-    <div class="legend-item"><div class="legend-dot">3</div> Good</div>
-    <div class="legend-item"><div class="legend-dot">4</div> Strong</div>
-    <div class="legend-item"><div class="legend-dot">5</div> This is me</div>
+<!-- WHO WE LOOK FOR -->
+<section class="c-roles">
+  <div class="c-wrap">
+    <p class="section-label">Who we look for</p>
+    <ul class="c-role-list">
+      <li><span class="c-num">01</span><div><h3>Content creators</h3><p>Reels, TikTok and UGC with a strong eye for beauty and lifestyle.</p></div></li>
+      <li><span class="c-num">02</span><div><h3>Photographers and videographers</h3><p>Product, brand and on-set shooting, plus editing.</p></div></li>
+      <li><span class="c-num">03</span><div><h3>Designers</h3><p>Brand identity, social templates and Shopify design.</p></div></li>
+      <li><span class="c-num">04</span><div><h3>Social media managers</h3><p>Planning, captions, community care and reporting, in English or French.</p></div></li>
+    </ul>
   </div>
+</section>
 
-  <!-- ── Form — submissions handled by Netlify Forms ── -->
+<!-- APPLICATION -->
+<section class="form-section" id="form">
+  <p class="section-label">Apply</p>
+  <h2 class="section-title">Tell us about <em>you.</em></h2>
+  <p class="c-lede">It takes about two minutes. Share your work as a link so nothing gets lost.</p>
+
+  <!-- Submissions handled by Netlify Forms -->
   <form
     name="grandascend-application"
     method="POST"
@@ -762,98 +812,59 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
     netlify-honeypot="bot-field"
     enctype="multipart/form-data"
     id="application-form"
-    onsubmit="handleSubmit(event)"
+    novalidate
   >
   <input type="hidden" name="form-name" value="grandascend-application">
-  <input type="hidden" name="bot-field" style="display:none">
+  <p class="c-hp" aria-hidden="true"><label>Leave this empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
-    <div class="info-card">
-      <h3>Your info</h3>
+    <div class="c-grid">
       <div class="field">
         <label for="uname">Full name</label>
-        <input type="text" id="uname" name="full-name" placeholder="Your name" required>
+        <input type="text" id="uname" name="full-name" autocomplete="name" maxlength="100" required>
       </div>
       <div class="field">
-        <label for="uig">Instagram handle</label>
-        <input type="text" id="uig" name="instagram" placeholder="@yourhandle">
+        <label for="uemail">Email</label>
+        <input type="email" id="uemail" name="email" autocomplete="email" maxlength="150" required>
       </div>
       <div class="field">
-        <label for="uemail">Email address</label>
-        <input type="email" id="uemail" name="email" placeholder="your@email.com" required>
+        <label for="udisc">What do you do?</label>
+        <select id="udisc" name="discipline" required>
+          <option value="" selected disabled>Choose one</option>
+          <option>Content creator</option>
+          <option>Photographer or videographer</option>
+          <option>Designer</option>
+          <option>Social media manager</option>
+          <option>Other</option>
+        </select>
       </div>
       <div class="field">
-        <label for="ubio">In a few words, what are you naturally good at?</label>
-        <textarea id="ubio" name="bio" rows="2" placeholder="Write freely..."></textarea>
+        <label for="ubased">Where are you based?</label>
+        <input type="text" id="ubased" name="based-in" placeholder="Montreal, Toronto, remote..." maxlength="100" required>
+      </div>
+      <div class="field c-full">
+        <label for="portlink">Portfolio link</label>
+        <input type="url" id="portlink" name="portfolio-link" placeholder="Website, Google Drive, Dropbox, Behance or WeTransfer" maxlength="500" required>
+        <p class="c-help">Heavy files? Upload them to Google Drive, Dropbox or WeTransfer and paste the link here. Please set the link so anyone can view it.</p>
+      </div>
+      <div class="field">
+        <label for="uig">Instagram <span class="c-opt">optional</span></label>
+        <input type="text" id="uig" name="instagram" placeholder="@yourhandle" maxlength="100">
+      </div>
+      <div class="field">
+        <label>CV <span class="c-opt">optional, PDF up to 5MB</span></label>
+        <label class="c-file" for="cv-file"><span id="cv-name">Choose a file</span></label>
+        <input type="file" id="cv-file" name="cv" accept=".pdf,.doc,.docx" class="c-file-input">
+        <p class="c-file-error" id="cv-error" role="alert"></p>
+      </div>
+      <div class="field c-full">
+        <label for="coverletter">A few lines about you <span class="c-opt">optional</span></label>
+        <textarea id="coverletter" name="cover-letter" rows="4" maxlength="1500" placeholder="What you love making, and why GrandAscend."></textarea>
       </div>
     </div>
 
-    <!-- Skills rating cards — injected by JS -->
-    <div id="cats"></div>
-
-    <!-- Hidden textarea that carries the compiled ratings summary -->
-    <textarea name="skills-summary" id="skills-summary-field" style="display:none"></textarea>
-
-    <!-- Hidden input that carries the selected hours -->
-    <input type="hidden" name="hours-per-week" id="hours-hidden-field" value="">
-
-    <div class="info-card" style="margin-top: 16px;">
-      <h3>A few more things</h3>
-      <div class="field">
-        <label for="uextra">Anything you are great at that is not listed above?</label>
-        <textarea id="uextra" name="extra-skills" rows="2" placeholder="Write here..."></textarea>
-      </div>
-      <div class="field">
-        <label for="ulearn">Something you would love to learn through GrandAscend?</label>
-        <textarea id="ulearn" name="learn" rows="2" placeholder="Write here..."></textarea>
-      </div>
-      <div class="field">
-        <label>Hours available per week</label>
-        <div class="hours-row" id="hours"></div>
-      </div>
-      <div class="field" style="margin-top: 16px;">
-        <label for="unope">Any type of work you would prefer not to do?</label>
-        <textarea id="unope" name="not-preferred" rows="2" placeholder="Totally okay to say so..."></textarea>
-      </div>
-    </div>
-
-    <div class="info-card" style="margin-top: 16px;">
-      <h3>Your documents</h3>
-      <p style="font-size: 12px; color: var(--taupe); margin-bottom: 20px; line-height: 1.7;">Attach whatever feels relevant. None of these are required but they help us get to know your work better.</p>
-
-      <div class="field">
-        <label>CV or Resume</label>
-        <div class="upload-box" onclick="document.getElementById('cv-file').click()">
-          <input type="file" id="cv-file" name="cv" accept=".pdf,.doc,.docx" style="display:none" onchange="showFile(this,'cv-name')">
-          <div class="upload-icon">📄</div>
-          <p class="upload-text">Click to upload your CV</p>
-          <p class="upload-sub">PDF or Word, up to 10MB</p>
-          <p class="upload-chosen" id="cv-name"></p>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Portfolio or Work Samples</label>
-        <div class="upload-box" onclick="document.getElementById('port-file').click()">
-          <input type="file" id="port-file" name="portfolio" accept=".pdf,.jpg,.jpeg,.png,.zip" style="display:none" onchange="showFile(this,'port-name')">
-          <div class="upload-icon">🎨</div>
-          <p class="upload-text">Click to upload your portfolio</p>
-          <p class="upload-sub">PDF, images or ZIP, up to 20MB</p>
-          <p class="upload-chosen" id="port-name"></p>
-        </div>
-      </div>
-
-      <div class="field" style="margin-bottom: 0;">
-        <label for="portlink">Portfolio link (if you have one)</label>
-        <input type="url" id="portlink" name="portfolio-link" placeholder="https://yourwebsite.com or Instagram link">
-      </div>
-
-      <div class="field" style="margin-top: 16px; margin-bottom: 0;">
-        <label for="coverletter">Cover Letter (optional)</label>
-        <textarea id="coverletter" name="cover-letter" rows="5" placeholder="Tell us why you would love to be part of GrandAscend. Write it like you would talk to a friend, no need to be too formal."></textarea>
-      </div>
-    </div>
-
-    <button type="submit" class="submit-btn" id="submit-btn">Submit my assessment</button>
+    <p class="c-error" id="form-error" role="alert"></p>
+    <button type="submit" class="submit-btn" id="submit-btn">Send my application</button>
+    <p class="c-next">We read every application and reply when a project fits your work. Your details are only used to review your application.</p>
   </form>
 </section>
 
@@ -911,168 +922,82 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeMenu();
 });
 
-const sections = [
-  { icon: "📱", title: "Social Media",
-    skills: ["Instagram management and posting", "Content planning and strategy", "Caption writing and copywriting", "Hashtag research and growth", "Reels creation and editing", "TikTok content creation", "Scheduling and community management"] },
-  { icon: "🎨", title: "Design and Creative",
-    skills: ["Canva", "Adobe Photoshop", "Adobe Illustrator", "Graphic design (general)", "Presentation design (slides, decks)", "Moodboarding and aesthetic direction", "Brand identity and visual consistency", "Logo design"] },
-  { icon: "🎬", title: "Video and Photo",
-    skills: ["Photography", "Video editing", "CapCut", "Adobe Premiere Pro", "Final Cut Pro", "Reels and short-form video editing", "Product photography", "Content shooting and directing"] },
-  { icon: "💬", title: "Communication and Client Relations",
-    skills: ["Talking to clients and building rapport", "Negotiation", "Writing professional emails and messages", "Following up and managing conversations", "Presenting ideas and pitching"] },
-  { icon: "📋", title: "Operations and Organization",
-    skills: ["Project management and coordination", "Managing timelines and deadlines", "Notion", "Google Drive and file organization", "Excel or Google Sheets", "Scheduling and calendar management", "Writing SOPs and documentation"] },
-  { icon: "🌐", title: "Web and Tech",
-    skills: ["Shopify website design or management", "Basic website editing (any platform)", "Email marketing (Klaviyo or Mailchimp)", "Analytics and reporting (Instagram, Google)", "SEO basics", "Linktree or bio link tools"] },
-  { icon: "📈", title: "Business Development and Networking",
-    skills: ["Finding and approaching potential clients", "Building a professional network", "Partnership and collaboration outreach", "Influencer or brand ambassador experience", "Market research and competitor analysis"] },
-  { icon: "🎪", title: "Events and Production",
-    skills: ["Event planning and coordination", "On-site logistics and management", "Brand activations and pop-ups", "Vendor and supplier coordination"] },
-  { icon: "✍️", title: "Writing and Strategy",
-    skills: ["Copywriting for social media or marketing", "Blog or long-form writing", "Brand strategy and positioning", "Creating content calendars", "Market research"] }
-];
-
-const hoursOptions = ["1 to 5 hrs", "5 to 10 hrs", "10 to 20 hrs", "20+ hrs"];
-const ratings = {};
-let selectedHours = "";
-
-/* ── Show chosen file name ── */
-function showFile(input, labelId) {
-  const label = document.getElementById(labelId);
-  if (input.files && input.files[0]) {
-    label.textContent = "✓ " + input.files[0].name;
-  }
-}
-
-/* ── Build skill rating cards ── */
-function buildForm() {
-  const container = document.getElementById("cats");
-  sections.forEach((sec, si) => {
-    const card = document.createElement("div");
-    card.className = "cat-card";
-    let html = `<div class="cat-header"><div class="cat-icon">${sec.icon}</div><h3 class="cat-title">${sec.title}</h3></div>`;
-    sec.skills.forEach((skill, ki) => {
-      const key = `${si}-${ki}`;
-      ratings[key] = 0;
-      html += `<div class="skill-row">
-        <span class="skill-name">${skill}</span>
-        <div class="rating-btns">
-          ${[1,2,3,4,5].map(n => `<button type="button" class="rbtn" id="b-${key}-${n}" onclick="rate('${key}',${n})">${n}</button>`).join("")}
-        </div>
-      </div>`;
-    });
-    card.innerHTML = html;
-    container.appendChild(card);
-  });
-
-  /* Hours buttons */
-  const hrow = document.getElementById("hours");
-  hoursOptions.forEach(h => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "hour-btn";
-    btn.textContent = h;
-    btn.onclick = () => {
-      document.querySelectorAll(".hour-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      selectedHours = h;
-      document.getElementById("hours-hidden-field").value = h;
-    };
-    hrow.appendChild(btn);
-  });
-}
-
-/* ── Handle rating button clicks ── */
-function rate(key, val) {
-  ratings[key] = val;
-  for (let n = 1; n <= 5; n++) {
-    const b = document.getElementById(`b-${key}-${n}`);
-    if (n <= val) b.classList.add("active");
-    else b.classList.remove("active");
-  }
-}
-
-/* ── Compile ratings into a readable summary ── */
-function compileRatings() {
-  let lines = [];
-  sections.forEach((sec, si) => {
-    let sectionLines = [];
-    sec.skills.forEach((skill, ki) => {
-      const key = `${si}-${ki}`;
-      const r = ratings[key];
-      if (r > 0) {
-        sectionLines.push(`  ${skill}: ${r}/5`);
-      }
-    });
-    if (sectionLines.length) {
-      lines.push(`${sec.title}:`);
-      lines = lines.concat(sectionLines);
-    }
-  });
-  return lines.length ? lines.join("\n") : "No skills rated.";
-}
-
 /* ── Popup helpers ── */
 function showPopup() {
-  const overlay = document.getElementById("ty-popup");
-  overlay.classList.add("visible");
+  document.getElementById("ty-popup").classList.add("visible");
   document.body.style.overflow = "hidden";
 }
-
 function closePopup() {
-  const overlay = document.getElementById("ty-popup");
-  overlay.classList.remove("visible");
+  document.getElementById("ty-popup").classList.remove("visible");
   document.body.style.overflow = "";
 }
+document.addEventListener("keydown", e => { if (e.key === "Escape") closePopup(); });
 
-/* Close popup with Escape key */
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") closePopup();
+/* ── Form ── */
+const form = document.getElementById("application-form");
+const errorEl = document.getElementById("form-error");
+const cvInput = document.getElementById("cv-file");
+const cvName = document.getElementById("cv-name");
+const cvError = document.getElementById("cv-error");
+/* Netlify accepts 8MB per submission in total; keep the CV well under that. */
+const MAX_CV = 5 * 1024 * 1024;
+
+cvInput.addEventListener("change", () => {
+  const f = cvInput.files[0];
+  cvError.textContent = "";
+  if (!f) { cvName.textContent = "Choose a file"; return; }
+  if (f.size > MAX_CV) {
+    cvInput.value = "";
+    cvName.textContent = "Choose a file";
+    cvError.textContent = "This file is " + (f.size / 1048576).toFixed(1) + "MB. The limit is 5MB. Please use a smaller PDF, or add it to your portfolio link instead.";
+    return;
+  }
+  cvName.textContent = "\u2713 " + f.name;
 });
 
-/* ── Form submission via Netlify Forms ── */
-async function handleSubmit(e) {
+function problem() {
+  const need = [["uname", "your name"], ["uemail", "your email"], ["udisc", "what you do"], ["ubased", "where you are based"], ["portlink", "a portfolio link"]];
+  for (const [id, label] of need) {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.focus(); return "Please add " + label + "."; }
+  }
+  const cv = cvInput.files[0];
+  if (cv && cv.size > MAX_CV) { cvInput.value = ""; cvName.textContent = "Choose a file"; return "Your CV is over 5MB. Please choose a smaller file."; }
+  const email = document.getElementById("uemail");
+  if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email.value.trim())) { email.focus(); return "Please check your email address."; }
+  const link = document.getElementById("portlink");
+  let url = link.value.trim();
+  if (!/^https?:\/\//i.test(url)) { url = "https://" + url; link.value = url; }
+  if (!/^https?:\/\/[^\s.]+\.[^\s]{2,}/i.test(url)) { link.focus(); return "Please paste a full link to your work."; }
+  return "";
+}
+
+form.addEventListener("submit", async e => {
   e.preventDefault();
+  const msg = problem();
+  errorEl.textContent = msg;
+  if (msg) return;
 
   const btn = document.getElementById("submit-btn");
   btn.disabled = true;
-  btn.textContent = "Sending…";
-
-  /* Populate hidden fields with compiled data */
-  document.getElementById("skills-summary-field").value = compileRatings();
-  document.getElementById("hours-hidden-field").value = selectedHours || "Not specified";
-
-  const form = document.getElementById("application-form");
-  const formData = new FormData(form);
-
+  btn.textContent = "Sending\u2026";
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 30000);
   try {
-    const response = await fetch("/careers", {
-      method: "POST",
-      body: formData
-    });
-
-    if (response.ok) {
-      showPopup();
-      form.reset();
-      Object.keys(ratings).forEach(k => { ratings[k] = 0; });
-      document.querySelectorAll(".rbtn").forEach(b => b.classList.remove("active"));
-      document.querySelectorAll(".hour-btn").forEach(b => b.classList.remove("active"));
-      document.getElementById("cv-name").textContent = "";
-      document.getElementById("port-name").textContent = "";
-      selectedHours = "";
-    } else {
-      throw new Error("Submission error.");
-    }
+    const response = await fetch("/", { method: "POST", body: new FormData(form), signal: controller.signal });
+    if (!response.ok) throw new Error("Status " + response.status);
+    showPopup();
+    form.reset();
+    cvName.textContent = "Choose a file";
   } catch (err) {
     console.error("Submission error:", err);
-    showPopup();
+    errorEl.textContent = "Your application did not send. Please check your connection and try again, or email contact@grandascend.co.";
   } finally {
+    clearTimeout(timer);
     btn.disabled = false;
-    btn.textContent = "Submit my assessment";
+    btn.textContent = "Send my application";
   }
-}
-
-buildForm();
+});
 </script>
 </body>
 </html>
